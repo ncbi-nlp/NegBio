@@ -1,0 +1,12 @@
+name: negbio2.7
+channels:
+  - anaconda
+  - conda-forge
+dependencies:
+  - python=2.7.11
+  - future
+  - docutils==0.13.1
+  - docopt
+  - pytest
+  - networkx
+

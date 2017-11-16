@@ -1,0 +1,57 @@
+
+{} >{dependency:/neg/} {}
+{} >{} {lemma:/no/}
+{} >{dependency:/case/} {lemma:/without/}
+
+# rather than XXX
+{} <{dependency:/conj:negcc/} {}
+{} <{dependency:/nmod:without/} {}
+{} <{dependency:/conj:versus/} {}
+{} <{dependency:/nmod:without|nmod:of/} {lemma:/clear|clearing/}=key
+{} <{dependency:/nmod:out/} {lemma:/rule/}=key
+{} <{dependency:/nmod:of/} {lemma:/history|free|disappearance|resolution|drainage|resolution|removal/}
+{} <{dependency:/nmod:for/} {lemma:/negative/}
+{} <{} {lemma:/resolve|resolving|exclude/}=key
+{} <{dependency:/advmod|dep|conj:or/} {lemma:/no/}
+
+# XXX has resolved
+{} <{dependency:/nsubj/} ({lemma:/resolve/}=key >{dependency:/aux/} {})
+
+# there is no XXX
+{} <{dependency:/nsubj/} ({lemma:/be/} >{} {lemma:/no/})
+
+# without evidence|finding of|for XXX
+{} <{dependency:/nmod:of|nmod:for/} ({lemma:/evidence|finding/} <{dependency:/nmod:without/} {})
+
+# no evidence of|for XXX
+{} <{dependency:/nmod:of|nmod:for/} ({lemma:/evidence/} >{dependency:/neg/} {})
+
+# without evidence|finding of|for XXX
+{} <{dependency:/nmod:of|nmod:for/} ({lemma:/evidence|finding/} >{} {lemma:/without/})
+
+# no focus of XXX
+{} <{dependency:/nmod:of/} ({lemma:/focus/} >{dependency:/neg/} {})
+{} <{dependency:/nmod:of/} ({lemma:/focus/} >{} {lemma:/no/})
+
+# no moderate to XXX
+{} <{dependency:/nmod:to/} ({lemma:/moderate/} >{dependency:/neg/} {})
+
+# no evidence of developing XXX
+{} <{} ({lemma:/developing/} <{} ({lemma:/evidence/} <{dependency:/nmod:without/} {}))
+{} <{} ({lemma:/developing/} <{} ({lemma:/evidence/} >{} {lemma:/no/}))
+
+# no focal XXX
+{} <{dependency:/dobj/} ({} >{dependency:/nsubj/} {lemma:/no/})
+
+# do not demonstrate|visualize XXX
+# XXX is not demonstrated/visualized
+{} <{dependency:/dobj|nsubjpass/} ({lemma:/demonstrate|visualize/} >{dependency:/neg/} {})
+
+# XXX is previously demonstrated/visualized
+{} <{dependency:/dobj|nsubjpass/} ({lemma:/demonstrate|visualize/} >{} {lemma:/previously/})
+
+# there is no NN to suggest/explain XXX
+{} <{dependency:/dobj/} ({tag:/V.*/} <{} ({tag:/N.*/} >{dependency:/neg/} {}))
+
+# no NN to suggest/explain XXX
+{} <{dependency:/dobj/} ({tag:/V.*/} >{} ({tag:/N.*/} >{dependency:/neg/} {}))

@@ -1,0 +1,62 @@
+# outgoing edge
+{} >{} {lemma:/possible|possibly|presumably|probable|questionable|suspect|suspected|suspicious/}
+{} >{} {lemma:/question/}
+
+# '{} >{dependency:/cop/} {lemma:/may|would|could/}
+
+# incoming edge
+{} <{dependency:/nmod:of/} {lemma:/question|suggestion/}
+{} <{dependency:/dobj/} {lemma:/suspect|favor|suggest|suggesting|question|consider/}
+{} <{dependency:/nmod:for/} {lemma:/concern|suspicion/}
+{} <{dependency:/nsubjpass/} {lemma:/suspect/}
+{} <{} {lemma:/possible/}
+
+# parsing error
+# suspected XXX
+{} <{dependency:/dobj/} {lemma:/suspect/}
+{} >{dependency:/advmod/} {lemma:/suspect/}
+
+# maybe due to XXX
+{} <{dependency:/dep/} {lemma:/maybe/}
+
+# may/could represent/reflect/indicate/include XXX
+{} <{} ({lemma:/reflect|represent|indicate|include/} >{} {lemma:/may|could|would/})
+
+# maybe secondary to XXX
+{} <{dependency:/nmod:to/} {lemma:/secondary/}
+
+# may be due to XXX
+{} <{dependency:/nmod:to/} ({lemma:/due/} >{} {lemma:/can|could|may|would|possibly/})
+
+# could related to XXX
+{} <{dependency:/nmod:to/} ({lemma:/relate/} >{} {lemma:/can|could|may|would|possibly/})
+
+# may be compatible with XXX
+{} <{dependency:/nmod:with/} ({lemma:/compatible/} >{} {lemma:/be|could|may|would/})
+
+# question left XXX
+{} <{dependency:/dobj/} ({lemma:/left/} <{} {lemma:/question/})
+{} >{} {lemma:/left/} <{} {lemma:/question/}
+
+# cannot exclude XXX
+{} <{dependency:/dobj/} ({lemma:/exclude/} >{} {lemma:/cannot/})
+
+# cannot rule out XXX
+{} <{dependency:/nmod:out/} ({lemma:/rule/} >{} {lemma:/cannot/})
+
+# XXX is not excluded
+{} <{dependency:/nsubjpass/} ({lemma:/exclude/} >{dependency:/neg/} {})
+{} <{dependency:/nsubjpass/} ({lemma:/exclude/} >{} {lemma:/cannot/})
+
+# differential diagnosis includes
+{} <{dependency:/dobj/} ({lemma:/include/} >{} ({lemma:/diagnosis/} >{} {lemma:/differential/}))
+
+# may be XXX
+{} <{} {lemma:/be/} >{} {lemma:/may|could|would/}
+
+# parsing error
+# XXX suspected
+{} <{dependency:/nsubj/} {lemma:/suspect/,tag:/VBN/}
+
+# suggestive of XXX
+# {} <{dependency:/nmod:of/} {lemma:/suggestive/}'
