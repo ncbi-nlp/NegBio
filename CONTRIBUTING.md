@@ -6,7 +6,7 @@ This project adheres to the [Contributor Covenant Code of Conduct](http://contri
 
 # Maintainers
 
-DeepRel is maintained with :heart: by:
+NegBio is maintained with :heart: by:
 
 -- **@yfpeng**
 
