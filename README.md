@@ -1,6 +1,10 @@
-This project provides a rule-based system for negation and uncertainty detection from radiology report.
+
+![NegBio](https://github.com/yfpeng/negbio/blob/master/images/negbio.png?raw=true)
+
+NegBio is a high-performance NLP tool for negation and uncertainty detection in clinical texts (e.g. radiology reports).
 
 The source code will be released before AMIA 2018 Informatics Summit (March 12).
+
 
 See [`CONTRIBUTING.md`](/CONTRIBUTING.md) before filing an issue or creating a pull request.
 
