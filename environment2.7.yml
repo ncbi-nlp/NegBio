@@ -9,4 +9,8 @@ dependencies:
   - docopt
   - pytest
   - networkx
-
+  - pip:
+    - biop
+    - dcache
+    - bioc
+    - PyStanfordDependencies

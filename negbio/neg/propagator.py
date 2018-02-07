@@ -1,7 +1,8 @@
 from __future__ import print_function
 
 import logging
-from negbio import semgraph
+
+from neg import semgraph
 
 
 def propagate(G):

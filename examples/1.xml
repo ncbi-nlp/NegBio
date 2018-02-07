@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes'?>
+<collection>
+  <source></source>
+  <date>2017-05-31</date>
+  <key></key>
+  <key></key>
+  <document>
+    <id>00019248</id>
+    <passage>
+      <offset>0</offset>
+      <text>findings:
+chest: four images:
+right picc with tip within the upper svc.
+probable enlargement of the main pulmonary artery.
+mild cardiomegaly.
+no evidence of focal infiltrate, effusion or pneumothorax.
+dictating </text>
+      <annotation id="24">
+        <infon key="term">Cardiomegaly</infon>
+        <infon key="CUI">C0018800</infon>
+        <infon key="annotator">MetaMap</infon>
+        <infon key="semtype">fndg</infon>
+        <location length="18" offset="123"/>
+        <text>Mild cardiomegaly.</text>
+      </annotation>
+      <annotation id="27">
+        <infon key="term">Infiltration</infon>
+        <infon key="CUI">C0332448</infon>
+        <infon key="annotator">MetaMap</infon>
+        <infon key="semtype">ftcn</infon>
+        <location length="10" offset="163"/>
+        <text>infiltrate</text>
+      </annotation>
+      <annotation id="30">
+        <infon key="term">effusion</infon>
+        <infon key="CUI">C0013687</infon>
+        <infon key="annotator">MetaMap</infon>
+        <infon key="semtype">patf</infon>
+        <location length="8" offset="175"/>
+        <text>effusion</text>
+      </annotation>
+      <annotation id="32">
+        <infon key="term">Pneumothorax</infon>
+        <infon key="CUI">C0032326</infon>
+        <infon key="annotator">MetaMap</infon>
+        <infon key="semtype">dsyn</infon>
+        <location length="13" offset="187"/>
+        <text>pneumothorax.</text>
+      </annotation>
+    </passage>
+  </document>
+  <document>
+    <id>00000086</id>
+    <passage>
+      <offset>0</offset>
+      <text>findings: pa and lat cxr at 7:34 p.m.. heart and mediastinum are
+stable. lungs are unchanged. air- filled cystic changes. no
+pneumothorax. osseous structures unchanged scoliosis
+impression: stable chest.
+dictating </text>
+      <annotation id="24">
+        <infon key="neg">True</infon>
+        <infon key="term">Pneumothorax</infon>
+        <infon key="CUI">C0032326</infon>
+        <infon key="annotator">MetaMap</infon>
+        <infon key="semtype">dsyn</infon>
+        <location length="12" offset="125"/>
+        <text>pneumothorax</text>
+      </annotation>
+    </passage>
+  </document>
+</collection>

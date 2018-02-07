@@ -1,11 +1,9 @@
 from __future__ import print_function
 
 import logging
-import os
 
+from neg import utils, semgraph
 from negbio import ngrex
-from negbio import semgraph
-from negbio import utils
 from negbio.neg import propagator
 
 NEGATION = 'negation'
@@ -17,12 +15,9 @@ class Detector(object):
     NEGATION = 'negation'
     UNCERTAINTY = 'uncertainty'
 
-    DEFAULT_NEG_FILE = os.path.join(os.path.dirname(__file__), 'neg_patterns.txt')
-    DEFAULT_UNCERTAINTY_FILE = os.path.join(os.path.dirname(__file__), 'uncertainty_patterns.txt')
-
     def __init__(self,
-                 neg_pattern_file=DEFAULT_NEG_FILE,
-                 uncertainty_pattern_file=DEFAULT_UNCERTAINTY_FILE,
+                 neg_pattern_file,
+                 uncertainty_pattern_file,
                  sentence_rule=False):
         self.sentence_rule = sentence_rule
         self.neg_patterns = ngrex.load(neg_pattern_file)

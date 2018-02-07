@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes'?>
+<collection>
+  <source></source>
+  <date>2017-05-31</date>
+  <key></key>
+  <document>
+    <id>00000086</id>
+    <passage>
+      <offset>0</offset>
+      <text>findings: pa and lat cxr at 7:34 p.m.. heart and mediastinum are
+stable. lungs are unchanged. air- filled cystic changes. no
+pneumothorax. osseous structures unchanged scoliosis
+impression: stable chest.
+dictating </text>
+      <annotation id="24">
+        <infon key="neg">True</infon>
+        <infon key="term">Pneumothorax</infon>
+        <infon key="CUI">C0032326</infon>
+        <infon key="annotator">MetaMap</infon>
+        <infon key="semtype">dsyn</infon>
+        <location length="12" offset="125"/>
+        <text>pneumothorax</text>
+      </annotation>
+    </passage>
+  </document>
+</collection>
