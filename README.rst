@@ -3,11 +3,12 @@
 .. image:: https://github.com/yfpeng/negbio/blob/master/images/negbio.png?raw=true
    :target: https://github.com/yfpeng/negbio/blob/master/images/negbio.png?raw=true
    :alt: NegBio
+
 ----------------------
 
-.. image:: https://img.shields.io/circleci/project/github/ncbi-nlp/NegBio.svg
+.. image:: https://img.shields.io/travis/yfpeng/negbio.svg
    :alt: Build status
-   :target: https://circleci.com/gh/ncbi-nlp/NegBio
+   :target: https://travis-ci.com/yfpeng/negbio
 
 .. image:: https://img.shields.io/pypi/v/negbio.svg
    :target: https://pypi.python.org/pypi/negbio
@@ -19,19 +20,17 @@ NegBio is a high-performance NLP tool for negation and uncertainty detection in 
 Getting Started
 ---------------
 
-These instructions will get you a copy of the project up and  run on your local machine for development and testing purposes.
+These instructions will get you a copy of the project up and run on your local machine for development and testing purposes.
+The package should successfully install on Linux (possible on macOS).
 
-Prerequisites
-^^^^^^^^^^^^^
+Install environment
+^^^^^^^^^^^^^^^^^^^
 
-#. Copy the project on your local machine
+Copy the project on your local machine
 
 .. code-block:: bash
 
    git clone https://github.com/ncbi-nlp/NegBio.git
-
-Install environment
-^^^^^^^^^^^^^^^^^^^
 
 Install or update the `conda <https://conda.io>`_ environment specified in ``environment2.7.yml`` by running:
 
@@ -44,7 +43,6 @@ Install or update the `conda <https://conda.io>`_ environment specified in ``env
    conda env create --file environment2.7.yml
 
 Activate with ``conda activate negbio2.7`` (assumes ``conda`` version of `at least <https://github.com/conda/conda/blob/9d759d8edeb86569c25f6eb82053f09581013a2a/CHANGELOG.md#440-2017-12-20>`_ 4.4).
-The environment should successfully install on both Linux and macOS.
 
 Prepare the dataset
 ^^^^^^^^^^^^^^^^^^^
