@@ -99,18 +99,18 @@ Alternatively, you can run the pipeline step-by-step.
 
 
 #. ``pipeline/ssplit.py`` splits text into sentences.
-#. ``pipeline/parse.py`` parse sentence using the `Bllip parser <https://github.com/BLLIP/bllip-parser>`_.
-#. ``pipeline/ptb2ud.py`` convert the parse tree to universal dependencies using `Stanford converter <https://github.com/dmcc/PyStanfordDependencies>`_.
-#. ``pipeline/negdetect.py`` detect negative and uncertain findings.
+#. ``pipeline/parse.py`` parses sentence using the `Bllip parser <https://github.com/BLLIP/bllip-parser>`_.
+#. ``pipeline/ptb2ud.py`` converts the parse tree to universal dependencies using `Stanford converter <https://github.com/dmcc/PyStanfordDependencies>`_.
+#. ``pipeline/negdetect.py`` detects negative and uncertain findings.
 
 Customize patterns
 ^^^^^^^^^^^^^^^^^^
 
 By default, the program uses the negation and uncertainty patterns in the ``patterns`` folder.
-You can add more patterns if needed.
+However, you are free to create your own patterns.
 The pattern is a `semgrex-type <https://nlp.stanford.edu/nlp/javadoc/javanlp/edu/stanford/nlp/semgraph/semgrex/SemgrexPattern.html>`_ pattern for matching node in the dependency graph.
 Currently, we only support ``<`` and ``>`` operations.
-A detailed grammar (using PLY, Python Lex-Yacc) can be found in ``ngrex/parser.py``.
+A detailed grammar specification (using PLY, Python Lex-Yacc) can be found in ``ngrex/parser.py``.
 
 Contributing
 ------------
@@ -125,8 +125,7 @@ see ``LICENSE.txt``.
 Acknowledgments
 ---------------
 
-This work was supported by the Intramural Research Programs of the National
-Institutes of Health, National Library of Medicine.
+This work was supported by the Intramural Research Programs of the National Institutes of Health, National Library of Medicine.
 
 Reference
 ---------
