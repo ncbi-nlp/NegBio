@@ -80,7 +80,7 @@ The easiest way is to run
    python negbio/main.py --out=examples examples/1.xml examples/2.xml
 
 The script will detect negative and uncertain findings in files ``examples/1.xml`` and ``examples/2.xml``. 
-It prints the results (``1.neg.xml`` and ``2.neg.xml``) to the directory ``examples``. 
+It saves the results (``1.neg.xml`` and ``2.neg.xml``) in the directory ``examples``. 
 
 A more detailed usage can be obtained by running
 
