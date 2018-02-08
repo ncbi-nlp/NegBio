@@ -3,32 +3,26 @@
 .. image:: https://github.com/yfpeng/negbio/blob/master/images/negbio.png?raw=true
    :target: https://github.com/yfpeng/negbio/blob/master/images/negbio.png?raw=true
    :alt: NegBio
-
+----------------------
 
 .. image:: https://img.shields.io/circleci/project/github/ncbi-nlp/NegBio.svg
    :alt: Build status
    :target: https://circleci.com/gh/ncbi-nlp/NegBio
 
-.. image:: https://img.shields.io/pypi/v/bioc.svg
+.. image:: https://img.shields.io/pypi/v/negbio.svg
    :target: https://pypi.python.org/pypi/negbio
    :alt: Latest version on PyPI
 
 
 NegBio is a high-performance NLP tool for negation and uncertainty detection in clinical texts (e.g. radiology reports).
 
-The source code will be released before AMIA 2018 Informatics Summit (March 12).
-
-See `\ ``CONTRIBUTING.md`` </CONTRIBUTING.md>`_ before filing an issue or creating a pull request.
-
 Getting Started
 ---------------
 
-These instructions will get you a copy of the project up and  run on your
-local machine for development and testing purposes.
+These instructions will get you a copy of the project up and  run on your local machine for development and testing purposes.
 
 Prerequisites
 ^^^^^^^^^^^^^
-
 
 #. Copy the project on your local machine
 
@@ -39,7 +33,7 @@ Prerequisites
 Install environment
 ^^^^^^^^^^^^^^^^^^^
 
-Install or update the `conda <https://conda.io>`_ environment specified in `\ ``environment2.7.yml`` <environment2.7.yml>`_ by running:
+Install or update the `conda <https://conda.io>`_ environment specified in ``environment2.7.yml`` by running:
 
 .. code-block:: bash
 
@@ -50,7 +44,7 @@ Install or update the `conda <https://conda.io>`_ environment specified in `\ ``
    conda env create --file environment2.7.yml
 
 Activate with ``conda activate negbio2.7`` (assumes ``conda`` version of `at least <https://github.com/conda/conda/blob/9d759d8edeb86569c25f6eb82053f09581013a2a/CHANGELOG.md#440-2017-12-20>`_ 4.4).
-The environment should successfully install on both Linux and macOS (and possibly Windows).
+The environment should successfully install on both Linux and macOS.
 
 Prepare the dataset
 ^^^^^^^^^^^^^^^^^^^
@@ -68,10 +62,10 @@ The easiest way is to run
    python negbio/main.py --out=examples examples/1.xml examples/2.xml
 
 The script will detect negative and uncertain findings in files ``examples/1.xml`` and ``examples/2.xml``. 
-It prints to the directory ``example``.
+It prints the results to the directory ``example``.
 The dest file has the same basename as SOURCE and has 'neg.xml' as the suffix.
 
-A more detailed useage can be obtained by running
+A more detailed usage can be obtained by running
 
 .. code-block:: bash
 
@@ -95,19 +89,16 @@ Alternatively, you can run the pipeline step-by-step.
 Customize patterns
 ^^^^^^^^^^^^^^^^^^
 
-By default, the program uses the negatition and uncertainty patterns in ``patterns``.
+By default, the program uses the negation and uncertainty patterns in the ``patterns`` folder.
 You can add more patterns if needed.
-The pattern is a `\ ``semgrex-type`` <https://nlp.stanford.edu/nlp/javadoc/javanlp/edu/stanford/nlp/semgraph/semgrex/SemgrexPattern.html>`_ pattern for matchig node in the dependency graph.
+The pattern is a `semgrex-type <https://nlp.stanford.edu/nlp/javadoc/javanlp/edu/stanford/nlp/semgraph/semgrex/SemgrexPattern.html>`_ pattern for matching node in the dependency graph.
 Currently, we only support ``<`` and ``>`` operations.
-A detailed grammar (using PLY, Python Lex-Yacc) can be found at `ngrex/parser.py <ngrex/parser>`_.
+A detailed grammar (using PLY, Python Lex-Yacc) can be found in ``ngrex/parser.py``.
 
 Contributing
 ------------
 
-Please read
-`CONTRIBUTING </CONTRIBUTING.md>`_ for
-details on our code of conduct, and the process for submitting pull requests to
-us.
+Please read ``CONTRIBUTING.md`` for details on our code of conduct, and the process for submitting pull requests to us.
 
 License
 -------
@@ -124,5 +115,4 @@ Reference
 ---------
 
 
-* Peng Y, Wang X, Lu L, Bagheri M, Summers RM, Lu Z. 
-  `NegBio: a high-performance tool for negation and uncertainty detection in radiology reports <https://arxiv.org/abs/1712.05898>`_. *AMIA 2018 Informatics Summit*. 2018.
+* Peng Y, Wang X, Lu L, Bagheri M, Summers RM, Lu Z. `NegBio: a high-performance tool for negation and uncertainty detection in radiology reports <https://arxiv.org/abs/1712.05898>`_. *AMIA 2018 Informatics Summit*. 2018.
