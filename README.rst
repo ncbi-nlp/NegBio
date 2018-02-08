@@ -26,13 +26,22 @@ The package should successfully install on Linux (and possibly macOS).
 Install environment
 ^^^^^^^^^^^^^^^^^^^
 
-Copy the project on your local machine
+1. Copy the project on your local machine
 
 .. code-block:: bash
 
    git clone https://github.com/ncbi-nlp/NegBio.git
+   
+2. Install `conda <https://conda.io>`
 
-Install or update the `conda <https://conda.io>`_ environment specified in ``environment2.7.yml`` by running:
+.. code-block:: bash
+
+   wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh
+   chmod 777 Miniconda2-latest-Linux-x86_64.sh
+   ./Miniconda2-latest-Linux-x86_64.sh
+   conda update conda # By default the version 4.3 is installed
+
+3. Install or update the conda environment specified in ``environment2.7.yml`` by running:
 
 .. code-block:: bash
 
@@ -42,7 +51,19 @@ Install or update the `conda <https://conda.io>`_ environment specified in ``env
    # Install the environment
    conda env create --file environment2.7.yml
 
-Activate with ``conda activate negbio2.7`` (assumes ``conda`` version of `at least <https://github.com/conda/conda/blob/9d759d8edeb86569c25f6eb82053f09581013a2a/CHANGELOG.md#440-2017-12-20>`_ 4.4).
+4. Activate with ``conda activate negbio2.7`` (assumes ``conda`` version of `at least <https://github.com/conda/conda/blob/9d759d8edeb86569c25f6eb82053f09581013a2a/CHANGELOG.md#440-2017-12-20>`_ 4.4).
+
+5. Add the code directory to ``PYTHONPATH``.
+
+.. code-block:: bash
+   export PYTHONPATH=.;$PYTHONPATH
+   
+6. Install NLTK data. 
+
+.. code-block:: bash
+
+   python -m nltk.downloader all
+
 
 Prepare the dataset
 ^^^^^^^^^^^^^^^^^^^
