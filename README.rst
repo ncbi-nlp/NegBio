@@ -6,7 +6,7 @@
 
 ----------------------
 
-.. image:: https://img.shields.io/travis/yfpeng/negbio.svg
+.. image:: https://travis-ci.com/yfpeng/negbio.svg?token=rpjX5A9sQziaNbzs65j6&branch=master
    :alt: Build status
    :target: https://travis-ci.com/yfpeng/negbio
 
@@ -21,7 +21,7 @@ Getting Started
 ---------------
 
 These instructions will get you a copy of the project up and run on your local machine for development and testing purposes.
-The package should successfully install on Linux (possible on macOS).
+The package should successfully install on Linux (and possibly macOS).
 
 Install environment
 ^^^^^^^^^^^^^^^^^^^
