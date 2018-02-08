@@ -56,6 +56,7 @@ Install environment
 5. Add the code directory to ``PYTHONPATH``.
 
 .. code-block:: bash
+
    export PYTHONPATH=.;$PYTHONPATH
    
 6. Install NLTK data. 
