@@ -51,13 +51,13 @@ The program needs the reports with finding mentions annotated in `BioC format <h
 All finding mentions have to be specified on the passage level. For example:
 
 .. code-block:: xml
+
    <document>
     <id>00000086</id>
     <passage>
       <offset>0</offset>
       <text>findings: pa and lat cxr at 7:34 p.m.. heart and mediastinum are stable. lungs are unchanged. air- filled cystic changes. no pneumothorax. osseous structures unchanged scoliosis impression: stable chest. dictating </text>
       <annotation id="24">
-        <infon key="neg">True</infon>
         <infon key="term">Pneumothorax</infon>
         <infon key="CUI">C0032326</infon>
         <infon key="annotator">MetaMap</infon>
@@ -80,8 +80,7 @@ The easiest way is to run
    python negbio/main.py --out=examples examples/1.xml examples/2.xml
 
 The script will detect negative and uncertain findings in files ``examples/1.xml`` and ``examples/2.xml``. 
-It prints the results to the directory ``example``.
-The dest file has the same basename as SOURCE and has 'neg.xml' as the suffix.
+It prints the results (``1.neg.xml`` and ``2.neg.xml``) to the directory ``examples``. 
 
 A more detailed usage can be obtained by running
 
