@@ -111,9 +111,9 @@ class CoordinationPattern(NgrexPattern):
             matchers2 = self._pattern2.finditer(graph)
             for m1, m2 in itertools.product(matchers1, matchers2):
                 if m1.group(0) == m2.group(0):
-                    nodes = m1.groups()
-                    if len(m2.groups()) > 2:
-                        nodes.extend(m2.groups()[1:])
+                    nodes = list(m1._nodes)
+                    if len(m2._nodes) > 2:
+                        nodes.extend(m2._nodes[1:])
                     yield MatcherObj(self, graph, nodes)
         else:
             for m in self._pattern1.finditer(graph):

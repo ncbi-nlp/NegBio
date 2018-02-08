@@ -1,5 +1,6 @@
 # Created by .ignore support plugin (hsz.mobi)
 
+.pytest_cache/
 backup
 examples/1.neg.xml
 examples/2.neg.xml
