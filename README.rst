@@ -57,14 +57,14 @@ Install environment
 
 .. code-block:: bash
 
-   export PYTHONPATH=.;$PYTHONPATH
+   export PYTHONPATH=.:$PYTHONPATH
    
 6. Install NLTK data. 
 
 .. code-block:: bash
 
-   python -m nltk.downloader all
-
+   python -m nltk.downloader universal_tagset punkt wordnet
+   
 
 Prepare the dataset
 ^^^^^^^^^^^^^^^^^^^
