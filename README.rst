@@ -57,8 +57,8 @@ All finding mentions have to be specified on the passage level. For example:
     <passage>
       <offset>0</offset>
       <text>findings: pa and lat cxr at 7:34 p.m.. heart and mediastinum are stable. 
-lungs are unchanged. air- filled cystic changes. no pneumothorax. osseous structures 
-unchanged scoliosis impression: stable chest. dictating </text>
+            lungs are unchanged. air- filled cystic changes. no pneumothorax. osseous structures 
+            unchanged scoliosis impression: stable chest. dictating </text>
       <annotation id="24">
         <infon key="term">Pneumothorax</infon>
         <infon key="CUI">C0032326</infon>
