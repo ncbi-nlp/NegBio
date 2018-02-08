@@ -47,8 +47,28 @@ Activate with ``conda activate negbio2.7`` (assumes ``conda`` version of `at lea
 Prepare the dataset
 ^^^^^^^^^^^^^^^^^^^
 
-The program needs the reports with finding mentions annotated in `BioC format <http://www.ncbi.nlm.nih.gov/CBBresearch/Dogan/BioC/>`_. 
-Some examples can be found in the ``examples`` folder.
+The program needs the reports with finding mentions annotated in `BioC format <http://www.ncbi.nlm.nih.gov/CBBresearch/Dogan/BioC/>`_.
+All finding mentions have to be specified on the passage level. For example:
+
+.. code-block:: xml
+   <document>
+    <id>00000086</id>
+    <passage>
+      <offset>0</offset>
+      <text>findings: pa and lat cxr at 7:34 p.m.. heart and mediastinum are stable. lungs are unchanged. air- filled cystic changes. no pneumothorax. osseous structures unchanged scoliosis impression: stable chest. dictating </text>
+      <annotation id="24">
+        <infon key="neg">True</infon>
+        <infon key="term">Pneumothorax</infon>
+        <infon key="CUI">C0032326</infon>
+        <infon key="annotator">MetaMap</infon>
+        <infon key="semtype">dsyn</infon>
+        <location length="12" offset="125"/>
+        <text>pneumothorax</text>
+      </annotation>
+    </passage>
+  </document>
+
+More examples can be found in the ``examples`` folder.
 
 Run the script
 ^^^^^^^^^^^^^^
