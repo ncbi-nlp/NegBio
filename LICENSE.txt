@@ -17,5 +17,6 @@ fitness for any particular purpose.
 
 Please cite the author in any work or product based on this material:
 
-Yifan Peng, ZhiyongLu. Deep learning for extracting protein-protein interactions
-from biomedical literature. In Proceedings of BioNLP workshop. 2017.
+Peng Y, Wang X, Lu L, Bagheri M, Summers RM, Lu Z.
+NegBio: a high-performance tool for negation and uncertainty detection in radiology reports.
+AMIA 2018 Informatics Summit. 2018.
