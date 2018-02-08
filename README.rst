@@ -6,7 +6,7 @@
 
 ----------------------
 
-.. image:: https://img.shields.io/travis/yfpeng/negbio.svg
+.. image:: https://travis-ci.com/yfpeng/negbio.svg?token=rpjX5A9sQziaNbzs65j6&branch=master
    :alt: Build status
    :target: https://travis-ci.com/yfpeng/negbio
 
