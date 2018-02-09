@@ -7,10 +7,11 @@ NegBio documentation
 ====================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 5
    :caption: Contents:
 
    getting_started
+   user_guide
    license
    contributing
    acknowledgments

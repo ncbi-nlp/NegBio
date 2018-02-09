@@ -4,12 +4,33 @@ from codecs import open
 from os import path
 
 from setuptools import setup, find_packages
+from setuptools.command.install import install
+import nltk.downloader
 
 here = path.abspath(path.dirname((__file__)))
 
-# Get the long description from the README file
-with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
-    long_description = f.read()
+
+def readme():
+    # Get the long description from the README file
+    with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
+        return f.read()
+
+
+def requirements():
+    reqs = []
+    with open(path.join(here, 'requirements.txt'), encoding='utf-8') as f:
+        for line in f:
+            reqs.append(line)
+
+
+class PostInstallCommand(install):
+    """Post-installation for installation mode."""
+    def run(self):
+        # PUT YOUR POST-INSTALL SCRIPT HERE or CALL A FUNCTION
+        for id in ('universal_tagset', 'punkt', 'wordnet'):
+            nltk.downloader.download(id)
+        install.run(self)
+
 
 setup(
     name='negbio',
@@ -20,7 +41,7 @@ setup(
     version='0.9.dev1',
 
     description='NegBio: a tool for negation and uncertainty detection',
-    long_description=long_description,
+    long_description=readme(),
 
     # The project's main homepage.
     url='https://github.com/ncbi-nlp/NegBio.git',
@@ -51,10 +72,17 @@ setup(
         'Topic :: Software Development :: Libraries :: Application Frameworks',
     ],
 
+    cmdclass={
+        'install': PostInstallCommand
+    },
+
     keywords='negbio',
 
-    packages=find_packages(exclude=["tests.*", "tests"]),
-    install_requires=[
-        'docutils==0.13.1',
-        'lxml==3.7.3'],
+    packages=find_packages(exclude=["tests.*", "tests", "backup", "docs"]),
+    package_data={
+        '': ['patterns', 'examples']
+    },
+    include_package_data=True,
+
+    install_requires=requirements()
 )
