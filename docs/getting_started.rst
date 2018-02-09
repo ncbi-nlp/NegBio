@@ -13,7 +13,7 @@ Install environment
 
    git clone https://github.com/ncbi-nlp/NegBio.git
 
-2. Install `conda <https://conda.io>`
+2. Install `conda <https://conda.io>`_
 
 .. code-block:: bash
 

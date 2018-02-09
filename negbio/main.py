@@ -3,7 +3,7 @@ Detect negative and uncertain findings from SOURCE and output to DIRECTORY
 Example: python negbio/main.py --out=examples examples/1.xml examples/2.xml
 
 Usage:
-    negbio [options] --out=DIRECTORY SOURCE ...
+    main [options] --out=DIRECTORY SOURCE ...
 
 Options:
     --neg-patterns=FILE             negation rules [default: patterns/neg_patterns.txt]
