@@ -2,8 +2,7 @@
 
 .pytest_cache/
 backup
-examples/1.neg.xml
-examples/2.neg.xml
+examples-local
 
 ### Python template
 # Byte-compiled / optimized / DLL files

@@ -2,9 +2,8 @@ from __future__ import print_function
 
 import logging
 
-from neg import utils, semgraph
+from negbio.neg import utils, semgraph, propagator
 from negbio import ngrex
-from negbio.neg import propagator
 
 NEGATION = 'negation'
 UNCERTAINTY = 'uncertainty'

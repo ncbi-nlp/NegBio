@@ -2,7 +2,7 @@ from __future__ import print_function
 
 import logging
 
-from neg import semgraph
+from negbio.neg import semgraph
 
 
 def propagate(G):

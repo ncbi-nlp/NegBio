@@ -49,7 +49,7 @@ def _mark_anns(annotations, begin, end, type):
     """Mark all annotations in [begin:end] as type"""
     for ann in annotations:
         total_loc = ann.get_total_location()
-        if begin <= total_loc.offset and total_loc.offset + total_loc.length < end:
+        if begin <= total_loc.offset and total_loc.offset + total_loc.length <= end:
             ann.infons[type] = 'True'
 
 
