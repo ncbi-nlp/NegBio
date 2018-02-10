@@ -4,8 +4,7 @@ from codecs import open
 from os import path
 
 from setuptools import setup, find_packages
-from setuptools.command.install import install
-import nltk.downloader
+
 
 here = path.abspath(path.dirname((__file__)))
 
@@ -20,16 +19,8 @@ def requirements():
     reqs = []
     with open(path.join(here, 'requirements.txt'), encoding='utf-8') as f:
         for line in f:
-            reqs.append(line)
-
-
-class PostInstallCommand(install):
-    """Post-installation for installation mode."""
-    def run(self):
-        # PUT YOUR POST-INSTALL SCRIPT HERE or CALL A FUNCTION
-        for id in ('universal_tagset', 'punkt', 'wordnet'):
-            nltk.downloader.download(id)
-        install.run(self)
+            reqs.append(line.strip())
+    print(reqs)
 
 
 setup(
@@ -72,16 +63,9 @@ setup(
         'Topic :: Software Development :: Libraries :: Application Frameworks',
     ],
 
-    cmdclass={
-        'install': PostInstallCommand
-    },
-
     keywords='negbio',
 
     packages=find_packages(exclude=["tests.*", "tests", "backup", "docs"]),
-    package_data={
-        '': ['patterns', 'examples']
-    },
     include_package_data=True,
 
     install_requires=requirements()

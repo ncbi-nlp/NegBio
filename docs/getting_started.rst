@@ -17,23 +17,14 @@ Prerequisites
 MetaMap installation instructions can be found at `https://metamap.nlm.nih.gov/Installation.shtml <https://metamap.nlm.nih.gov/Installation.shtml>`_.
 Please make sure that both ``skrmedpostctl`` and ``wsdserverctl`` are started.
 
-
-Installing using pip
-~~~~~~~~~~~~~~~~~~~~
-
-negbio can be installed at the command line:
-
-.. code-block:: bash
-
-   $ pip install --pre negbio
-
-
 Installing from source
 ~~~~~~~~~~~~~~~~~~~~~~
 
 1. Download the source code from GitHub ``git clone https://github.com/ncbi-nlp/NegBio.git``
-2. Change to the directory with the ``setup.py`` file
-3. Run ``python setup.py install``
+2. Change to the directory of ``NegBio``
+3. Install required packages: ``pip install -r requirements.txt``
+4. Install NLTK data: ``python -m nltk.downloader universal_tagset punkt wordnet``
+5. Add the code directory to ``PYTHONPATH``: ``export PYTHONPATH=.:$PYTHONPATH``
 
 
 Using NegBio
@@ -48,12 +39,12 @@ Some examples can be found in the ``examples`` folder.
 Run the script
 ~~~~~~~~~~~~~~
 
-The easiest way is to run the following commend by replacing `<METAMAP_BINARY>` with the actual path, such as `/opt/public_mm/bin/metamap16`
+The easiest way is to run the following commend by replacing ``<METAMAP_BINARY>`` with the actual path, such as `/opt/public_mm/bin/metamap16`
 
 .. code-block:: bash
    :linenos:
 
-   $ python -m negbio.main_text \
+   $ python negbio/main_text.py \
         --out=examples/test.neg.xml \
         --metamap=<METAMAP_BINARY> \
         examples/00000086.txt examples/00019248.txt
@@ -70,10 +61,10 @@ More options (e.g., setting the CUI list or rules) can be obtained by running
 
 .. code-block:: bash
 
-   $ python -m negbio.main --help
+   $ python negbio/main.py --help
 
 
 Next Steps
 ----------
 
-To start learning how to use pydicom, see the :doc:`user_guide`.
+To start learning how to use NegBio, see the :doc:`user_guide`.
