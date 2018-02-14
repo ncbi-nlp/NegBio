@@ -14,7 +14,8 @@ Prerequisites
 *  Linux
 *  MetaMap >2016
 
-MetaMap installation instructions can be found at `https://metamap.nlm.nih.gov/Installation.shtml <https://metamap.nlm.nih.gov/Installation.shtml>`_.
+MetaMap can be downloaded from `https://metamap.nlm.nih.gov/MainDownload.shtml <https://metamap.nlm.nih.gov/MainDownload.shtml>`_.
+Installation instructions can be found at `https://metamap.nlm.nih.gov/Installation.shtml <https://metamap.nlm.nih.gov/Installation.shtml>`_.
 Please make sure that both ``skrmedpostctl`` and ``wsdserverctl`` are started.
 
 Installing from source
@@ -39,15 +40,12 @@ Some examples can be found in the ``examples`` folder.
 Run the script
 ~~~~~~~~~~~~~~
 
-The easiest way is to run the following commend by replacing ``<METAMAP_BINARY>`` with the actual path, such as `/opt/public_mm/bin/metamap16`
+The easiest way is to run the following command by replacing ``<METAMAP_BINARY>`` with the actual path, such as `/opt/public_mm/bin/metamap16`
 
 .. code-block:: bash
    :linenos:
 
-   $ python negbio/main_text.py \
-        --out=examples/test.neg.xml \
-        --metamap=<METAMAP_BINARY> \
-        examples/00000086.txt examples/00019248.txt
+   $ python negbio/main_text.py --metamap=<METAMAP_BINARY> --out=examples/test.neg.xml examples/00000086.txt examples/00019248.txt
 
 The script will
 
