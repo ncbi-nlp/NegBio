@@ -20,7 +20,7 @@ Options:
 
 import logging
 import sys
-
+import os
 import bioc
 import docopt
 
@@ -62,7 +62,7 @@ def main(argv):
     for document in collection.documents:
         pipeline(document, mm, splitter, parser, ptb2dep, lemmatizer, neg_detector, cuis)
 
-    with open(argv['--out'], 'w') as fp:
+    with open(os.path.expanduser(argv['--out']), 'w') as fp:
         bioc.dump(collection, fp)
 
 
