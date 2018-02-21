@@ -10,7 +10,6 @@ Options:
     --uncertainty-patterns=FILE     uncertainty rules [default: patterns/uncertainty_patterns.txt]
     --bllip-model=MODEL_DIR         Bllip parser model directory
     --split-document                Split document into passages based on section titles such as "Finding", "Impression"
-                                    [default: False]
     --cuis=FILE                     CUI list. To keep all CUIs, set it to None [default: examples/cuis-cvpr2017.txt]
     --newline_is_sentence_break     Whether to treat newlines as sentence breaks. True means that a newline is always a
                                     sentence break. False means to ignore newlines for the purpose of sentence

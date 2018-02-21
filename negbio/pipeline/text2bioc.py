@@ -5,8 +5,7 @@ Usage:
     text2bioc [options] --out=DEST SOURCE ...
 
 Options:
-    --split-document    Split the document into passages based on section titles such as "Finding", "Impression" 
-                        [default: True]
+    --split-document Split the document into passages based on section titles such as "Finding", "Impression".
 """
 from __future__ import print_function
 
