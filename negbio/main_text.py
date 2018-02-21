@@ -14,7 +14,7 @@ Options:
     --newline_is_sentence_break     Whether to treat newlines as sentence breaks. True means that a newline is always a
                                     sentence break. False means to ignore newlines for the purpose of sentence
                                     splitting. This is appropriate for continuous text, when just the non-whitespace
-                                    characters should be used to determine sentence breaks. [default=False]
+                                    characters should be used to determine sentence breaks.
 """
 
 import logging
@@ -27,18 +27,21 @@ import pymetamap
 from negbio.pipeline import parse, ssplit, ptb2ud, negdetect, text2bioc, dner_mm
 
 
-def pipeline(document, metamap, splitter, parser, ptb2dep, lemmatizer, neg_detector, cuis):
-    document = ssplit.ssplit(document, splitter)
-    document = dner_mm.run_metamap(document, metamap, cuis)
-    document = parse.parse(document, parser)
-    document = ptb2ud.convert(document, ptb2dep, lemmatizer)
-    document = negdetect.detect(document, neg_detector)
+def pipeline(collection, metamap, splitter, parser, ptb2dep, lemmatizer, neg_detector, cuis):
+    for document in collection.documents:
+        ssplit.ssplit(document, splitter)
 
-    # remove sentence
-    for passage in document.passages:
-        del passage.sentences[:]
+    dner_mm.run_metamap_col(collection, metamap, cuis)
 
-    return document
+    for document in collection.documents:
+        document = parse.parse(document, parser)
+        document = ptb2ud.convert(document, ptb2dep, lemmatizer)
+        document = negdetect.detect(document, neg_detector)
+        # remove sentence
+        for passage in document.passages:
+            del passage.sentences[:]
+
+    return collection
 
 
 def main(argv):
@@ -58,8 +61,7 @@ def main(argv):
         cuis = dner_mm.read_cuis(argv['--cuis'])
 
     collection = text2bioc.text2collection(argv['SOURCE'], split_document=argv['--split-document'])
-    for document in collection.documents:
-        pipeline(document, mm, splitter, parser, ptb2dep, lemmatizer, neg_detector, cuis)
+    pipeline(collection, mm, splitter, parser, ptb2dep, lemmatizer, neg_detector, cuis)
 
     with open(os.path.expanduser(argv['--out']), 'w') as fp:
         bioc.dump(collection, fp)
