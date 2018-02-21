@@ -27,10 +27,10 @@ class Bllip:
             logging.debug("downloading GENIA+PubMed model if necessary ...")
             model_dir = ModelFetcher.download_and_install_model(
                 'GENIA+PubMed', os.path.join(tempfile.gettempdir(), 'models'))
-        self.model_dir = model_dir
+        self.model_dir = os.path.expanduser(model_dir)
 
-        logging.debug('loading model %s ...' % model_dir)
-        self.rrp = RerankingParser.from_unified_model_dir(model_dir)
+        logging.debug('loading model %s ...' % self.model_dir)
+        self.rrp = RerankingParser.from_unified_model_dir(self.model_dir)
 
     def parse(self, s):
         """Parse the sentence text using Reranking parser.
