@@ -25,7 +25,7 @@ def scan_document(*_, **kwargs):
     """
     source = kwargs.pop('source')
     verbose = kwargs.pop('verbose', True)
-    directory = kwargs.pop('directory')
+    directory = os.path.expanduser(kwargs.pop('directory'))
     suffix = kwargs.pop('suffix')
     fn = kwargs.pop('fn')
     non_sequences = kwargs.pop('non_sequences', None)

@@ -29,13 +29,14 @@ def remove_newline(s):
 
 def run_metamap(document, mm, cuis=None):
     """
+    Get CUIs from metamap.
 
     Args:
         document(BioCDocument):
-        mm(SubprocessBackend):
+        mm(MetaMap):
 
     Returns:
-
+        BioCDocument
     """
     try:
         annIndex = itertools.count()

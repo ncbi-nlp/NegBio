@@ -5,7 +5,7 @@ Usage:
     text2bioc [options] --out=DEST SOURCE ...
 
 Options:
-    --split-document    Split the document into passages based on section titles such as "Finding", "Impression"
+    --split-document    Split the document into passages based on section titles such as "Finding", "Impression" 
                         [default: True]
 """
 from __future__ import print_function
@@ -125,7 +125,7 @@ def main(argv):
     print(argv)
 
     collection = text2collection(argv['SOURCE'], split_document=argv['--split-document'])
-    with open(argv['--out'], 'w') as fp:
+    with open(os.path.expanduser(argv['--out']), 'w') as fp:
         bioc.dump(collection, fp)
 
 

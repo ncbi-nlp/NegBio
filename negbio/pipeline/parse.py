@@ -65,7 +65,7 @@ def parse(document, parser):
                 tree = parser.parse(text)
                 sentence.infons['parse tree'] = str(tree)
             except:
-                raise ValueError('Cannot parse sentence: {}'.format(sentence.offset))
+                logging.exception('Cannot parse sentence: {}'.format(sentence.offset))
     return document
 
 
