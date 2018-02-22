@@ -36,6 +36,7 @@ def find_end(text):
         re.compile(r'\n         DR.', re.I),
         re.compile(r'[ ]{1,}RADLINE ', re.I),
         re.compile(r'.*electronically signed on', re.I),
+        re.compile(r'M\[0KM\[0KM')
     ]
     for pattern in patterns:
         m = pattern.search(text)

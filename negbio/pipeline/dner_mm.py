@@ -21,6 +21,7 @@ import docopt
 import pymetamap
 from negbio.pipeline import scan
 import re
+import collections
 
 
 def remove_newline(s):
@@ -48,7 +49,7 @@ def run_metamap_col(collection, mm, cuis=None):
     """
     try:
         annIndex = itertools.count()
-        sentence_map = {}
+        sentence_map = collections.OrderedDict()
         for document in collection.documents:
             for passage in document.passages:
                 for sentence in passage.sentences:
@@ -102,7 +103,7 @@ def run_metamap(document, mm, cuis=None):
     """
     try:
         annIndex = itertools.count()
-        sentence_map = {}
+        sentence_map = collections.OrderedDict()
         for passage in document.passages:
             for sentence in passage.sentences:
                 sentence_map[str(sentence.offset)] = (passage, sentence)
@@ -114,6 +115,7 @@ def run_metamap(document, mm, cuis=None):
             sents.append(remove_newline(sentence_map[k][1].text))
 
         concepts, error = mm.extract_concepts(sents, ids)
+        print('Done')
         if error is None:
             for concept in concepts:
                 # print(concept)
