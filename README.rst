@@ -4,7 +4,7 @@
 
 -----------------------
 
-.. image:: https://travis-ci.com/yfpeng/negbio.svg?token=rpjX5A9sQziaNbzs65j6&branch=master
+.. image:: https://img.shields.io/travis/yfpeng/NegBio/master.svg
    :target: https://travis-ci.org/yfpeng/NegBio
    :alt: Build status
 
