@@ -32,8 +32,10 @@ def adapt_concept_index(index):
     m = re.match(r"'.*?'", index)
     if m:
         return index[1:-1]
-    else:
-        return index
+    m = re.match(r"'.*", index)
+    if m:
+        return index[1:]
+    return index
 
 
 def run_metamap_col(collection, mm, cuis=None):
@@ -53,7 +55,7 @@ def run_metamap_col(collection, mm, cuis=None):
         for document in collection.documents:
             for passage in document.passages:
                 for sentence in passage.sentences:
-                    sentence_map['{}-{}'.format(document.id, sentence.offset)] = (passage, sentence)
+                    sentence_map['{}-{}'.format(document.id.replace('.', '-'), sentence.offset)] = (passage, sentence)
 
         sents = []
         ids = []
