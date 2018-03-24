@@ -1,13 +1,15 @@
 """
 Usage:
-    normalize_mimiccxr SRC DEST
+    normalize_mimiccxr --out=DIRECTORY SOURCE ...
 """
 
-import sys
-import os
 import logging
-import docopt
 import re
+import sys
+
+import docopt
+import os
+import tqdm
 
 
 def starrepl(matchobj):
@@ -58,7 +60,7 @@ def trim(src, dst):
         new_report += ' ' * start
     new_report += report[start:end]
     if len(report) - end > 0:
-        new_report += ' ' * (len(report)-end)
+        new_report += ' ' * (len(report) - end)
 
     with open(dst, 'w') as fp:
         fp.write(new_report)
@@ -67,7 +69,11 @@ def trim(src, dst):
 def main(argv):
     argv = docopt.docopt(__doc__, argv=argv)
     print(argv)
-    trim(os.path.expanduser(argv['SRC']), os.path.expanduser(argv['DEST']))
+
+    for pathname in tqdm.tqdm(argv['SOURCE'], total=len(argv['SOURCE'])):
+        basename = os.path.splitext(os.path.basename(pathname))[0]
+        dstname = os.path.join(argv['--out'], '{}.trimmed.txt'.format(basename))
+        trim(pathname, dstname)
 
 
 if __name__ == '__main__':
