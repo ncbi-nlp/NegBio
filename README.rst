@@ -4,8 +4,8 @@
 
 -----------------------
 
-.. image:: https://travis-ci.com/yfpeng/negbio.svg?token=rpjX5A9sQziaNbzs65j6&branch=master
-   :target: https://travis-ci.com/yfpeng/negbio
+.. image:: https://img.shields.io/travis/yfpeng/NegBio/master.svg
+   :target: https://travis-ci.org/yfpeng/NegBio
    :alt: Build status
 
 .. image:: https://img.shields.io/pypi/v/negbio.svg
