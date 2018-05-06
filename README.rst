@@ -12,7 +12,7 @@
    :target: https://pypi.python.org/pypi/negbio
    :alt: PyPI version
 
-.. image:: https://img.shields.io/readthedocs/pip.svg
+.. image:: https://img.shields.io/readthedocs/negbio.svg
    :target: http://negbio.readthedocs.io
    :alt: RTD version
 
