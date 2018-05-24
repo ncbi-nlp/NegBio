@@ -36,3 +36,7 @@ If you're running the NegBio pipeline, please cite:
 
 *  Peng Y, Wang X, Lu L, Bagheri M, Summers RM, Lu Z. `NegBio: a high-performance tool for negation and uncertainty detection in radiology reports <https://arxiv.org/abs/1712.05898>`_. *AMIA 2018 Informatics Summit*. 2018.
 *  Wang X, Peng Y, Lu L, Bagheri M, Lu Z, Summers R. `ChestX-ray8: Hospital-scale Chest X-ray database and benchmarks on weakly-supervised classification and localization of common thorax diseases <https://arxiv.org/abs/1705.02315>`_. *IEEE Conference on Computer Vision and Pattern Recognition (CVPR)*. 2017, 2097-2106.
+
+Disclaimer
+==========
+This tool shows the results of research conducted in the Computational Biology Branch, NCBI. The information produced on this website is not intended for direct diagnostic use or medical decision-making without review and oversight by a clinical professional. Individuals should not change their health behavior solely on the basis of information produced on this website. NIH does not independently verify the validity or utility of the information produced by this tool. If you have questions about the information produced on this website, please see a health care professional. More information about NCBI's disclaimer policy is available. 
