@@ -15,6 +15,7 @@ NegBio documentation
    license
    contributing
    acknowledgments
+   disclaimer
    reference
 
 
