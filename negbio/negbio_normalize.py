@@ -4,6 +4,7 @@ Usage:
 
 Options:
     --suffix=<str>  [default: .normalized.xml]
+    --verbose
 """
 
 import os
@@ -13,17 +14,10 @@ import tqdm
 import bioc
 
 from ext.normalize_mimiccxr import normalize_collection
+from pipeline.scan import scan_collection
 
 if __name__ == '__main__':
     argv = docopt.docopt(__doc__)
 
-    for pathname in tqdm.tqdm(argv['<source>'], total=len(argv['<source>'])):
-        src = Path(pathname)
-        with open(str(src)) as fp:
-            collection = bioc.load(fp)
-
-        collection = normalize_collection(collection)
-
-        dst = Path(argv['--out']) / src.with_suffix(argv['--suffix']).name
-        with open(str(dst), 'w') as fp:
-            bioc.dump(collection, fp)
+    scan_collection(source=argv['<source>'], verbose=argv['--verbose'], suffix=argv['--suffix'],
+                    directory=argv['--out'], fn=normalize_collection)

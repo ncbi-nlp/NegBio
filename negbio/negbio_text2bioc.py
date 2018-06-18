@@ -19,10 +19,12 @@ from pipeline.text2bioc import text2collection
 
 
 if __name__ == '__main__':
-    logging.basicConfig(level=logging.DEBUG, format='%(message)s')
-
     argv = docopt.docopt(__doc__)
-    print(argv)
+
+    if argv['--verbose']:
+        logging.basicConfig(level=logging.DEBUG)
+    else:
+        logging.basicConfig(level=logging.INFO)
 
     collection = text2collection(argv['<source>'])
     with open(os.path.expanduser(argv['--out']), 'w') as fp:

@@ -47,28 +47,28 @@ def scan_document(*_, **kwargs):
 
 def scan_collection(*_, **kwargs):
     """
-        Scan each document in a list of BioC source files, apply fn, and print to directory.
+    Scan each document in a list of BioC source files, apply fn, and print to directory.
 
-        Args:
-            kwargs:
-                source(list): a list of source pathnames
-                directory(str): output directory
-                fn:
-                    fn should expect the following arguments in this given order:
-                        sequence1
-                        sequence2
-                        ...
-                        non_sequence1
-                        non_sequence2
-                        ...
-                verbose(boolean):
-        """
+    Args:
+        kwargs:
+            source(list): a list of source pathnames
+            directory(str): output directory
+            fn:
+                fn should expect the following arguments in this given order:
+                    sequence1
+                    sequence2
+                    ...
+                    non_sequence1
+                    non_sequence2
+                    ...
+            verbose(boolean):
+    """
     source = kwargs.pop('source')
     verbose = kwargs.pop('verbose', True)
     directory = os.path.expanduser(kwargs.pop('directory'))
     suffix = kwargs.pop('suffix')
     fn = kwargs.pop('fn')
-    non_sequences = kwargs.pop('non_sequences', None)
+    non_sequences = kwargs.pop('non_sequences', [])
 
     for pathname in tqdm.tqdm(source, total=len(source), disable=not verbose):
         basename = os.path.splitext(os.path.basename(pathname))[0]
