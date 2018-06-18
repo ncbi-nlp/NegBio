@@ -1,28 +1,17 @@
-"""
-Usage:
-    normalize_mimiccxr --out=DIRECTORY SOURCE ...
-"""
-
-import logging
 import re
-import sys
-
-import docopt
-import os
-import tqdm
+import logging
 
 
-def starrepl(matchobj):
+def pattern_repl(matchobj):
     """
     Replace [**Patterns**] with spaces.
     """
     s = matchobj.group(0).lower()
     return ' '.rjust(len(s))
-    # return matchobj.group(0).replace(' ', '@')
 
 
 def sub(text):
-    text = re.sub(r'\[\*\*.*?\*\*\]', starrepl, text)
+    text = re.sub(r'\[\*\*.*?\*\*\]', pattern_repl, text)
     text = re.sub(r'_', ' ', text)
     return text
 
@@ -35,7 +24,7 @@ def find_end(text):
     ends = [len(text)]
     patterns = [
         re.compile(r'BY ELECTRONICALLY SIGNING THIS REPORT', re.I),
-        re.compile(r'\n         DR.', re.I),
+        re.compile(r'\n {3,}DR.', re.I),
         re.compile(r'[ ]{1,}RADLINE ', re.I),
         re.compile(r'.*electronically signed on', re.I),
         re.compile(r'M\[0KM\[0KM')
@@ -47,35 +36,38 @@ def find_end(text):
     return min(ends)
 
 
-def trim(src, dst):
-    with open(src) as fp:
-        report = fp.read()
+def trim(text):
+    text = sub(text)
+    start = find_start(text)
+    end = find_end(text)
 
-    report = sub(report)
-    start = find_start(report)
-    end = find_end(report)
-
-    new_report = ''
+    new_text = ''
     if start > 0:
-        new_report += ' ' * start
-    new_report += report[start:end]
-    if len(report) - end > 0:
-        new_report += ' ' * (len(report) - end)
-
-    with open(dst, 'w') as fp:
-        fp.write(new_report)
+        new_text += ' ' * start
+    new_text += text[start:end]
+    if len(text) - end > 0:
+        new_text += ' ' * (len(text) - end)
+    return text
 
 
-def main(argv):
-    argv = docopt.docopt(__doc__, argv=argv)
-    print(argv)
+def normalize_collection(collection):
+    """
+    Assume there are only one passage in each document
+    Args:
+        collection:
 
-    for pathname in tqdm.tqdm(argv['SOURCE'], total=len(argv['SOURCE'])):
-        basename = os.path.splitext(os.path.basename(pathname))[0]
-        dstname = os.path.join(argv['--out'], '{}.trimmed.txt'.format(basename))
-        trim(pathname, dstname)
+    Returns:
 
+    """
+    for document in collection.documents:
+        try:
+            if len(document.passages) == 0:
+                logging.warning('Skipped: there is no text in document %s', document.id)
+            elif len(document.passages) > 1:
+                logging.warning('Skipped: there is more than one passage in document %s', document.id)
+            else:
+                document.passages[0].text = trim(document.passages[0].text)
+        except:
+            logging.exception('Cannot find text in document %s', document.id)
+    return collection
 
-if __name__ == '__main__':
-    logging.basicConfig(level=logging.INFO)
-    main(sys.argv[1:])
