@@ -50,24 +50,16 @@ def trim(text):
     return text
 
 
-def normalize_collection(collection):
+def normalize(document):
     """
-    Assume there are only one passage in each document
-    Args:
-        collection:
-
-    Returns:
-
+    Assume there are only one passage in the document
     """
-    for document in collection.documents:
-        try:
-            if len(document.passages) == 0:
-                logging.warning('Skipped: there is no text in document %s', document.id)
-            elif len(document.passages) > 1:
-                logging.warning('Skipped: there is more than one passage in document %s', document.id)
-            else:
-                document.passages[0].text = trim(document.passages[0].text)
-        except:
-            logging.exception('Cannot find text in document %s', document.id)
-    return collection
-
+    try:
+        if len(document.passages) == 0:
+            logging.warning('Skipped: there is no text in document %s', document.id)
+        elif len(document.passages) > 1:
+            logging.warning('Skipped: there is more than one passage in document %s', document.id)
+        else:
+            document.passages[0].text = trim(document.passages[0].text)
+    except:
+        logging.exception('Cannot find text in document %s', document.id)

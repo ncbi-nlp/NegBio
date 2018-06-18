@@ -3,10 +3,12 @@ import re
 
 import bioc
 
+
 SECTION_TITLES = re.compile(r'('
                             r'ABDOMEN AND PELVIS|CLINICAL HISTORY|CLINICAL INDICATION|COMPARISON|COMPARISON STUDY DATE'
                             r'|EXAM|EXAMINATION|FINDINGS|HISTORY|IMPRESSION|INDICATION'
-                            r'|MEDICAL CONDITION|PROCEDURE|REASON FOR EXAM|REASON FOR STUDY|TECHNIQUE'
+                            r'|MEDICAL CONDITION|PROCEDURE|REASON FOR EXAM|REASON FOR STUDY|REASON FOR THIS EXAMINATION'
+                            r'|TECHNIQUE'
                             r'):|FINAL REPORT',
                             re.IGNORECASE | re.MULTILINE)
 
@@ -31,12 +33,13 @@ def strip(passage):
     return passage
 
 
-def split_document(document):
+def split_document(document, pattern=SECTION_TITLES):
     """
     Split one report into sections. Section splitting is a deterministic consequence of section titles.
 
     Args:
         document(BioCDocument): one document that contains one passage.
+        pattern: the regular expression patterns for section titles.
 
     Returns:
         BioCDocument: a new BioCDocument instance
@@ -84,18 +87,3 @@ def split_document(document):
         if not is_empty(passage):
             new_document.add_passage(passage)
     return new_document
-
-
-def split_collection(collection):
-    for i in range(len(collection.documents)):
-        document = collection.documents[i]
-        try:
-            if len(document.passages) == 0:
-                logging.warning('Skipped: there is no text in document %s', document.id)
-            elif len(document.passages) > 1:
-                logging.warning('Skipped: there is more than one passage in document %s', document.id)
-            else:
-                collection.documents[i] = split_document(document)
-        except:
-            logging.exception('Cannot find text in document %s', document.id)
-    return collection

@@ -7,17 +7,13 @@ Options:
     --verbose
 """
 
-import os
-from pathlib import Path
 import docopt
-import tqdm
-import bioc
 
-from ext.normalize_mimiccxr import normalize_collection
-from pipeline.scan import scan_collection
+from ext.normalize_mimiccxr import normalize
+from pipeline.scan import scan_document
 
 if __name__ == '__main__':
     argv = docopt.docopt(__doc__)
 
-    scan_collection(source=argv['<source>'], verbose=argv['--verbose'], suffix=argv['--suffix'],
-                    directory=argv['--out'], fn=normalize_collection)
+    scan_document(source=argv['<source>'], verbose=argv['--verbose'], suffix=argv['--suffix'],
+                  directory=argv['--out'], fn=normalize)

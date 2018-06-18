@@ -1,26 +1,7 @@
-"""
-Split text into sentences
-
-Usage:
-    ssplit [options] --out=DIRECTORY SOURCE ...
-
-Options:
-    --newline_is_sentence_break     Whether to treat newlines as sentence breaks. True means that a newline is always a
-                                    sentence break. False means to ignore newlines for the purpose of sentence
-                                    splitting. This is appropriate for continuous text, when just the non-whitespace
-                                    characters should be used to determine sentence breaks. [default=False]
-"""
-
-from __future__ import print_function
-
 import logging
-import sys
 
 import bioc
-import docopt
 import nltk
-
-from negbio.pipeline import scan
 
 
 class NltkSSplitter(object):
@@ -84,17 +65,3 @@ def ssplit(document, splitter):
             passage.add_sentence(sentence)
         # passage.text = None
     return document
-
-
-def main(argv):
-    argv = docopt.docopt(__doc__, argv=argv)
-    print(argv)
-    splitter = NltkSSplitter(newline=argv['--newline_is_sentence_break'])
-
-    scan.scan_document(source=argv['SOURCE'], directory=argv['--out'], suffix='.ss.xml',
-                       fn=ssplit, non_sequences=[splitter])
-
-
-if __name__ == '__main__':
-    logging.basicConfig(level=logging.INFO)
-    main(sys.argv[1:])

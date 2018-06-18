@@ -38,6 +38,8 @@ if __name__ == '__main__':
         exit(call(['python', 'negbio/negbio_normalize.py'] + argv))
     elif args['<command>'] == 'section_split':
         exit(call(['python', 'negbio/negbio_section_split.py'] + argv))
+    elif args['<command>'] == 'ssplit':
+        exit(call(['python', 'negbio/negbio_ssplit.py'] + argv))
     elif args['<command>'] in ['help', None]:
         exit(call(['python', 'negbio.py', '--help']))
     else:

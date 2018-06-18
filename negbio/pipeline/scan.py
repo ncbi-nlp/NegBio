@@ -28,7 +28,7 @@ def scan_document(*_, **kwargs):
     directory = os.path.expanduser(kwargs.pop('directory'))
     suffix = kwargs.pop('suffix')
     fn = kwargs.pop('fn')
-    non_sequences = kwargs.pop('non_sequences', None)
+    non_sequences = kwargs.pop('non_sequences', [])
 
     for pathname in tqdm.tqdm(source, total=len(source), disable=not verbose):
         basename = os.path.splitext(os.path.basename(pathname))[0]
