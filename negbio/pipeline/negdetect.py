@@ -1,24 +1,7 @@
-"""
-Detect negation and uncertainty
-
-Usage:
-    neg [options] --out=DIRECTORY SOURCE ...
-
-Options:
-    --neg-patterns=FILE             negation rules [default: patterns/neg_patterns.txt]
-    --uncertainty-patterns=FILE     uncertainty rules [default: patterns/uncertainty_patterns.txt]
-"""
-
-from __future__ import print_function
-
 import logging
 import re
-import sys
 
-import docopt
-
-from negbio.neg.neg_detector import Detector
-from negbio.pipeline import scan
+from neg.neg_detector import Detector
 
 
 def neg_mesh(annotations):
@@ -92,11 +75,12 @@ def detect(document, detector):
             locs = []
             for ann in passage.annotations:
                 total_loc = ann.get_total_location()
-                locs.append((total_loc.offset, total_loc.offset+total_loc.length))
+                locs.append((total_loc.offset, total_loc.offset + total_loc.length))
 
             for sentence in passage.sentences:
                 if is_neg_regex(sentence.text):
-                    _mark_anns(passage.annotations, sentence.offset, sentence.offset + len(sentence.text), Detector.NEGATION)
+                    _mark_anns(passage.annotations, sentence.offset, sentence.offset + len(sentence.text),
+                               Detector.NEGATION)
                     continue
                 for name, matcher, loc in detector.detect(sentence, locs):
                     logging.debug('Find: %s, %s, %s', name, matcher.pattern, loc)
@@ -107,16 +91,3 @@ def detect(document, detector):
     except:
         logger.exception("Cannot process %s", document.id)
     return document
-
-
-def main(argv):
-    argv = docopt.docopt(__doc__, argv=argv)
-    print(argv)
-    neg_detector = Detector(argv['--neg-patterns'], argv['--uncertainty-patterns'])
-    scan.scan_document(source=argv['SOURCE'], directory=argv['--out'], suffix='.neg.xml',
-                       fn=detect, non_sequences=[neg_detector])
-
-
-if __name__ == '__main__':
-    logging.basicConfig(level=logging.DEBUG, format='%(message)s')
-    main(sys.argv[1:])

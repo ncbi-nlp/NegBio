@@ -1,4 +1,4 @@
-Created by PLY version 3.10 (http://www.dabeaz.com/ply)
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
 
 Grammar
 
@@ -71,47 +71,21 @@ state 0
     (17) Description -> . { Attributes }
     (18) Description -> . { Attributes } = IDENTIFIER
 
-    (               shift and go to state 2
-    {               shift and go to state 5
+    (               shift and go to state 3
+    {               shift and go to state 6
 
-    Description                    shift and go to state 1
-    ModNode                        shift and go to state 3
+    SubNode                        shift and go to state 1
+    ModNode                        shift and go to state 2
     Child                          shift and go to state 4
-    SubNode                        shift and go to state 6
+    Description                    shift and go to state 5
 
 state 1
 
-    (16) Child -> Description .
+    (0) S' -> SubNode .
 
-    RELATION        reduce using rule 16 (Child -> Description .)
-    )               reduce using rule 16 (Child -> Description .)
-    &               reduce using rule 16 (Child -> Description .)
-    |               reduce using rule 16 (Child -> Description .)
-    $end            reduce using rule 16 (Child -> Description .)
 
 
 state 2
-
-    (3) SubNode -> ( . SubNode )
-    (4) SubNode -> ( . SubNode ) RelationDisj
-    (1) SubNode -> . ModNode
-    (2) SubNode -> . ModNode RelationDisj
-    (3) SubNode -> . ( SubNode )
-    (4) SubNode -> . ( SubNode ) RelationDisj
-    (15) ModNode -> . Child
-    (16) Child -> . Description
-    (17) Description -> . { Attributes }
-    (18) Description -> . { Attributes } = IDENTIFIER
-
-    (               shift and go to state 2
-    {               shift and go to state 5
-
-    Description                    shift and go to state 1
-    ModNode                        shift and go to state 3
-    Child                          shift and go to state 4
-    SubNode                        shift and go to state 7
-
-state 3
 
     (1) SubNode -> ModNode .
     (2) SubNode -> ModNode . RelationDisj
@@ -124,15 +98,36 @@ state 3
     (11) RelChild -> . Relation
     (12) Relation -> . RELATION { Attributes } Relation_Next
 
-    )               reduce using rule 1 (SubNode -> ModNode .)
     $end            reduce using rule 1 (SubNode -> ModNode .)
-    RELATION        shift and go to state 13
+    )               reduce using rule 1 (SubNode -> ModNode .)
+    RELATION        shift and go to state 12
 
-    ModRelation                    shift and go to state 8
-    RelationDisj                   shift and go to state 9
-    Relation                       shift and go to state 11
-    RelationConj                   shift and go to state 12
+    RelationDisj                   shift and go to state 7
+    RelationConj                   shift and go to state 8
+    ModRelation                    shift and go to state 9
     RelChild                       shift and go to state 10
+    Relation                       shift and go to state 11
+
+state 3
+
+    (3) SubNode -> ( . SubNode )
+    (4) SubNode -> ( . SubNode ) RelationDisj
+    (1) SubNode -> . ModNode
+    (2) SubNode -> . ModNode RelationDisj
+    (3) SubNode -> . ( SubNode )
+    (4) SubNode -> . ( SubNode ) RelationDisj
+    (15) ModNode -> . Child
+    (16) Child -> . Description
+    (17) Description -> . { Attributes }
+    (18) Description -> . { Attributes } = IDENTIFIER
+
+    (               shift and go to state 3
+    {               shift and go to state 6
+
+    SubNode                        shift and go to state 13
+    ModNode                        shift and go to state 2
+    Child                          shift and go to state 4
+    Description                    shift and go to state 5
 
 state 4
 
@@ -147,6 +142,17 @@ state 4
 
 state 5
 
+    (16) Child -> Description .
+
+    RELATION        reduce using rule 16 (Child -> Description .)
+    $end            reduce using rule 16 (Child -> Description .)
+    )               reduce using rule 16 (Child -> Description .)
+    &               reduce using rule 16 (Child -> Description .)
+    |               reduce using rule 16 (Child -> Description .)
+
+
+state 6
+
     (17) Description -> { . Attributes }
     (18) Description -> { . Attributes } = IDENTIFIER
     (19) Attributes -> . IDENTIFIER : REGEX
@@ -160,21 +166,25 @@ state 5
     Attributes                     shift and go to state 14
     empty                          shift and go to state 16
 
-state 6
-
-    (0) S' -> SubNode .
-
-
-
 state 7
 
-    (3) SubNode -> ( SubNode . )
-    (4) SubNode -> ( SubNode . ) RelationDisj
+    (2) SubNode -> ModNode RelationDisj .
 
-    )               shift and go to state 17
+    $end            reduce using rule 2 (SubNode -> ModNode RelationDisj .)
+    )               reduce using rule 2 (SubNode -> ModNode RelationDisj .)
 
 
 state 8
+
+    (5) RelationDisj -> RelationConj .
+    (6) RelationDisj -> RelationConj . | RelationDisj
+
+    $end            reduce using rule 5 (RelationDisj -> RelationConj .)
+    )               reduce using rule 5 (RelationDisj -> RelationConj .)
+    |               shift and go to state 17
+
+
+state 9
 
     (7) RelationConj -> ModRelation .
     (8) RelationConj -> ModRelation . RelationConj
@@ -189,21 +199,13 @@ state 8
     |               reduce using rule 7 (RelationConj -> ModRelation .)
     $end            reduce using rule 7 (RelationConj -> ModRelation .)
     )               reduce using rule 7 (RelationConj -> ModRelation .)
-    &               shift and go to state 18
-    RELATION        shift and go to state 13
+    &               shift and go to state 19
+    RELATION        shift and go to state 12
 
-    ModRelation                    shift and go to state 8
-    Relation                       shift and go to state 11
-    RelationConj                   shift and go to state 19
+    ModRelation                    shift and go to state 9
+    RelationConj                   shift and go to state 18
     RelChild                       shift and go to state 10
-
-state 9
-
-    (2) SubNode -> ModNode RelationDisj .
-
-    )               reduce using rule 2 (SubNode -> ModNode RelationDisj .)
-    $end            reduce using rule 2 (SubNode -> ModNode RelationDisj .)
-
+    Relation                       shift and go to state 11
 
 state 10
 
@@ -229,19 +231,17 @@ state 11
 
 state 12
 
-    (5) RelationDisj -> RelationConj .
-    (6) RelationDisj -> RelationConj . | RelationDisj
+    (12) Relation -> RELATION . { Attributes } Relation_Next
 
-    $end            reduce using rule 5 (RelationDisj -> RelationConj .)
-    )               reduce using rule 5 (RelationDisj -> RelationConj .)
-    |               shift and go to state 20
+    {               shift and go to state 20
 
 
 state 13
 
-    (12) Relation -> RELATION . { Attributes } Relation_Next
+    (3) SubNode -> ( SubNode . )
+    (4) SubNode -> ( SubNode . ) RelationDisj
 
-    {               shift and go to state 21
+    )               shift and go to state 21
 
 
 state 14
@@ -269,6 +269,66 @@ state 16
 
 state 17
 
+    (6) RelationDisj -> RelationConj | . RelationDisj
+    (5) RelationDisj -> . RelationConj
+    (6) RelationDisj -> . RelationConj | RelationDisj
+    (7) RelationConj -> . ModRelation
+    (8) RelationConj -> . ModRelation RelationConj
+    (9) RelationConj -> . ModRelation & RelationConj
+    (10) ModRelation -> . RelChild
+    (11) RelChild -> . Relation
+    (12) Relation -> . RELATION { Attributes } Relation_Next
+
+    RELATION        shift and go to state 12
+
+    RelationConj                   shift and go to state 8
+    RelationDisj                   shift and go to state 24
+    ModRelation                    shift and go to state 9
+    RelChild                       shift and go to state 10
+    Relation                       shift and go to state 11
+
+state 18
+
+    (8) RelationConj -> ModRelation RelationConj .
+
+    |               reduce using rule 8 (RelationConj -> ModRelation RelationConj .)
+    $end            reduce using rule 8 (RelationConj -> ModRelation RelationConj .)
+    )               reduce using rule 8 (RelationConj -> ModRelation RelationConj .)
+
+
+state 19
+
+    (9) RelationConj -> ModRelation & . RelationConj
+    (7) RelationConj -> . ModRelation
+    (8) RelationConj -> . ModRelation RelationConj
+    (9) RelationConj -> . ModRelation & RelationConj
+    (10) ModRelation -> . RelChild
+    (11) RelChild -> . Relation
+    (12) Relation -> . RELATION { Attributes } Relation_Next
+
+    RELATION        shift and go to state 12
+
+    ModRelation                    shift and go to state 9
+    RelationConj                   shift and go to state 25
+    RelChild                       shift and go to state 10
+    Relation                       shift and go to state 11
+
+state 20
+
+    (12) Relation -> RELATION { . Attributes } Relation_Next
+    (19) Attributes -> . IDENTIFIER : REGEX
+    (20) Attributes -> . IDENTIFIER : REGEX , Attributes
+    (21) Attributes -> . empty
+    (22) empty -> .
+
+    IDENTIFIER      shift and go to state 15
+    }               reduce using rule 22 (empty -> .)
+
+    Attributes                     shift and go to state 26
+    empty                          shift and go to state 16
+
+state 21
+
     (3) SubNode -> ( SubNode ) .
     (4) SubNode -> ( SubNode ) . RelationDisj
     (5) RelationDisj -> . RelationConj
@@ -280,86 +340,26 @@ state 17
     (11) RelChild -> . Relation
     (12) Relation -> . RELATION { Attributes } Relation_Next
 
-    )               reduce using rule 3 (SubNode -> ( SubNode ) .)
     $end            reduce using rule 3 (SubNode -> ( SubNode ) .)
-    RELATION        shift and go to state 13
+    )               reduce using rule 3 (SubNode -> ( SubNode ) .)
+    RELATION        shift and go to state 12
 
-    ModRelation                    shift and go to state 8
-    RelationDisj                   shift and go to state 24
-    Relation                       shift and go to state 11
-    RelationConj                   shift and go to state 12
+    RelationDisj                   shift and go to state 27
+    RelationConj                   shift and go to state 8
+    ModRelation                    shift and go to state 9
     RelChild                       shift and go to state 10
-
-state 18
-
-    (9) RelationConj -> ModRelation & . RelationConj
-    (7) RelationConj -> . ModRelation
-    (8) RelationConj -> . ModRelation RelationConj
-    (9) RelationConj -> . ModRelation & RelationConj
-    (10) ModRelation -> . RelChild
-    (11) RelChild -> . Relation
-    (12) Relation -> . RELATION { Attributes } Relation_Next
-
-    RELATION        shift and go to state 13
-
-    ModRelation                    shift and go to state 8
     Relation                       shift and go to state 11
-    RelationConj                   shift and go to state 25
-    RelChild                       shift and go to state 10
-
-state 19
-
-    (8) RelationConj -> ModRelation RelationConj .
-
-    |               reduce using rule 8 (RelationConj -> ModRelation RelationConj .)
-    $end            reduce using rule 8 (RelationConj -> ModRelation RelationConj .)
-    )               reduce using rule 8 (RelationConj -> ModRelation RelationConj .)
-
-
-state 20
-
-    (6) RelationDisj -> RelationConj | . RelationDisj
-    (5) RelationDisj -> . RelationConj
-    (6) RelationDisj -> . RelationConj | RelationDisj
-    (7) RelationConj -> . ModRelation
-    (8) RelationConj -> . ModRelation RelationConj
-    (9) RelationConj -> . ModRelation & RelationConj
-    (10) ModRelation -> . RelChild
-    (11) RelChild -> . Relation
-    (12) Relation -> . RELATION { Attributes } Relation_Next
-
-    RELATION        shift and go to state 13
-
-    ModRelation                    shift and go to state 8
-    RelationDisj                   shift and go to state 26
-    Relation                       shift and go to state 11
-    RelationConj                   shift and go to state 12
-    RelChild                       shift and go to state 10
-
-state 21
-
-    (12) Relation -> RELATION { . Attributes } Relation_Next
-    (19) Attributes -> . IDENTIFIER : REGEX
-    (20) Attributes -> . IDENTIFIER : REGEX , Attributes
-    (21) Attributes -> . empty
-    (22) empty -> .
-
-    IDENTIFIER      shift and go to state 15
-    }               reduce using rule 22 (empty -> .)
-
-    Attributes                     shift and go to state 27
-    empty                          shift and go to state 16
 
 state 22
 
     (17) Description -> { Attributes } .
     (18) Description -> { Attributes } . = IDENTIFIER
 
-    &               reduce using rule 17 (Description -> { Attributes } .)
     RELATION        reduce using rule 17 (Description -> { Attributes } .)
-    |               reduce using rule 17 (Description -> { Attributes } .)
     $end            reduce using rule 17 (Description -> { Attributes } .)
     )               reduce using rule 17 (Description -> { Attributes } .)
+    &               reduce using rule 17 (Description -> { Attributes } .)
+    |               reduce using rule 17 (Description -> { Attributes } .)
     =               shift and go to state 28
 
 
@@ -373,10 +373,10 @@ state 23
 
 state 24
 
-    (4) SubNode -> ( SubNode ) RelationDisj .
+    (6) RelationDisj -> RelationConj | RelationDisj .
 
-    )               reduce using rule 4 (SubNode -> ( SubNode ) RelationDisj .)
-    $end            reduce using rule 4 (SubNode -> ( SubNode ) RelationDisj .)
+    $end            reduce using rule 6 (RelationDisj -> RelationConj | RelationDisj .)
+    )               reduce using rule 6 (RelationDisj -> RelationConj | RelationDisj .)
 
 
 state 25
@@ -390,17 +390,17 @@ state 25
 
 state 26
 
-    (6) RelationDisj -> RelationConj | RelationDisj .
+    (12) Relation -> RELATION { Attributes . } Relation_Next
 
-    $end            reduce using rule 6 (RelationDisj -> RelationConj | RelationDisj .)
-    )               reduce using rule 6 (RelationDisj -> RelationConj | RelationDisj .)
+    }               shift and go to state 30
 
 
 state 27
 
-    (12) Relation -> RELATION { Attributes . } Relation_Next
+    (4) SubNode -> ( SubNode ) RelationDisj .
 
-    }               shift and go to state 30
+    $end            reduce using rule 4 (SubNode -> ( SubNode ) RelationDisj .)
+    )               reduce using rule 4 (SubNode -> ( SubNode ) RelationDisj .)
 
 
 state 28
@@ -429,23 +429,23 @@ state 30
     (17) Description -> . { Attributes }
     (18) Description -> . { Attributes } = IDENTIFIER
 
-    (               shift and go to state 34
-    {               shift and go to state 5
+    (               shift and go to state 35
+    {               shift and go to state 6
 
-    Description                    shift and go to state 1
-    Child                          shift and go to state 4
-    ModNode                        shift and go to state 35
     Relation_Next                  shift and go to state 33
+    ModNode                        shift and go to state 34
+    Child                          shift and go to state 4
+    Description                    shift and go to state 5
 
 state 31
 
     (18) Description -> { Attributes } = IDENTIFIER .
 
-    &               reduce using rule 18 (Description -> { Attributes } = IDENTIFIER .)
     RELATION        reduce using rule 18 (Description -> { Attributes } = IDENTIFIER .)
-    |               reduce using rule 18 (Description -> { Attributes } = IDENTIFIER .)
     $end            reduce using rule 18 (Description -> { Attributes } = IDENTIFIER .)
     )               reduce using rule 18 (Description -> { Attributes } = IDENTIFIER .)
+    &               reduce using rule 18 (Description -> { Attributes } = IDENTIFIER .)
+    |               reduce using rule 18 (Description -> { Attributes } = IDENTIFIER .)
 
 
 state 32
@@ -475,6 +475,17 @@ state 33
 
 state 34
 
+    (13) Relation_Next -> ModNode .
+
+    &               reduce using rule 13 (Relation_Next -> ModNode .)
+    RELATION        reduce using rule 13 (Relation_Next -> ModNode .)
+    |               reduce using rule 13 (Relation_Next -> ModNode .)
+    $end            reduce using rule 13 (Relation_Next -> ModNode .)
+    )               reduce using rule 13 (Relation_Next -> ModNode .)
+
+
+state 35
+
     (14) Relation_Next -> ( . SubNode )
     (1) SubNode -> . ModNode
     (2) SubNode -> . ModNode RelationDisj
@@ -485,24 +496,13 @@ state 34
     (17) Description -> . { Attributes }
     (18) Description -> . { Attributes } = IDENTIFIER
 
-    (               shift and go to state 2
-    {               shift and go to state 5
+    (               shift and go to state 3
+    {               shift and go to state 6
 
-    Description                    shift and go to state 1
-    ModNode                        shift and go to state 3
-    Child                          shift and go to state 4
     SubNode                        shift and go to state 37
-
-state 35
-
-    (13) Relation_Next -> ModNode .
-
-    &               reduce using rule 13 (Relation_Next -> ModNode .)
-    RELATION        reduce using rule 13 (Relation_Next -> ModNode .)
-    |               reduce using rule 13 (Relation_Next -> ModNode .)
-    $end            reduce using rule 13 (Relation_Next -> ModNode .)
-    )               reduce using rule 13 (Relation_Next -> ModNode .)
-
+    ModNode                        shift and go to state 2
+    Child                          shift and go to state 4
+    Description                    shift and go to state 5
 
 state 36
 

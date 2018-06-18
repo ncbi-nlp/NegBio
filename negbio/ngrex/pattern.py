@@ -51,7 +51,7 @@ class NodePattern(NgrexPattern):
             self._pattern += '=' + name
 
     def finditer(self, graph):
-        for node in graph.nodes_iter():
+        for node in graph.nodes():
             if self._attributes:
                 if _match(self._attributes, graph.node[node]):
                     yield MatcherObj(self, graph, [(self._name, node)])
@@ -82,7 +82,7 @@ class EdgePattern(NgrexPattern):
         governors = self._governor.finditer(graph)
         dependants = self._dependant.finditer(graph)
         for g, d in itertools.product(governors, dependants):
-            for p, c, e in graph.edges_iter(data=True):
+            for p, c, e in graph.edges(data=True):
                 if p == g.group(0) and c == d.group(0):
                     if _match(self._edge_attributes, e):
                         if self._direction == LEFT:

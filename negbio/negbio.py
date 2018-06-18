@@ -38,6 +38,10 @@ if __name__ == '__main__':
         exit(call(['python', 'negbio/negbio_parse.py'] + argv))
     elif args['<command>'] == 'ptb2ud':
         exit(call(['python', 'negbio/negbio_ptb2ud.py'] + argv))
+    elif args['<command>'] == 'dner':
+        exit(call(['python', 'negbio/negbio_dner.py'] + argv))
+    elif args['<command>'] == 'neg':
+        exit(call(['python', 'negbio/negbio_neg.py'] + argv))
     elif args['<command>'] in ['help', None]:
         exit(call(['python', 'negbio.py', '--help']))
     else:

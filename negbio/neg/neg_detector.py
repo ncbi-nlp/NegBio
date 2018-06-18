@@ -2,8 +2,8 @@ from __future__ import print_function
 
 import logging
 
-from negbio.neg import utils, semgraph, propagator
-from negbio import ngrex
+from neg import utils, semgraph, propagator
+import ngrex
 
 NEGATION = 'negation'
 UNCERTAINTY = 'uncertainty'
@@ -97,7 +97,7 @@ class Detector(object):
 
 
 def find_nodes(graph, begin, end):
-    for node in graph.nodes_iter():
+    for node in graph.nodes():
         if utils.intersect((begin, end), (graph.node[node]['start'], graph.node[node]['end'])):
             yield node
 
@@ -107,7 +107,7 @@ def is_neg_graph1(graph):
     # resolution of XXX
     if 'T0' in graph.node and graph.node['T0']['lemma'] in ['no', 'resolution', 'resolved']:
         # no verb
-        has_verb = utils.contains(lambda x: graph.node[x]['tag'][0] == 'V', graph.nodes_iter())
+        has_verb = utils.contains(lambda x: graph.node[x]['tag'][0] == 'V', graph.nodes())
         if not has_verb:
             return True
     return False

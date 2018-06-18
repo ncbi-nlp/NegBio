@@ -26,11 +26,8 @@ def load(sentence):
     graph = nx.DiGraph()
     for ann in sentence.annotations:
         loc = ann.get_total_location()
-        graph.add_node(ann.id, attr_dict={'tag': ann.infons['tag'],
-                                          'text': ann.text,
-                                          'lemma': ann.infons['lemma'].lower(),
-                                          'start': loc.offset,
-                                          'end': loc.offset + loc.length})
+        graph.add_node(ann.id, tag=ann.infons['tag'], text=ann.text, lemma=ann.infons['lemma'].lower(),
+                       start=loc.offset, end=loc.offset + loc.length)
     for rel in sentence.relations:
         for node in rel.nodes:
             if node.role == 'dependant':
@@ -39,8 +36,7 @@ def load(sentence):
                 governor = node.refid
         if not dependant or not governor:
             logger.debug('Cannot find dependant or governor at {}'.format(sentence))
-        graph.add_edge(governor, dependant, attr_dict={'dependency': rel.infons['dependency'],
-                                                       'id': rel.id})
+        graph.add_edge(governor, dependant, dependency=rel.infons['dependency'], id=rel.id)
     return graph
 
 
@@ -81,14 +77,14 @@ def has_in(graph, node, lemmas, dependencies):
 
 
 def has_out_node(graph, node, lemmas):
-    for child in graph.successors_iter(node):
+    for child in graph.successors(node):
         if graph.node[child]['lemma'] in lemmas:
             return True
     return False
 
 
 def has_in_node(graph, node, lemmas):
-    for child in graph.predecessors_iter(node):
+    for child in graph.predecessors(node):
         if graph.node[child]['lemma'] in lemmas:
             return True
     return False
