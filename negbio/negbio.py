@@ -11,13 +11,7 @@ from subprocess import call
 
 import docopt
 
-
-def get_args(args):
-    s = ''
-    for k in args:
-        s += '    {}: {}\n'.format(k, args[k])
-    return s
-
+from util import get_args
 
 if __name__ == '__main__':
     args = docopt.docopt(__doc__,
@@ -40,6 +34,10 @@ if __name__ == '__main__':
         exit(call(['python', 'negbio/negbio_section_split.py'] + argv))
     elif args['<command>'] == 'ssplit':
         exit(call(['python', 'negbio/negbio_ssplit.py'] + argv))
+    elif args['<command>'] == 'parse':
+        exit(call(['python', 'negbio/negbio_parse.py'] + argv))
+    elif args['<command>'] == 'ptb2ud':
+        exit(call(['python', 'negbio/negbio_ptb2ud.py'] + argv))
     elif args['<command>'] in ['help', None]:
         exit(call(['python', 'negbio.py', '--help']))
     else:

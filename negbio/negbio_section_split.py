@@ -16,6 +16,7 @@ import logging
 import re
 import docopt
 
+from util import get_args
 from pipeline.scan import scan_document
 from pipeline.section_split import split_document
 
@@ -26,13 +27,14 @@ if __name__ == '__main__':
         logging.basicConfig(level=logging.DEBUG)
     else:
         logging.basicConfig(level=logging.INFO)
+    logging.debug('global arguments:\n%s', get_args(argv))
 
-    if '--patterns' in argv:
+    if argv['--patterns'] is None:
+        patterns = None
+    else:
         with open(argv['--patterns']) as fp:
             lines = fp.readlines()
         patterns = re.compile('|'.join(lines), re.MULTILINE)
-    else:
-        patterns = None
 
     scan_document(source=argv['<source>'], verbose=argv['--verbose'], suffix=argv['--suffix'],
                   directory=argv['--out'], fn=split_document, non_sequences=[patterns])

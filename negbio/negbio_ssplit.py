@@ -32,5 +32,5 @@ if __name__ == '__main__':
         logging.basicConfig(level=logging.INFO)
 
     splitter = NltkSSplitter(newline=argv['--newline_is_sentence_break'])
-    scan.scan_document(source=argv['<source>'], directory=argv['--out'], suffix='.ss.xml',
+    scan.scan_document(source=argv['<source>'], directory=argv['--out'], suffix=argv['--suffix'],
                        fn=ssplit, non_sequences=[splitter])

@@ -1,24 +1,10 @@
-"""
-Convert from parse tree to universal dependencies
-
-Usage:
-    ptb2ud --out=DIRECTORY SOURCE ...
-"""
-
-from __future__ import print_function
-
 import logging
-import os
-import sys
 
 import StanfordDependencies
 import bioc
-import docopt
 from nltk.corpus import wordnet
 from nltk.stem.wordnet import WordNetLemmatizer
 from nltk.tag.mapping import tagset_mapping
-
-from negbio.pipeline import scan
 
 
 class Lemmatizer(object):
@@ -193,17 +179,3 @@ def convert_dg(dependency_graph, text, offset, ann_index=0, rel_index=0):
 
     return annotations, relations
 
-
-def main(argv):
-    argv = docopt.docopt(__doc__, argv=argv)
-    print(argv)
-
-    ptb2dep = Ptb2DepConverter(universal=True)
-    lemmatizer = Lemmatizer()
-    scan.scan_document(source=argv['SOURCE'], directory=argv['--out'], suffix='.ud.xml',
-                       fn=convert, non_sequences=[ptb2dep, lemmatizer])
-
-
-if __name__ == '__main__':
-    logging.basicConfig(level=logging.INFO)
-    sys.exit(main(sys.argv[1:]))

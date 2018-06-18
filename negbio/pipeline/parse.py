@@ -1,24 +1,11 @@
-"""
-Parse sentences
-
-Usage:
-    parse [options] --out=DIRECTORY SOURCE ...
-
-Options:
-    --model=MODEL_DIR               Bllip parser model directory
-"""
 from __future__ import print_function, absolute_import
 
 import logging
 import os
-import sys
 import tempfile
 
-import docopt
 from bllipparser import ModelFetcher
 from bllipparser import RerankingParser
-
-from negbio.pipeline import scan
 
 
 class Bllip:
@@ -67,16 +54,3 @@ def parse(document, parser):
             except:
                 logging.exception('Cannot parse sentence: {}'.format(sentence.offset))
     return document
-
-
-def main(argv):
-    argv = docopt.docopt(__doc__, argv=argv)
-    print(argv)
-    parser = Bllip(model_dir=os.path.expanduser(argv['--model']))
-    scan.scan_document(source=argv['SOURCE'], directory=argv['--out'], suffix='.bllip.xml',
-                       fn=parse, non_sequences=[parser])
-
-
-if __name__ == '__main__':
-    logging.basicConfig(level=logging.INFO)
-    sys.exit(main(sys.argv[1:]))
