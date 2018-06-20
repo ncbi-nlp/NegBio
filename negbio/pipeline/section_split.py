@@ -33,7 +33,7 @@ def strip(passage):
     return passage
 
 
-def split_document(document, pattern=SECTION_TITLES):
+def split_document(document, pattern=None):
     """
     Split one report into sections. Section splitting is a deterministic consequence of section titles.
 
@@ -44,6 +44,9 @@ def split_document(document, pattern=SECTION_TITLES):
     Returns:
         BioCDocument: a new BioCDocument instance
     """
+    if pattern is None:
+        pattern = SECTION_TITLES
+
     new_document = bioc.BioCDocument()
     new_document.id = document.id
     new_document.infons = document.infons

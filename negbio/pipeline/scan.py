@@ -30,17 +30,18 @@ def scan_document(*_, **kwargs):
     fn = kwargs.pop('fn')
     non_sequences = kwargs.pop('non_sequences', [])
 
+    def catch(document, non_sequences):
+        try:
+            return fn(document, *non_sequences)
+        except:
+            logging.exception('Cannot process %s', document.id)
+
     for pathname in tqdm.tqdm(source, total=len(source), disable=not verbose):
         basename = os.path.splitext(os.path.basename(pathname))[0]
         dstname = os.path.join(directory, '{}{}'.format(basename, suffix))
         with open(pathname) as fp:
             collection = bioc.load(fp)
-            for document in collection.documents:
-                try:
-                    args = [document] + non_sequences
-                    fn(*args)
-                except:
-                    logging.exception('Cannot process %s', document.id)
+        collection.documents = [catch(doc, non_sequences) for doc in collection.documents]
         with open(dstname, 'w') as fp:
             bioc.dump(collection, fp)
 

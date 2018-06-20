@@ -2,13 +2,13 @@
 Split the report into sections based on titles.
 
 Usage:
-    negbio section_split [options] --output=<file> <file> ...
+    negbio section_split [options] --output=<directory> <file> ...
 
 Options:
-    --suffix=<suffix>   Append an additional SUFFIX to file names. [default: .secsplit.xml]
-    --output=<file>     Specify the output file name.
-    --verbose           Print more information about progress.
-    --pattern=<file>    Specify section title list for matching.
+    --suffix=<suffix>       Append an additional SUFFIX to file names. [default: .secsplit.xml]
+    --output=<directory>    Specify the output directory.
+    --verbose               Print more information about progress.
+    --pattern=<file>        Specify section title list for matching.
 """
 import re
 
