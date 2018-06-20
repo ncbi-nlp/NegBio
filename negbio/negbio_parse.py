@@ -2,27 +2,21 @@
 Parse sentences
 
 Usage:
-    negbio parse [options] --out=DIRECTORY SOURCE ...
+    negbio parse [options] --output=<directory> <file> ...
 
 Options:
-    --model=MODEL_DIR   Bllip parser model directory
-    --suffix=<str>      [default: .bllip.xml]
-    --verbose
+    --model=<directory>     Bllip parser model directory.
+    --output=<directory>    Specify the output directory.
+    --suffix=<suffix>       Append an additional SUFFIX to file names. [default: .bllip.xml]
+    --verbose               Print more information about progress.
 """
-import logging
 
-import docopt
-
-from pipeline import scan
-from pipeline.parse import parse, Bllip
+from negbio.cli_utils import parse_args
+from negbio.pipeline.parse import parse, Bllip
+from negbio.pipeline.scan import scan_document
 
 if __name__ == '__main__':
-    argv = docopt.docopt(__doc__)
-    if argv['--verbose']:
-        logging.basicConfig(level=logging.DEBUG)
-    else:
-        logging.basicConfig(level=logging.INFO)
-
+    argv = parse_args(__doc__)
     parser = Bllip(model_dir=argv['--model'])
-    scan.scan_document(source=argv['SOURCE'], directory=argv['--out'], suffix=argv['--suffix'],
-                       fn=parse, non_sequences=[parser])
+    scan_document(source=argv['<file>'], directory=argv['--output'], suffix=argv['--suffix'],
+                  fn=parse, non_sequences=[parser])

@@ -60,7 +60,7 @@ def main(argv):
     else:
         cuis = dner_mm.read_cuis(argv['--cuis'])
 
-    collection = text2bioc.text2collection(argv['SOURCE'], split_document=argv['--split-document'])
+    collection = text2bioc.text2collection(argv['SOURCE'])
     pipeline(collection, mm, splitter, parser, ptb2dep, lemmatizer, neg_detector, cuis)
 
     with open(os.path.expanduser(argv['--out']), 'w') as fp:

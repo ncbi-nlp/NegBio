@@ -1,19 +1,18 @@
 """
 Usage:
-    negbio normalize [options] --out=<directory> <source> ...
+    negbio normalize [options] --output=<directory> <file> ...
 
 Options:
-    --suffix=<str>  [default: .normalized.xml]
-    --verbose
+    --output=<directory>    Specify the output directory.
+    --suffix=<suffix>       Append an additional SUFFIX to file names. [default: .normalized.xml]
+    --verbose               Print more information about progress.
 """
 
-import docopt
-
-from ext.normalize_mimiccxr import normalize
-from pipeline.scan import scan_document
+from negbio.cli_utils import parse_args
+from negbio.ext.normalize_mimiccxr import normalize
+from negbio.pipeline.scan import scan_document
 
 if __name__ == '__main__':
-    argv = docopt.docopt(__doc__)
-
-    scan_document(source=argv['<source>'], verbose=argv['--verbose'], suffix=argv['--suffix'],
-                  directory=argv['--out'], fn=normalize)
+    argv = parse_args(__doc__)
+    scan_document(source=argv['<file>'], verbose=argv['--verbose'], suffix=argv['--suffix'],
+                  directory=argv['--output'], fn=normalize)

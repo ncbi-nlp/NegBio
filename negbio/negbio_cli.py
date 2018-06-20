@@ -3,27 +3,16 @@ Usage:
     negbio [--verbose] <command> [<args>...]
 
 Options:
-    --verbose
+    --verbose   Print more information about progress.
 """
-
-import logging
 from subprocess import call
-
-import docopt
-
-from util import get_args
+import logging
+import os
+from negbio.cli_utils import parse_args
 
 if __name__ == '__main__':
-    args = docopt.docopt(__doc__,
-                         version='negbio version 2',
-                         options_first=True)
-
-    if args['--verbose']:
-        logging.basicConfig(level=logging.DEBUG)
-    else:
-        logging.basicConfig(level=logging.INFO)
-
-    logging.debug('global arguments:\n%s', get_args(args))
+    args = parse_args(__doc__, version='negbio version 2', options_first=True)
+    logging.debug('CWD: %s', os.getcwd())
 
     argv = [args['<command>']] + args['<args>']
     if args['<command>'] == 'text2bioc':

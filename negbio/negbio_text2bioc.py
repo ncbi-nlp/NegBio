@@ -1,31 +1,21 @@
 """
-Convert text to the BioC format
+Convert text FILEs to the BioC output file
 
 Usage:
-    git text2bioc --out=<dest> <source> ...
+    negbio text2bioc [options] --output=<file> <file> ...
 
-Actions:
-    --out=<dest>    output file
+Options:
+    --output=<dest>     Specify the output file name.
+    --verbose           Print more information about progress.
 """
-from __future__ import print_function
-
-import logging
-import os
 
 import bioc
-import docopt
 
-from pipeline.text2bioc import text2collection
-
+from negbio.cli_utils import parse_args
+from negbio.pipeline.text2bioc import text2collection
 
 if __name__ == '__main__':
-    argv = docopt.docopt(__doc__)
-
-    if argv['--verbose']:
-        logging.basicConfig(level=logging.DEBUG)
-    else:
-        logging.basicConfig(level=logging.INFO)
-
-    collection = text2collection(argv['<source>'])
-    with open(os.path.expanduser(argv['--out']), 'w') as fp:
+    argv = parse_args(__doc__)
+    collection = text2collection(argv['<file>'])
+    with open(argv['--output'], 'w') as fp:
         bioc.dump(collection, fp)

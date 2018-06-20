@@ -61,7 +61,7 @@ def split_document(document, pattern=SECTION_TITLES):
         return passage
 
     start = 0
-    for matcher in SECTION_TITLES.finditer(text):
+    for matcher in pattern.finditer(text):
         logging.debug('Match: %s', matcher.group())
         # add last
         end = matcher.start()

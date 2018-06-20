@@ -1,26 +1,21 @@
 """
-Detect UMLS concept
+Detect UMLS concepts
 
 Usage:
-    negbio dner [options] --metamap=BINARY --out=DIRECTORY SOURCE ...
+    negbio dner [options] --metamap=<binary> --out=<directory> <file> ...
 
 Options:
-    --suffix=<str>      [default: .mm.xml]
-    --out=<dest>        output file
-    --verbose
-    --metamap=BINARY    The MetaMap binary
-    --cuis=FILE         CUI list
+    --suffix=<suffix>       Append an additional SUFFIX to file names. [default: .mm.xml]
+    --output=<directory>    Specify the output directory.
+    --verbose               Print more information about progress.
+    --metamap=<binary>      The MetaMap binary
+    --cuis=<file>           Specify CUI list
 """
-from __future__ import print_function
 
-import logging
-
-import docopt
-
-import pymetamap
-from pipeline import scan
-from pipeline.dner_mm import run_metamap_col
-from util import get_args
+from negbio.cli_utils import parse_args
+from negbio.pipeline.dner_mm import run_metamap_col
+from negbio.pipeline.scan import scan_collection
+from pymetamap import MetaMap
 
 
 def read_cuis(pathname):
@@ -34,19 +29,13 @@ def read_cuis(pathname):
 
 
 if __name__ == '__main__':
-    argv = docopt.docopt(__doc__)
-    if argv['--verbose']:
-        logging.basicConfig(level=logging.DEBUG)
-    else:
-        logging.basicConfig(level=logging.INFO)
-    logging.debug('global arguments:\n%s', get_args(argv))
-
-    mm = pymetamap.MetaMap.get_instance(argv['--metamap'])
+    argv = parse_args(__doc__)
+    mm = MetaMap.get_instance(argv['--metamap'])
 
     if argv['--cuis'] is None:
         cuis = None
     else:
         cuis = read_cuis(argv['--cuis'])
 
-    scan.scan_collection(source=argv['SOURCE'], directory=argv['--out'], suffix=argv['--suffix'],
-                         fn=run_metamap_col, non_sequences=[mm, cuis])
+    scan_collection(source=argv['<file>'], directory=argv['--output'], suffix=argv['--suffix'],
+                    fn=run_metamap_col, non_sequences=[mm, cuis])

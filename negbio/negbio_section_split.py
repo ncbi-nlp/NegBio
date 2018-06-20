@@ -1,40 +1,34 @@
 """
-Convert text to the BioC format
+Split the report into sections based on titles.
 
 Usage:
-    negbio section_split [options] --out=<dest> <source> ...
+    negbio section_split [options] --output=<file> <file> ...
 
 Options:
-    --suffix=<str>      [default: .secsplit.xml]
-    --out=<dest>        output file
-    --verbose
-    --patterns=FILE     section title list.
+    --suffix=<suffix>   Append an additional SUFFIX to file names. [default: .secsplit.xml]
+    --output=<file>     Specify the output file name.
+    --verbose           Print more information about progress.
+    --pattern=<file>    Specify section title list for matching.
 """
-from __future__ import print_function
-
-import logging
 import re
-import docopt
 
-from util import get_args
-from pipeline.scan import scan_document
-from pipeline.section_split import split_document
+from negbio.cli_utils import parse_args
+from negbio.pipeline.scan import scan_document
+from negbio.pipeline.section_split import split_document
+
+
+def read_section_titles(pathname):
+    with open(pathname) as fp:
+        return re.compile('|'.join(fp.readlines()), re.MULTILINE)
+
 
 if __name__ == '__main__':
-    argv = docopt.docopt(__doc__)
+    argv = parse_args(__doc__)
 
-    if argv['--verbose']:
-        logging.basicConfig(level=logging.DEBUG)
-    else:
-        logging.basicConfig(level=logging.INFO)
-    logging.debug('global arguments:\n%s', get_args(argv))
-
-    if argv['--patterns'] is None:
+    if argv['--pattern'] is None:
         patterns = None
     else:
-        with open(argv['--patterns']) as fp:
-            lines = fp.readlines()
-        patterns = re.compile('|'.join(lines), re.MULTILINE)
+        patterns = read_section_titles(argv['--pattern'])
 
-    scan_document(source=argv['<source>'], verbose=argv['--verbose'], suffix=argv['--suffix'],
-                  directory=argv['--out'], fn=split_document, non_sequences=[patterns])
+    scan_document(source=argv['<file>'], verbose=argv['--verbose'], suffix=argv['--suffix'],
+                  directory=argv['--output'], fn=split_document, non_sequences=[patterns])

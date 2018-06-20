@@ -1,7 +1,11 @@
 import logging
 
 import bioc
-import nltk
+
+# try:
+#     import nltk
+# except:
+#     logging.exception('Cannot import nltk')
 
 
 class NltkSSplitter(object):
@@ -11,7 +15,7 @@ class NltkSSplitter(object):
         self.newline = kwargs.pop('newline', False)
 
     def split(self, text, **kwargs):
-
+        import nltk
         if not text:
             return
 
