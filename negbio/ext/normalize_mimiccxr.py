@@ -61,5 +61,6 @@ def normalize(document):
             logging.warning('Skipped: there is more than one passage in document %s', document.id)
         else:
             document.passages[0].text = trim(document.passages[0].text)
+        return document
     except:
         logging.exception('Cannot find text in document %s', document.id)

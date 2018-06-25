@@ -4,6 +4,16 @@ Usage:
 
 Options:
     --verbose   Print more information about progress.
+
+The most commonly used git commands are:
+    text2bioc
+    normalize
+    section_split
+    ssplit
+    parse
+    ptb2ud
+    dner
+    neg
 """
 from subprocess import call
 import logging
