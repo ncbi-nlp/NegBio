@@ -39,10 +39,10 @@ def scan_document(*_, **kwargs):
     for pathname in tqdm.tqdm(source, total=len(source), disable=not verbose):
         basename = os.path.splitext(os.path.basename(pathname))[0]
         dstname = os.path.join(directory, '{}{}'.format(basename, suffix))
-        with open(pathname) as fp:
+        with open(pathname, encoding='utf8') as fp:
             collection = bioc.load(fp)
         collection.documents = [catch(doc, non_sequences) for doc in collection.documents]
-        with open(dstname, 'w') as fp:
+        with open(dstname, 'w', encoding='utf8') as fp:
             bioc.dump(collection, fp)
 
 
@@ -74,12 +74,12 @@ def scan_collection(*_, **kwargs):
     for pathname in tqdm.tqdm(source, total=len(source), disable=not verbose):
         basename = os.path.splitext(os.path.basename(pathname))[0]
         dstname = os.path.join(directory, '{}{}'.format(basename, suffix))
-        with open(pathname) as fp:
+        with open(pathname, encoding='utf8') as fp:
             collection = bioc.load(fp)
             try:
                 args = [collection] + non_sequences
                 fn(*args)
             except:
                 logging.exception('Cannot process %s', collection.source)
-        with open(dstname, 'w') as fp:
+        with open(dstname, 'w', encoding='utf8') as fp:
             bioc.dump(collection, fp)
