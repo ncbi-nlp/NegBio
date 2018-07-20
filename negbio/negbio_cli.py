@@ -5,7 +5,7 @@ Usage:
 Options:
     --verbose   Print more information about progress.
 
-The most commonly used git commands are:
+The most commonly used negbio commands are:
     text2bioc
     normalize
     section_split
@@ -41,6 +41,8 @@ if __name__ == '__main__':
         exit(call(['python', 'negbio/negbio_dner.py'] + argv))
     elif args['<command>'] == 'neg':
         exit(call(['python', 'negbio/negbio_neg.py'] + argv))
+    elif args['<command>'] == 'cleanup':
+        exit(call(['python', 'negbio/negbio_clean.py'] + argv))
     elif args['<command>'] in ['help', None]:
         exit(call(['python', 'negbio.py', '--help']))
     else:

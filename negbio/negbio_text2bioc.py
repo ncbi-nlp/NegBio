@@ -5,7 +5,7 @@ Usage:
     negbio text2bioc [options] --output=<file> <file> ...
 
 Options:
-    --output=<dest>     Specify the output file name.
+    --output=<file>     Specify the output file name.
     --verbose           Print more information about progress.
 """
 

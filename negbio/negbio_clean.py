@@ -2,7 +2,7 @@
 Clean up sentences
 
 Usage:
-    negbio clean_sentences [options] --output=<directory> <file> ...
+    negbio cleanup [options] --output=<directory> <file> ...
 
 Options:
     --suffix=<suffix>               Append an additional SUFFIX to file names. [default: .negbio.xml]
@@ -16,5 +16,5 @@ from negbio.pipeline.scan import scan_document
 
 if __name__ == '__main__':
     argv = parse_args(__doc__)
-    scan_document(source=argv['<file>'], directory=argv['--output'], suffix='.negbio.xml',
+    scan_document(source=argv['<file>'], directory=argv['--output'], suffix=argv['--suffix'],
                   fn=clean_sentences)
