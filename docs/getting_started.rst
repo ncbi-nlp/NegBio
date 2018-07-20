@@ -40,7 +40,7 @@ Some examples can be found in the ``examples`` folder.
 Run the script
 ~~~~~~~~~~~~~~
 
-The easiest way is to run the following command by replacing ``<METAMAP_BINARY>`` with the actual path, such as **META_MAP_HOME/bin/metamap16**
+The easiest way is to run the following command by replacing ``<METAMAP_BINARY>`` with the actual **ABSOLUTE** path, such as **META_MAP_HOME/bin/metamap16**
 
 .. code-block:: bash
    :linenos:
