@@ -68,8 +68,11 @@ def run_metamap_col(collection, mm, cuis=None):
             for concept in concepts:
                 concept_index = adapt_concept_index(concept.index)
                 try:
-                    if cuis is not None and concept.cui not in cuis:
-                        continue
+                    if cuis is not None:
+                        # if no CUI is returned for this concept - skip it
+                        concept_cui = getattr(concept, 'cui', None)
+                        if concept_cui not in cuis:
+                            continue
                     m = re.match(r'(\d+)/(\d+)', concept.pos_info)
                     if m:
                         passage = sentence_map[concept_index][0]
