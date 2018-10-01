@@ -47,7 +47,7 @@ def trim(text):
     new_text += text[start:end]
     if len(text) - end > 0:
         new_text += ' ' * (len(text) - end)
-    return text
+    return new_text
 
 
 def normalize(document):
