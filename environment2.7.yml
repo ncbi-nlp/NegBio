@@ -14,6 +14,7 @@ dependencies:
   - tqdm=4.19.4
   - nltk=3.2.4
   - pytest=3.1.3
+  - pathlib2
   - pip:
     - bioc==1.1.dev3
     - pystanforddependencies==0.3.1

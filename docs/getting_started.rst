@@ -12,7 +12,8 @@ Prerequisites
 
 *  python >2.4
 *  Linux
-*  MetaMap >2016
+*  Java
+*  MetaMap >2016 (Required only if you want to use metamap)
 
 MetaMap can be downloaded from `https://metamap.nlm.nih.gov/MainDownload.shtml <https://metamap.nlm.nih.gov/MainDownload.shtml>`_.
 Installation instructions can be found at `https://metamap.nlm.nih.gov/Installation.shtml <https://metamap.nlm.nih.gov/Installation.shtml>`_.

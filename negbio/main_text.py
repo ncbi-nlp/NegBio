@@ -25,6 +25,7 @@ import docopt
 
 import pymetamap
 from negbio.pipeline import parse, ssplit, ptb2ud, negdetect, text2bioc, dner_mm
+from negbio.negbio_dner_matamap import read_cuis
 
 
 def pipeline(collection, metamap, splitter, parser, ptb2dep, lemmatizer, neg_detector, cuis):
@@ -58,7 +59,7 @@ def main(argv):
     if argv['--cuis'] == 'None':
         cuis = None
     else:
-        cuis = dner_mm.read_cuis(argv['--cuis'])
+        cuis = read_cuis(argv['--cuis'])
 
     collection = text2bioc.text2collection(argv['SOURCE'])
     pipeline(collection, mm, splitter, parser, ptb2dep, lemmatizer, neg_detector, cuis)

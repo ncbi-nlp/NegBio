@@ -1,3 +1,4 @@
+import io
 import logging
 import os
 
@@ -30,6 +31,9 @@ def scan_document(*_, **kwargs):
     fn = kwargs.pop('fn')
     non_sequences = kwargs.pop('non_sequences', [])
 
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+
     def catch(document, non_sequences):
         try:
             return fn(document, *non_sequences)
@@ -39,10 +43,10 @@ def scan_document(*_, **kwargs):
     for pathname in tqdm.tqdm(source, total=len(source), disable=not verbose):
         basename = os.path.splitext(os.path.basename(pathname))[0]
         dstname = os.path.join(directory, '{}{}'.format(basename, suffix))
-        with open(pathname, encoding='utf8') as fp:
+        with io.open(pathname, encoding='utf8') as fp:
             collection = bioc.load(fp)
         collection.documents = [catch(doc, non_sequences) for doc in collection.documents]
-        with open(dstname, 'w', encoding='utf8') as fp:
+        with io.open(dstname, 'w', encoding='utf8') as fp:
             bioc.dump(collection, fp)
 
 
@@ -71,15 +75,18 @@ def scan_collection(*_, **kwargs):
     fn = kwargs.pop('fn')
     non_sequences = kwargs.pop('non_sequences', [])
 
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+
     for pathname in tqdm.tqdm(source, total=len(source), disable=not verbose):
         basename = os.path.splitext(os.path.basename(pathname))[0]
         dstname = os.path.join(directory, '{}{}'.format(basename, suffix))
-        with open(pathname, encoding='utf8') as fp:
+        with io.open(pathname, encoding='utf8') as fp:
             collection = bioc.load(fp)
             try:
                 args = [collection] + non_sequences
                 fn(*args)
             except:
                 logging.exception('Cannot process %s', collection.source)
-        with open(dstname, 'w', encoding='utf8') as fp:
+        with io.open(dstname, 'w', encoding='utf8') as fp:
             bioc.dump(collection, fp)

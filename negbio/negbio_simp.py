@@ -26,7 +26,7 @@ import bioc
 
 import pymetamap
 from negbio.cli_utils import parse_args
-from negbio.negbio_dner import read_cuis
+from negbio.negbio_dner_matamap import read_cuis
 from negbio.negbio_section_split import read_section_titles
 from negbio.pipeline import parse, ssplit, ptb2ud, negdetect, pipeline
 

@@ -29,6 +29,8 @@ def load(sentence):
         graph.add_node(ann.id, tag=ann.infons['tag'], text=ann.text, lemma=ann.infons['lemma'].lower(),
                        start=loc.offset, end=loc.offset + loc.length)
     for rel in sentence.relations:
+        dependant = None
+        governor = None
         for node in rel.nodes:
             if node.role == 'dependant':
                 dependant = node.refid
