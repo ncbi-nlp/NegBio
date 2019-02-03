@@ -1,7 +1,7 @@
 import logging
 import re
 
-from neg.neg_detector import Detector
+from negbio.neg.neg_detector import Detector
 
 
 def neg_mesh(annotations):

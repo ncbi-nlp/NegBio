@@ -1,6 +1,6 @@
 
-from pipeline import parse, ssplit, ptb2ud, negdetect, text2bioc, dner_mm, section_split, cleanup
-from ext import normalize_mimiccxr
+from negbio.pipeline import parse, ssplit, ptb2ud, negdetect, text2bioc, dner_mm, section_split, cleanup
+from negbio.ext import normalize_mimiccxr
 
 
 def process_collection(collection, metamap, splitter, parser, ptb2dep, lemmatizer, neg_detector, cuis, sec_title_patterns):

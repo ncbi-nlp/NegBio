@@ -3,7 +3,8 @@ Detect negative and uncertain findings from SOURCE and output to DEST
 Example: python negbio/main_text.py --metamap=/opt/public_mm/bin/metamap16 --out=examples/test.neg.xml examples/1.txt examples/2.txt
 
 Usage:
-    main_text [options] --metamap=BINARY --out=DEST SOURCE ...
+    main_text text [options] --metamap=BINARY --output=DEST SOURCES ...
+    main_text bioc [options] --metamap=BINARY --output=DEST SOURCE ...
 
 Options:
     --neg-patterns=FILE             negation rules [default: patterns/neg_patterns.txt]
@@ -15,6 +16,7 @@ Options:
                                     sentence break. False means to ignore newlines for the purpose of sentence
                                     splitting. This is appropriate for continuous text, when just the non-whitespace
                                     characters should be used to determine sentence breaks.
+    --verbose                       Print more information about progress.
 """
 
 import logging
@@ -25,6 +27,7 @@ import docopt
 
 import pymetamap
 from negbio.pipeline import parse, ssplit, ptb2ud, negdetect, text2bioc, dner_mm
+from negbio.negbio_dner_matamap import read_cuis
 
 
 def pipeline(collection, metamap, splitter, parser, ptb2dep, lemmatizer, neg_detector, cuis):
@@ -58,12 +61,19 @@ def main(argv):
     if argv['--cuis'] == 'None':
         cuis = None
     else:
-        cuis = dner_mm.read_cuis(argv['--cuis'])
+        cuis = read_cuis(argv['--cuis'])
 
-    collection = text2bioc.text2collection(argv['SOURCE'])
+    if argv['text']:
+        collection = text2bioc.text2collection(argv['SOURCES'])
+    elif argv['bioc']:
+        with open(argv['SOURCE']) as fp:
+            collection = bioc.load(fp)
+    else:
+        raise KeyError
+
     pipeline(collection, mm, splitter, parser, ptb2dep, lemmatizer, neg_detector, cuis)
 
-    with open(os.path.expanduser(argv['--out']), 'w') as fp:
+    with open(os.path.expanduser(argv['--output']), 'w') as fp:
         bioc.dump(collection, fp)
 
 

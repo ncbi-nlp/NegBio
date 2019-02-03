@@ -8,9 +8,10 @@ Convert text file to BioC format
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: bash
-   :linenos:
 
-   $ python negbio/negbio_cli.py text2bioc --output examples/test.xml examples/00000086.txt examples/00019248.txt
+   $ python negbio/negbio_cli.py text2bioc \
+        --output examples/test.xml \
+        examples/00000086.txt examples/00019248.txt
 
 
 Another most commonly used command is:
@@ -27,12 +28,14 @@ Run the pipeline step-by-step
 
 #. ``text2bioc`` combines text into a BioC XML file.
 #. ``normalize`` removes noisy text such as ``[**Patterns**]``.
-#. ``section_split`` splits the report into sections based on titles.
+#. ``section_split`` splits the report into sections based on titles at ``patterns/section_titles.txt``
 #. ``ssplit`` splits text into sentences.
-#. ``dner`` detects UMLS concepts using MetaMap.
+#. ``dner_mm`` detects UMLS concepts using MetaMap.
+#. ``dner_chexpert`` detects concepts using the CheXpert vocabularies at ``negbio/chexpert/phrases``.
 #. ``parse`` parses sentence using the `Bllip parser <https://github.com/BLLIP/bllip-parser>`_.
 #. ``ptb2ud`` converts the parse tree to universal dependencies using `Stanford converter <https://github.com/dmcc/PyStanfordDependencies>`_.
 #. ``neg`` detects negative and uncertain findings.
+#. ``cleanup`` removes intermediate information.
 
 
 Customize patterns
@@ -45,3 +48,8 @@ Currently, we only support ``<`` and ``>`` operations.
 A detailed grammar specification (using PLY, Python Lex-Yacc) can be found in ``ngrex/parser.py``.
 
 
+Customize CheXpert phrases
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+By default, the program uses the phrases in the ``negbio/chexpert/phrases`` folder.
+However, you are free to add new phrases.

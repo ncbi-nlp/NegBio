@@ -49,7 +49,7 @@ Description :
 from ply import lex
 from ply import yacc
 
-from ngrex import pattern
+from negbio.ngrex import pattern
 
 
 t_ignore = ' \t\r'
