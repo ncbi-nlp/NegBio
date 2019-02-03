@@ -1,8 +1,6 @@
 """Define report loader class."""
 import re
-import bioc
-import pandas as pd
-
+import string
 from negbio.pipeline.section_split import split_document
 
 
@@ -10,8 +8,10 @@ class NegBioLoader(object):
     """Report impression loader."""
     def __init__(self, extract_impression=False):
         self.extract_impression = extract_impression
-        self.punctuation_spacer = str.maketrans({key: "{} ".format(key)
-                                                 for key in ".,"})
+        # self.punctuation_spacer = string.maketrans({key: "{} ".format(key)
+        #                                            for key in ".,"})
+        # self.stop_spacer = string.maketrans('.', '. ')
+        # self.comma_spacer = string.maketrans(',', ', ')
 
     def clean_doc(self, document):
         """Load and clean the reports."""
@@ -23,6 +23,11 @@ class NegBioLoader(object):
             self.extract_impression_from_passages(document)
 
         return document
+
+    def _maketrans(self, s):
+        s = s.replace(',', ', ')
+        s = s.replace('.', '. ')
+        return s
 
     def extract_impression_from_passages(self, document):
         """Extract the Impression section from a Bioc Document."""
@@ -50,23 +55,8 @@ class NegBioLoader(object):
         # Clean double periods
         clean_report = corrected_report.replace("..", ".")
         # Insert space after commas and periods.
-        clean_report = clean_report.translate(self.punctuation_spacer)
+        clean_report = self._maketrans(clean_report)
         # Convert any multi white spaces to single white spaces.
         clean_report = ' '.join(clean_report.split())
 
         return clean_report
-
-
-
-class NegBioLoader(Loader):
-    """Report impression loader."""
-
-    def __init__(self, extract_impression=False):
-        super(NegBioLoader, self).__init__(None, extract_impression)
-        self.extract_impression = extract_impression
-        self.punctuation_spacer = str.maketrans({key: key + ' ' for key in ".,"})
-
-    def load(self):
-        raise NotImplementedError
-
-

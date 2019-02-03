@@ -82,7 +82,8 @@ class Ptb2DepConverter(object):
         """
         dependency_graph = self.__sd.convert_tree(parse_tree,
                                                   representation=self.representation,
-                                                  universal=self.universal)
+                                                  universal=self.universal,
+                                                  add_lemmas=True)
         return dependency_graph
 
 
@@ -106,12 +107,12 @@ class NegBioPtb2DepConverter(Ptb2DepConverter):
                 except:
                     logging.exception("Cannot process sentence %d in %s", sentence.offset, document.id)
 
-                for ann in sentence.annotations:
-                    text = ann.text
-                    pos = ann.infons['tag']
-                    pos = self.lemmatizer.map_tag(pos)
-                    lemma = self.lemmatizer.lemmatize(word=text, pos=pos)
-                    ann.infons['lemma'] = lemma.lower()
+                # for ann in sentence.annotations:
+                #     text = ann.text
+                #     pos = ann.infons['tag']
+                #     pos = self.lemmatizer.map_tag(pos)
+                #     lemma = self.lemmatizer.lemmatize(word=text, pos=pos)
+                #     ann.infons['lemma'] = lemma.lower()
         return document
 
 
@@ -160,6 +161,7 @@ def convert_dg(dependency_graph, text, offset, ann_index=0, rel_index=0):
         ann.id = 'T{}'.format(ann_index)
         ann.text = node_form
         ann.infons['tag'] = node.pos
+        ann.infons['lemma'] = node.lemma.lower()
 
         start = index
 

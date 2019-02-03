@@ -35,7 +35,7 @@ import bioc
 import tqdm
 from pathlib2 import Path
 
-from negbio.chexpert.stages.clean_report import clean
+from negbio.chexpert.stages.load import NegBioLoader
 from negbio.cli_utils import parse_args
 from negbio.pipeline import text2bioc, negdetect
 from negbio.pipeline.parse import NegBioParser
@@ -46,9 +46,10 @@ from negbio.chexpert.stages.extract import NegBioExtractor
 from negbio.chexpert.stages.aggregate import NegBioAggregator
 
 
-def pipeline(collection, ssplitter, extractor, parser, ptb2dep, neg_detector, aggregator, verbose=False):
+def pipeline(collection, loader, ssplitter, extractor, parser, ptb2dep, neg_detector, aggregator, verbose=False):
     """
     Args:
+        loader (NegBioLoader)
         ssplitter (NegBioSSplitter)
         parser (NegBioParser)
         extractor (NegBioExtractor)
@@ -56,12 +57,14 @@ def pipeline(collection, ssplitter, extractor, parser, ptb2dep, neg_detector, ag
         neg_detector (ModifiedDetector)
         aggregator (NegBioAggregator)
     """
-    for document in collection.documents:
-        for passage in document.passages:
-            passage.text = clean(passage.text)
-        ssplitter.split_doc(document)
-
+    # for document in collection.documents:
+    #
+    #     for passage in document.passages:
+    #         passage.text = clean(passage.text)
+    #     ssplitter.split_doc(document)
     for document in tqdm.tqdm(collection.documents, disable=not verbose):
+        document = loader.clean_doc(document)
+        document = ssplitter.split_doc(document)
         document = extractor.extract_doc(document)
         document = parser.parse_doc(document)
         document = ptb2dep.convert_doc(document)
@@ -83,6 +86,7 @@ if __name__ == '__main__':
     parser = NegBioParser(model_dir=argv['--bllip-model'])
 
     # chexpert
+    loader = NegBioLoader()
     extractor = NegBioExtractor(Path(argv['--mention_phrases_dir']),
                                 Path(argv['--unmention_phrases_dir']),
                                 verbose=argv['--verbose'])
@@ -99,7 +103,7 @@ if __name__ == '__main__':
     else:
         raise KeyError
 
-    pipeline(collection, ssplitter, extractor, parser, ptb2dep, neg_detector, aggregator,
+    pipeline(collection, loader, ssplitter, extractor, parser, ptb2dep, neg_detector, aggregator,
              verbose=argv['--verbose'])
 
     with open(os.path.expanduser(argv['--output']), 'w') as fp:
