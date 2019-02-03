@@ -102,10 +102,8 @@ def run_metamap(document, mm, cuis=None):
             sents.append(remove_newline(sentence_map[k][1].text))
 
         concepts, error = mm.extract_concepts(sents, ids)
-        print('Done')
         if error is None:
             for concept in concepts:
-                # print(concept)
                 concept_index = adapt_concept_index(concept.index)
                 try:
                     if cuis is not None and concept.cui not in cuis:

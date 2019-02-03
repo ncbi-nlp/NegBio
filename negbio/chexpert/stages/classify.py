@@ -32,13 +32,11 @@ class ModifiedDetector(neg_detector.Detector):
             (str, MatcherObj, (begin, end)): negation or uncertainty,
             matcher, matched annotation
         """
-        logger = logging.getLogger(__name__)
-
         try:
             g = semgraph.load(sentence)
             propagator.propagate(g)
         except Exception:
-            logger.exception('Cannot parse dependency graph [offset=%s]', sentence.offset)
+            logging.exception('Cannot parse dependency graph [offset=%s]', sentence.offset)
             raise
         else:
             for loc in locs:

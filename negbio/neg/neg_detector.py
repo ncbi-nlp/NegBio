@@ -30,14 +30,11 @@ class Detector(object):
         Yields:
             (str, MatcherObj, (begin, end)): negation or uncertainty, matcher, matched annotation
         """
-        logger = logging.getLogger(__name__)
-
         try:
-            # logger.debug('ann len: %s', len(sentence.annotations))
             g = semgraph.load(sentence)
             propagator.propagate(g)
         except:
-            logger.exception('Cannot parse dependency graph [offset={}]'.format(sentence.offset))
+            logging.exception('Cannot parse dependency graph [offset={}]'.format(sentence.offset))
             raise
         else:
             if self.sentence_rule and is_neg_graph1(g):

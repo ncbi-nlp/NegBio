@@ -28,51 +28,59 @@ Options:
                                                 sentence breaks.
     --verbose                                   Print more information about progress.
 """
+from __future__ import print_function
 import os
 
 import bioc
 import tqdm
 from pathlib2 import Path
 
+from negbio.chexpert.stages.clean_report import clean
 from negbio.cli_utils import parse_args
-from negbio.pipeline import parse, ssplit, ptb2ud, text2bioc, negdetect
+from negbio.pipeline import text2bioc, negdetect
+from negbio.pipeline.parse import NegBioParser
+from negbio.pipeline.ssplit import NegBioSSplitter
+from negbio.pipeline.ptb2ud import NegBioPtb2DepConverter, Lemmatizer
 from negbio.chexpert.stages.classify import ModifiedDetector, CATEGORIES
 from negbio.chexpert.stages.extract import NegBioExtractor
 from negbio.chexpert.stages.aggregate import NegBioAggregator
 
 
-def pipeline(collection, extractor, splitter, parser, ptb2dep, lemmatizer, neg_detector, aggregator, verbose=False):
+def pipeline(collection, ssplitter, extractor, parser, ptb2dep, neg_detector, aggregator, verbose=False):
     """
     Args:
-        extractor (Extractor):
-        neg_detector (ModifiedDetector):
-        aggregator (NegBioAggregator):
+        ssplitter (NegBioSSplitter)
+        parser (NegBioParser)
+        extractor (NegBioExtractor)
+        ptb2dep (NegBioPtb2DepConverter)
+        neg_detector (ModifiedDetector)
+        aggregator (NegBioAggregator)
     """
     for document in collection.documents:
-        ssplit.ssplit(document, splitter)
-
-    extractor.extract(collection)
+        for passage in document.passages:
+            passage.text = clean(passage.text)
+        ssplitter.split_doc(document)
 
     for document in tqdm.tqdm(collection.documents, disable=not verbose):
-        document = parse.parse(document, parser)
-        document = ptb2ud.convert(document, ptb2dep, lemmatizer)
+        document = extractor.extract_doc(document)
+        document = parser.parse_doc(document)
+        document = ptb2dep.convert_doc(document)
         document = negdetect.detect(document, neg_detector)
         document = aggregator.aggregate_doc(document)
         # remove sentence
         for passage in document.passages:
             del passage.sentences[:]
 
-    aggregator.aggregate(collection)
-
     return collection
 
 
 if __name__ == '__main__':
     argv = parse_args(__doc__, version='negbio version 2')
-    splitter = ssplit.NltkSSplitter(newline=argv['--newline_is_sentence_break'])
-    parser = parse.Bllip(model_dir=argv['--bllip-model'])
-    ptb2dep = ptb2ud.Ptb2DepConverter(universal=True)
-    lemmatizer = ptb2ud.Lemmatizer()
+    print(argv)
+
+    ptb2dep = NegBioPtb2DepConverter(Lemmatizer(), universal=True)
+    ssplitter = NegBioSSplitter(newline=argv['--newline_is_sentence_break'])
+    parser = NegBioParser(model_dir=argv['--bllip-model'])
 
     # chexpert
     extractor = NegBioExtractor(Path(argv['--mention_phrases_dir']),
@@ -91,7 +99,7 @@ if __name__ == '__main__':
     else:
         raise KeyError
 
-    pipeline(collection, extractor, splitter, parser, ptb2dep, lemmatizer, neg_detector, aggregator,
+    pipeline(collection, ssplitter, extractor, parser, ptb2dep, neg_detector, aggregator,
              verbose=argv['--verbose'])
 
     with open(os.path.expanduser(argv['--output']), 'w') as fp:

@@ -1,6 +1,6 @@
 """
 Detect negative and uncertain findings from SOURCE and output to DEST
-Example: python negbio/main_text.py --metamap=/opt/public_mm/bin/metamap16 --out=examples/test.neg.xml examples/1.txt examples/2.txt
+Example: python negbio/main_mm.py --metamap=/opt/public_mm/bin/metamap16 --output=examples/test.neg.xml examples/1.txt examples/2.txt
 
 Usage:
     main_text text [options] --metamap=BINARY --output=DEST SOURCES ...
@@ -18,7 +18,7 @@ Options:
                                     characters should be used to determine sentence breaks.
     --verbose                       Print more information about progress.
 """
-
+from __future__ import print_function
 import logging
 import sys
 import os
@@ -26,19 +26,33 @@ import bioc
 import docopt
 
 import pymetamap
-from negbio.pipeline import parse, ssplit, ptb2ud, negdetect, text2bioc, dner_mm
+from negbio.pipeline import negdetect, text2bioc, dner_mm
 from negbio.negbio_dner_matamap import read_cuis
+from negbio.pipeline.parse import NegBioParser
+from negbio.pipeline.ssplit import NegBioSSplitter
+from negbio.pipeline.ptb2ud import NegBioPtb2DepConverter, Lemmatizer
 
 
-def pipeline(collection, metamap, splitter, parser, ptb2dep, lemmatizer, neg_detector, cuis):
+def pipeline(collection, metamap, splitter, parser, ptb2dep, neg_detector, cuis):
+    """
+
+    Args:
+        splitter (NegBioSSplitter):
+        parser (NegBioParser)
+        ptb2dep (NegBioPtb2DepConverter)
+        neg_detector (Detector):
+
+    Returns:
+
+    """
     for document in collection.documents:
-        ssplit.ssplit(document, splitter)
+        splitter.split_doc(document)
 
     dner_mm.run_metamap_col(collection, metamap, cuis)
 
     for document in collection.documents:
-        document = parse.parse(document, parser)
-        document = ptb2ud.convert(document, ptb2dep, lemmatizer)
+        document = parser.parse_doc(document)
+        document = ptb2dep.convert_doc(document)
         document = negdetect.detect(document, neg_detector)
         # remove sentence
         for passage in document.passages:
@@ -51,10 +65,10 @@ def main(argv):
     argv = docopt.docopt(__doc__, argv=argv)
     print(argv)
 
-    splitter = ssplit.NltkSSplitter(newline=argv['--newline_is_sentence_break'])
-    parser = parse.Bllip(model_dir=argv['--bllip-model'])
-    ptb2dep = ptb2ud.Ptb2DepConverter(universal=True)
-    lemmatizer = ptb2ud.Lemmatizer()
+    ptb2dep = NegBioPtb2DepConverter(Lemmatizer(), universal=True)
+    splitter = NegBioSSplitter(newline=argv['--newline_is_sentence_break'])
+    parser = NegBioParser(model_dir=argv['--bllip-model'])
+
     mm = pymetamap.MetaMap.get_instance(argv['--metamap'])
     neg_detector = negdetect.Detector(argv['--neg-patterns'], argv['--uncertainty-patterns'])
 
@@ -71,7 +85,7 @@ def main(argv):
     else:
         raise KeyError
 
-    pipeline(collection, mm, splitter, parser, ptb2dep, lemmatizer, neg_detector, cuis)
+    pipeline(collection, mm, splitter, parser, ptb2dep, neg_detector, cuis)
 
     with open(os.path.expanduser(argv['--output']), 'w') as fp:
         bioc.dump(collection, fp)

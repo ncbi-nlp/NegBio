@@ -9,8 +9,6 @@ def clean_sentences(document, sort_anns=False):
         document(BioCDocument): a document
         sort_anns(bool): sort ann by its location
     """
-    logger = logging.getLogger(__name__)
-
     try:
         for passage in document.passages:
             del passage.sentences[:]
@@ -20,6 +18,6 @@ def clean_sentences(document, sort_anns=False):
                     ann.id = str(id)
                     id += 1
     except:
-        logger.exception("Cannot process %s", document.id)
+        logging.exception("Cannot process %s", document.id)
     return document
 

@@ -46,20 +46,18 @@ def propagate(G):
                     if edge_dep == 'neg':
                         edges.append(Edge(p, grandchild, edge_dep))
             # propagate cop conjunction
-            try:
-                if d['dependency'].startswith('conj') \
-                        and G.node[p]['tag'].startswith('N') \
-                        and G.node[c]['tag'].startswith('N'):
-                    for child in G.successors(p):
-                        edge_dep = G[p][child]['dependency']
-                        if edge_dep in ('aux', 'cop', 'neg', 'amod'):
-                            edges.append(Edge(c, child, edge_dep))
-                        if edge_dep in ('dep', 'compound') and G.node[child]['lemma'] == 'no':
-                            edges.append(Edge(c, child, edge_dep))
-                        if edge_dep == 'case' and G.node[child]['lemma'] == 'without':
-                            edges.append(Edge(c, child, edge_dep))
-            except:
-                print(type(d), d)
+            if d['dependency'].startswith('conj') \
+                    and G.node[p]['tag'].startswith('N') \
+                    and G.node[c]['tag'].startswith('N'):
+                for child in G.successors(p):
+                    edge_dep = G[p][child]['dependency']
+                    if edge_dep in ('aux', 'cop', 'neg', 'amod'):
+                        edges.append(Edge(c, child, edge_dep))
+                    if edge_dep in ('dep', 'compound') and G.node[child]['lemma'] == 'no':
+                        edges.append(Edge(c, child, edge_dep))
+                    if edge_dep == 'case' and G.node[child]['lemma'] == 'without':
+                        edges.append(Edge(c, child, edge_dep))
+
             # propagate area/amount >of XXX
             if d['dependency'] == 'nmod:of' and G.node[p]['lemma'] in ('area', 'amount'):
                 for grandpa in G.predecessors(p):

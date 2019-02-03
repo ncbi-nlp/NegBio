@@ -64,8 +64,6 @@ def detect(document, detector):
         document(BioCDocument):
         detector(Detector): detector. Define customized patterns in the detector
     """
-    logger = logging.getLogger(__name__)
-
     try:
 
         for passage in document.passages:
@@ -89,5 +87,5 @@ def detect(document, detector):
         # _extend(document, Detector.NEGATION)
         # _extend(document, Detector.UNCERTAINTY)
     except:
-        logger.exception("Cannot process %s", document.id)
+        logging.exception("Cannot process %s", document.id)
     return document

@@ -50,22 +50,22 @@ class NltkSSplitter(object):
         return 'NLTK SSplitter'
 
 
-def ssplit(document, splitter):
-    """
-    Split text into sentences with offsets.
+class NegBioSSplitter(NltkSSplitter):
+    def split_doc(self, document):
+        """
+        Split text into sentences with offsets.
 
-    Args:
-        splitter(Splitter): Sentence splitter
-        document(BioCDocument): one document
+        Args:v
+            document(BioCDocument): one document
 
-    Returns:
-        BioCDocument
-    """
-    for passage in document.passages:
-        for text, offset in splitter.split(passage.text):
-            sentence = bioc.BioCSentence()
-            sentence.offset = offset + passage.offset
-            sentence.text = text
-            passage.add_sentence(sentence)
-        # passage.text = None
-    return document
+        Returns:
+            BioCDocument
+        """
+        for passage in document.passages:
+            for text, offset in self.split(passage.text):
+                sentence = bioc.BioCSentence()
+                sentence.offset = offset + passage.offset
+                sentence.text = text
+                passage.add_sentence(sentence)
+            # passage.text = None
+        return document

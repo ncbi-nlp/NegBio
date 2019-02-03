@@ -8,7 +8,7 @@ from bllipparser import ModelFetcher
 from bllipparser import RerankingParser
 
 
-class Bllip:
+class Bllip(object):
     def __init__(self, model_dir=None):
         if model_dir is None:
             logging.debug("downloading GENIA+PubMed model if necessary ...")
@@ -37,20 +37,23 @@ class Bllip:
             raise ValueError('Cannot parse sentence: %s' % s)
 
 
-def parse(document, parser):
-    """
-    Parse sentences in BioC format when sentence_filter returns true
+class NegBioParser(Bllip):
+    def parse_doc(self, document):
+        """
+        Parse sentences in BioC format
 
-    Args:
-        parser(Bllip)
-        document(BioCDocument): one document
-    """
-    for passage in document.passages:
-        for sentence in passage.sentences:
-            try:
-                text = sentence.text
-                tree = parser.parse(text)
-                sentence.infons['parse tree'] = str(tree)
-            except:
-                logging.exception('Cannot parse sentence: {}'.format(sentence.offset))
-    return document
+        Args:
+            document(BioCDocument): one document
+
+        Returns:
+            BioCDocument
+        """
+        for passage in document.passages:
+            for sentence in passage.sentences:
+                try:
+                    text = sentence.text
+                    tree = self.parse(text)
+                    sentence.infons['parse tree'] = str(tree)
+                except:
+                    logging.exception('Cannot parse sentence: {}'.format(sentence.offset))
+        return document

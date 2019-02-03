@@ -141,6 +141,22 @@ class Extractor(object):
 
 
 class NegBioExtractor(Extractor):
+    def extract_doc(self, document):
+        annotation_index = itertools.count()
+        for passage in document.passages:
+            for sentence in passage.sentences:
+                obs_phrases = self.observation2mention_phrases.items()
+                for observation, phrases in obs_phrases:
+                    for phrase in phrases:
+                        matches = re.finditer(phrase, sentence.text)
+                        for match in matches:
+                            start, end = match.span(0)
+                            if self.overlaps_with_unmention(sentence, observation, start, end):
+                                continue
+                            self.add_match(passage, sentence, str(next(annotation_index)), phrase,
+                                           observation, start, end)
+        return document
+
     def extract_all(self, collection):
         """Extract the observations in each report."""
         annotation_index = itertools.count()
