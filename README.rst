@@ -78,8 +78,7 @@ If you want to use the CheXpert method, run one of the following lines
 
 .. code-block:: bash
 
-   $ python negbio/main_chexpert.py text --output=examples \
-        examples/00000086.txt examples/00019248.txt
+   $ python negbio/main_chexpert.py text --output=examples examples/00000086.txt examples/00019248.txt
 
 .. code-block:: bash
 
@@ -94,17 +93,12 @@ path, such as **META_MAP_HOME/bin/metamap16**
 
 .. code-block:: bash
 
-   $ python negbio/main_mm.py text \
-        --metamap=<METAMAP_BINARY> \
-        --output=examples \
-        examples/00000086.txt examples/00019248.txt
+   $ python negbio/main_mm.py text --metamap=<METAMAP_BINARY> --output=examples examples/00000086.txt \
+        examples/00019248.txt
 
 .. code-block:: bash
 
-   $ python negbio/main_mm.py bioc \
-        --metamap=<METAMAP_BINARY> \
-        --output=examples \
-        examples/1.xml
+   $ python negbio/main_mm.py bioc --metamap=<METAMAP_BINARY> --output=examples examples/1.xml
 
 
 Documentation
