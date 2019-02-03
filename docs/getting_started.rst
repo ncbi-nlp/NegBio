@@ -12,7 +12,11 @@ Prerequisites
 
 *  python >2.4
 *  Linux
-*  MetaMap >2016
+
+Note: since v1.0, MetaMap is not required. You can use the CheXpert vocabularies (``negbio/``) instead.
+
+
+*  MetaMap >2016 (if you need
 
 MetaMap can be downloaded from `https://metamap.nlm.nih.gov/MainDownload.shtml <https://metamap.nlm.nih.gov/MainDownload.shtml>`_.
 Installation instructions can be found at `https://metamap.nlm.nih.gov/Installation.shtml <https://metamap.nlm.nih.gov/Installation.shtml>`_.
