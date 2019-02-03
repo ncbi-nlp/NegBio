@@ -17,7 +17,7 @@ import re
 from bioc import biocitertools
 from pathlib2 import Path
 
-from negbio.chexpert.extract import Extractor
+from negbio.chexpert.stages import Extractor
 from negbio.cli_utils import parse_args
 from negbio.pipeline.scan import scan_collection
 

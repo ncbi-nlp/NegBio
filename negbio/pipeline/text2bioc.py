@@ -1,6 +1,6 @@
 import logging
 import string
-from pathlib import Path
+from pathlib2 import Path
 
 import bioc
 

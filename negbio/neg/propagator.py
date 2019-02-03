@@ -90,7 +90,7 @@ def propagate(G):
         has_more_edges = False
         for e in edges:
             if not G.has_edge(e.gov, e.dep):
-                assert isinstance(e.data, str)
+                assert isinstance(e.data, str) or isinstance(e.data, unicode), type(e.data)
                 G.add_edge(e.gov, e.dep, dependency=e.data)
                 has_more_edges = True
 

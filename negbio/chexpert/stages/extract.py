@@ -3,7 +3,7 @@ import re
 import itertools
 from collections import defaultdict
 from tqdm import tqdm
-from negbio.chexpert.constants import *
+from negbio.chexpert.constants import CARDIOMEGALY, ENLARGED_CARDIOMEDIASTINUM, OBSERVATION
 
 import bioc
 

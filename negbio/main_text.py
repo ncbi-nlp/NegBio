@@ -15,6 +15,7 @@ Options:
                                     sentence break. False means to ignore newlines for the purpose of sentence
                                     splitting. This is appropriate for continuous text, when just the non-whitespace
                                     characters should be used to determine sentence breaks.
+    --verbose                       Print more information about progress.
 """
 
 import logging
