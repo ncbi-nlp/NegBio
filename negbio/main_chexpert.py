@@ -29,21 +29,22 @@ Options:
     --verbose                                   Print more information about progress.
 """
 from __future__ import print_function
+
 import os
 
 import bioc
 import tqdm
 from pathlib2 import Path
 
+from negbio.chexpert.stages.aggregate import NegBioAggregator
+from negbio.chexpert.stages.classify import ModifiedDetector, CATEGORIES
+from negbio.chexpert.stages.extract import NegBioExtractor
 from negbio.chexpert.stages.load import NegBioLoader
 from negbio.cli_utils import parse_args
 from negbio.pipeline import text2bioc, negdetect
 from negbio.pipeline.parse import NegBioParser
-from negbio.pipeline.ssplit import NegBioSSplitter
 from negbio.pipeline.ptb2ud import NegBioPtb2DepConverter
-from negbio.chexpert.stages.classify import ModifiedDetector, CATEGORIES
-from negbio.chexpert.stages.extract import NegBioExtractor
-from negbio.chexpert.stages.aggregate import NegBioAggregator
+from negbio.pipeline.ssplit import NegBioSSplitter
 
 
 def pipeline(collection, loader, ssplitter, extractor, parser, ptb2dep, neg_detector, aggregator, verbose=False):

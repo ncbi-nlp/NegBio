@@ -4,6 +4,22 @@ import re
 from negbio.pipeline.section_split import split_document
 
 
+def _maketrans(s):
+    s = s.replace(',', ', ')
+    s = s.replace('.', '. ')
+    return s
+
+
+def extract_impression_from_passages(document):
+    """Extract the Impression section from a Bioc Document."""
+    document.passages = [passage for passage in document.passages
+                         if passage.infons['title'] == "impression"]
+
+    assert len(document.passages) <= 1, "The document contains {} impression passages.".format(len(document.passages))
+
+    assert len(document.passages) >= 1, "The document contains no explicit impression passage."
+
+
 class NegBioLoader(object):
     """Report impression loader."""
     def __init__(self, extract_impression=False):
@@ -20,26 +36,9 @@ class NegBioLoader(object):
 
         if self.extract_impression:
             document = split_document(document)
-            self.extract_impression_from_passages(document)
+            extract_impression_from_passages(document)
 
         return document
-
-    def _maketrans(self, s):
-        s = s.replace(',', ', ')
-        s = s.replace('.', '. ')
-        return s
-
-    def extract_impression_from_passages(self, document):
-        """Extract the Impression section from a Bioc Document."""
-        document.passages = [passage for passage in document.passages
-                             if passage.infons['title'] == "impression"]
-
-        assert len(document.passages) <= 1,\
-            ("The document contains {} impression " +
-             "passages.").format(len(document.passages))
-
-        assert len(document.passages) >= 1,\
-            "The document contains no explicit impression passage."
 
     def clean(self, report):
         """Clean the report text."""
@@ -55,7 +54,7 @@ class NegBioLoader(object):
         # Clean double periods
         clean_report = corrected_report.replace("..", ".")
         # Insert space after commas and periods.
-        clean_report = self._maketrans(clean_report)
+        clean_report = _maketrans(clean_report)
         # Convert any multi white spaces to single white spaces.
         clean_report = ' '.join(clean_report.split())
 

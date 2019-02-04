@@ -113,6 +113,15 @@ class NegBioAggregator(Aggregator):
     LABEL_MAP = {UNCERTAIN: 'Uncertain', POSITIVE: 'Positive', NEGATIVE: 'Negative'}
 
     def aggregate_doc(self, document):
+        """
+        Aggregate mentions of observations from radiology reports.
+
+        Args:
+            document (BioCDocument):
+
+        Returns:
+            BioCDocument
+        """
         label_dict = {}
         no_finding = True
         for passage in document.passages:
@@ -128,8 +137,8 @@ class NegBioAggregator(Aggregator):
 
                 # If at least one non-support category has a uncertain or
                 # positive label, there was a finding
-                if (category != SUPPORT_DEVICES and
-                            label in [UNCERTAIN, POSITIVE]):
+                if category != SUPPORT_DEVICES \
+                        and label in [UNCERTAIN, POSITIVE]:
                     no_finding = False
 
                 # Don't add any labels for No Finding
@@ -137,9 +146,8 @@ class NegBioAggregator(Aggregator):
                     continue
 
                 # add exception for 'chf' and 'heart failure'
-                if ((label in [UNCERTAIN, POSITIVE]) and
-                        (annotation.text == 'chf' or
-                                 annotation.text == 'heart failure')):
+                if label in [UNCERTAIN, POSITIVE] \
+                        and (annotation.text == 'chf' or annotation.text == 'heart failure'):
                     if CARDIOMEGALY not in label_dict:
                         label_dict[CARDIOMEGALY] = [UNCERTAIN]
                     else:
@@ -153,13 +161,11 @@ class NegBioAggregator(Aggregator):
         if no_finding:
             label_dict[NO_FINDING] = [POSITIVE]
 
-        d = label_dict
-
         for category in self.categories:
             key = 'CheXpert/{}'.format(category)
             # There was a mention of the category.
-            if category in d:
-                label_list = d[category]
+            if category in label_dict:
+                label_list = label_dict[category]
                 # Only one label, no conflicts.
                 if len(label_list) == 1:
                     document.infons[key] = self.LABEL_MAP[label_list[0]]
