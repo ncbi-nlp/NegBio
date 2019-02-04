@@ -2,7 +2,7 @@
 Clean up sentences
 
 Usage:
-    negbio cleanup [options] --output=<directory> <file> ...
+    negbio_cli cleanup [options] --output=<directory> <file> ...
 
 Options:
     --suffix=<suffix>               Append an additional SUFFIX to file names. [default: .negbio.xml]

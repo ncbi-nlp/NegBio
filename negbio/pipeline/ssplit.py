@@ -2,11 +2,6 @@ import logging
 
 import bioc
 
-# try:
-#     import nltk
-# except:
-#     logging.exception('Cannot import nltk')
-
 
 class NltkSSplitter(object):
     """NLTK sentence splitter"""

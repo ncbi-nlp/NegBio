@@ -1,6 +1,6 @@
 """
 Usage:
-    negbio [--verbose] <command> [<args>...]
+    negbio_cli [--verbose] <command> [<args>...]
 
 Options:
     --verbose   Print more information about progress.
@@ -15,6 +15,8 @@ The most commonly used negbio commands are:
     dner_mm
     dner_chexpert
     neg
+    neg_chexpert
+    cleanup
 """
 from subprocess import call
 import logging
@@ -44,6 +46,8 @@ if __name__ == '__main__':
         exit(call(['python', 'negbio/negbio_dner_chexpert.py'] + argv))
     elif args['<command>'] == 'neg':
         exit(call(['python', 'negbio/negbio_neg.py'] + argv))
+    elif args['<command>'] == 'neg_chexpert':
+        exit(call(['python', 'negbio/negbio_neg_chexpert.py'] + argv))
     elif args['<command>'] == 'cleanup':
         exit(call(['python', 'negbio/negbio_clean.py'] + argv))
     elif args['<command>'] in ['help', None]:

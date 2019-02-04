@@ -2,7 +2,7 @@
 Detect concepts from vocab
 
 Usage:
-    negbio dner_chexpert [options] --output=<directory> <file> ...
+    negbio_cli dner_chexpert [options] --output=<directory> <file> ...
 
 Options:
     --suffix=<suffix>                       Append an additional SUFFIX to file names. [default: .chexpert.xml]

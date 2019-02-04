@@ -2,7 +2,7 @@
 Convert from parse tree to universal dependencies
 
 Usage:
-    negbio ptb2ud [options] --output=<directory> <file> ...
+    negbio_cli ptb2ud [options] --output=<directory> <file> ...
 
 Options:
     --output=<directory>    Specify the output directory.
@@ -10,12 +10,11 @@ Options:
     --verbose               Print more information about progress.
 """
 from negbio.cli_utils import parse_args
-from negbio.pipeline.ptb2ud import Ptb2DepConverter, Lemmatizer, convert
+from negbio.pipeline.ptb2ud import NegBioPtb2DepConverter
 from negbio.pipeline.scan import scan_document
 
 if __name__ == '__main__':
     argv = parse_args(__doc__)
-    ptb2dep = Ptb2DepConverter(universal=True)
-    lemmatizer = Lemmatizer()
+    ptb2dep = NegBioPtb2DepConverter(universal=True)
     scan_document(source=argv['<file>'], directory=argv['--output'], suffix=argv['--suffix'],
-                  fn=convert, non_sequences=[ptb2dep, lemmatizer])
+                  fn=NegBioPtb2DepConverter.convert_doc, non_sequences=[])

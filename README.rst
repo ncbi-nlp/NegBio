@@ -63,18 +63,23 @@ Install NegBio
 Prepare the dataset
 ~~~~~~~~~~~~~~~~~~~
 
-The inputs can be in either plain text or `BioC <http://bioc.sourceforge.net/>`_ format. If the reports are in plain
-text, each report needs to be in a single file. Some examples can be found in the ``examples`` folder.
+The inputs can be in either plain text or `BioC <http://bioc.sourceforge.net/>`_ format.
+If the reports are in plain text, each report needs to be in a single file.
+Some examples can be found in the ``examples`` folder.
 
 Run the script
 ~~~~~~~~~~~~~~
 
 There are two ways to run the pipeline.
 
-Using CheXpert algorithm
-________________________
+**NOTE**: If you want to process a lot of reports (e.g., > 1000), it is recommended to run the pipeline step-by-step.
+See `User guide <https://negbio.readthedocs.io/en/latest/user_guide.html>`_.
 
-If you want to use the CheXpert method, run one of the following lines
+
+Using the CheXpert algorithm
+____________________________
+
+If you want to use the `CheXpert <https://github.com/stanfordmlgroup/chexpert-labeler>`_ method, run one of the following lines
 
 .. code-block:: bash
 
@@ -119,6 +124,17 @@ If you're running the NegBio pipeline, please cite:
 *  Wang X, Peng Y, Lu L, Bagheri M, Lu Z, Summers R. `ChestX-ray8: Hospital-scale Chest X-ray database and benchmarks
    on weakly-supervised classification and localization of common thorax diseases <https://arxiv.org/abs/1705.02315>`_.
    *IEEE Conference on Computer Vision and Pattern Recognition (CVPR)*. 2017, 2097-2106.
+
+Acknowledgments
+===============
+
+This work was supported by the Intramural Research Programs of the National Institutes of Health, National Library of
+Medicine and Clinical Center.
+
+We are grateful to the authors of NegEx, MetaMap, Stanford CoreNLP, Bllip parser, and CheXpert labeler for making
+their software tools publicly available.
+
+We thank Dr. Alexis Allot for the helpful discussion.
 
 Disclaimer
 ==========

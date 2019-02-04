@@ -2,7 +2,7 @@
 Detect negation and uncertainty
 
 Usage:
-    negbio neg [options] --output=<directory> <file> ...
+    negbio_cli neg [options] --output=<directory> <file> ...
 
 Options:
     --neg-patterns=<file>           Specify negation rules [default: patterns/neg_patterns.txt]

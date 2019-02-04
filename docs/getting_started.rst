@@ -86,7 +86,7 @@ If you want to use the CheXpert method, run one of the following lines
 The script will
 
 1. [Optional] Combine ``examples/00000086.txt`` and ``examples/00019248.txt`` into one BioC XML file
-2. Detect concepts using CheXpert pre-defined vocabularies (by default using the list ``negbio\chexpert\phrases``
+2. Detect concepts using CheXpert pre-defined vocabularies (by default using the list ``negbio\chexpert\phrases``)
 3. Detect positive, negative and uncertain concepts using rules in  ``negbio\chexpert\patterns``
 4. Save the results in ``examples/test.neg.xml``
 
@@ -99,20 +99,22 @@ More options (e.g., setting the CUI list or rules) can be obtained by running
 Using MetaMap
 _____________
 
-If you want to use MetaMap, run the following command by replacing ``<METAMAP_BINARY>`` with the actual **ABSOLUTE**
+If you want to use MetaMap, run the following command by replacing ``<METAMAP_BIN>`` with the actual **ABSOLUTE**
 path, such as **META_MAP_HOME/bin/metamap16**
 
 .. code-block:: bash
 
+   $ export METAMAP_BIN=META_MAP_HOME/bin/metamap16
    $ python negbio/main_mm.py text \
-        --metamap=<METAMAP_BINARY> \
+        --metamap=$METAMAP_BIN \
         --output=examples/test.neg.xml \
         examples/00000086.txt examples/00019248.txt
 
 .. code-block:: bash
 
+   $ export METAMAP_BIN=META_MAP_HOME/bin/metamap16
    $ python negbio/main_mm.py bioc \
-        --metamap=<METAMAP_BINARY> \
+        --metamap=$METAMAP_BIN \
         --output=examples/test.neg.xml \
         examples/1.xml
 

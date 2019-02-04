@@ -2,7 +2,7 @@
 Convert text FILEs to the BioC output file
 
 Usage:
-    negbio text2bioc [options] --output=<file> <file> ...
+    negbio_cli text2bioc [options] --output=<file> <file> ...
 
 Options:
     --output=<file>     Specify the output file name.

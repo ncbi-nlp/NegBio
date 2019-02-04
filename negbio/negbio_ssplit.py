@@ -2,7 +2,7 @@
 Split text into sentences
 
 Usage:
-    negbio ssplit [options] --output=<directory> <file> ...
+    negbio_cli ssplit [options] --output=<directory> <file> ...
 
 Options:
     --newline_is_sentence_break     Whether to treat newlines as sentence breaks. True means that a newline is always a
@@ -14,11 +14,11 @@ Options:
     --verbose                       Print more information about progress.
 """
 from negbio.pipeline.scan import scan_document
-from negbio.pipeline.ssplit import NltkSSplitter, ssplit
+from negbio.pipeline.ssplit import NegBioSSplitter
 from negbio.cli_utils import parse_args
 
 if __name__ == '__main__':
     argv = parse_args(__doc__)
-    splitter = NltkSSplitter(newline=argv['--newline_is_sentence_break'])
+    splitter = NegBioSSplitter(newline=argv['--newline_is_sentence_break'])
     scan_document(source=argv['<file>'], directory=argv['--output'], suffix=argv['--suffix'],
-                  fn=ssplit, non_sequences=[splitter])
+                  fn=splitter.split_doc, non_sequences=[])

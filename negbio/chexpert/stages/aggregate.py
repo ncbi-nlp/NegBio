@@ -55,7 +55,6 @@ class Aggregator(object):
 
         return vec
 
-
     def aggregate(self, collection):
         labels = []
         documents = collection.documents
