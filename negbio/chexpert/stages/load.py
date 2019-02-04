@@ -1,6 +1,6 @@
 """Define report loader class."""
 import re
-import string
+
 from negbio.pipeline.section_split import split_document
 
 

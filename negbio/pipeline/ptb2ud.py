@@ -88,13 +88,12 @@ class Ptb2DepConverter(object):
 
 
 class NegBioPtb2DepConverter(Ptb2DepConverter):
-    def __init__(self, lemmatizer, representation='CCprocessed', universal=False):
+    def __init__(self, representation='CCprocessed', universal=False):
         """
         Args:
             lemmatizer (Lemmatizer)
         """
         super(NegBioPtb2DepConverter, self).__init__(representation, universal)
-        self.lemmatizer = lemmatizer
 
     def convert_doc(self, document):
         for passage in document.passages:
