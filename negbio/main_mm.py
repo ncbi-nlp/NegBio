@@ -7,8 +7,8 @@ Usage:
     main_text bioc [options] --metamap=BINARY --output=DEST SOURCE ...
 
 Options:
-    --neg-patterns=FILE             negation rules [default: patterns/neg_patterns.txt]
-    --uncertainty-patterns=FILE     uncertainty rules [default: patterns/uncertainty_patterns.txt]
+    --neg-patterns=FILE             negation rules [default: negbio/patterns/neg_patterns.txt]
+    --uncertainty-patterns=FILE     uncertainty rules [default: negbio/patterns/uncertainty_patterns.txt]
     --bllip-model=MODEL_DIR         Bllip parser model directory
     --split-document                Split document into passages based on section titles such as "Finding", "Impression"
     --cuis=FILE                     CUI list. To keep all CUIs, set it to None [default: examples/cuis-cvpr2017.txt]
