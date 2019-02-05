@@ -67,8 +67,8 @@ If you want to use the CheXpert method, run one of the following lines
 The script will
 
 1. [Optional] Combine ``examples/00000086.txt`` and ``examples/00019248.txt`` into one BioC XML file
-2. Detect concepts using CheXpert pre-defined vocabularies (by default using the list ``negbio\chexpert\phrases``)
-3. Detect positive, negative and uncertain concepts using rules in  ``negbio\chexpert\patterns``
+2. Detect concepts using CheXpert pre-defined vocabularies (by default using the list ``negbio/chexpert/phrases``)
+3. Detect positive, negative and uncertain concepts using rules in  ``negbio/chexpert/patterns``
 4. Save the results in ``examples/test.neg.xml``
 
 More options (e.g., setting the CUI list or rules) can be obtained by running
@@ -97,8 +97,8 @@ path, such as **META_MAP_HOME/bin/metamap16**
 The script will
 
 1. [Optional] Combine ``examples/00000086.txt`` and ``examples/00019248.txt`` into one BioC XML file
-2. Detect UMLS concepts (CUIs) using MetaMap (by default using the CUI list ``examples\cuis-cvpr2017.txt``
-3. Detect negative and uncertain CUIs using rules in  ``patterns``
+2. Detect UMLS concepts (CUIs) using MetaMap (by default using the CUI list ``examples/cuis-cvpr2017.txt``
+3. Detect negative and uncertain CUIs using rules in  ``negbio/patterns``
 4. Save the results in ``examples/test.neg.xml``
 
 More options (e.g., setting the CUI list or rules) can be obtained by running
