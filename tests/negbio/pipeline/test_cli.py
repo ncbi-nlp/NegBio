@@ -2,11 +2,11 @@ import logging
 
 from docopt import docopt
 
-from negbio import negbio_cli, negbio_text2bioc, negbio_ssplit, negbio_section_split, negbio_parse
+from negbio import negbio_pipeline, negbio_text2bioc, negbio_ssplit, negbio_section_split, negbio_parse
 
 
 def test_negbio():
-    doc = negbio_cli.__doc__
+    doc = negbio_pipeline.__doc__
     args = docopt(doc, 'text2bioc a b c'.split())
     assert args['<command>'] == 'text2bioc'
     assert args['<args>'] == ['a', 'b', 'c']

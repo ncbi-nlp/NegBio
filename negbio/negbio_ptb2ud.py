@@ -2,7 +2,7 @@
 Convert from parse tree to universal dependencies
 
 Usage:
-    negbio_cli ptb2ud [options] --output=<directory> <file> ...
+    negbio_pipeline ptb2ud [options] --output=<directory> <file> ...
 
 Options:
     --output=<directory>    Specify the output directory.

@@ -26,6 +26,8 @@ import bioc
 import docopt
 
 import pymetamap
+
+from negbio.cli_utils import parse_args
 from negbio.pipeline import negdetect, text2bioc, dner_mm
 from negbio.negbio_dner_matamap import read_cuis
 from negbio.pipeline.parse import NegBioParser
@@ -61,11 +63,11 @@ def pipeline(collection, metamap, splitter, parser, ptb2dep, neg_detector, cuis)
     return collection
 
 
-def main(argv):
-    argv = docopt.docopt(__doc__, argv=argv)
+def main():
+    argv = parse_args(__doc__, version='version 2')
     print(argv)
 
-    ptb2dep = NegBioPtb2DepConverter(Lemmatizer(), universal=True)
+    ptb2dep = NegBioPtb2DepConverter(universal=True)
     splitter = NegBioSSplitter(newline=argv['--newline_is_sentence_break'])
     parser = NegBioParser(model_dir=argv['--bllip-model'])
 
@@ -92,5 +94,4 @@ def main(argv):
 
 
 if __name__ == '__main__':
-    logging.basicConfig(level=logging.INFO)
-    main(sys.argv[1:])
+    main()

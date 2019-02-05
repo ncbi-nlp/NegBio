@@ -78,8 +78,8 @@ def pipeline(collection, loader, ssplitter, extractor, parser, ptb2dep, neg_dete
     return collection
 
 
-if __name__ == '__main__':
-    argv = parse_args(__doc__, version='negbio version 2')
+def main():
+    argv = parse_args(__doc__, version='version 2')
     print(argv)
 
     ptb2dep = NegBioPtb2DepConverter(universal=True)
@@ -109,3 +109,7 @@ if __name__ == '__main__':
 
     with open(os.path.expanduser(argv['--output']), 'w') as fp:
         bioc.dump(collection, fp)
+
+
+if __name__ == '__main__':
+    main()

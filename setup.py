@@ -1,26 +1,60 @@
 # Always prefer setuptools over distutils
 # To use a consistent encoding
+from __future__ import print_function
 from codecs import open
-from os import path
+import os
+from subprocess import check_call
 
 from setuptools import setup, find_packages
+from setuptools.command.develop import develop
+from setuptools.command.egg_info import egg_info
+from setuptools.command.install import install
 
-
-here = path.abspath(path.dirname((__file__)))
+here = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
 
 
 def readme():
     # Get the long description from the README file
-    with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
+    with open(os.path.join(here, 'README.rst'), encoding='utf-8') as f:
         return f.read()
 
 
-def requirements():
-    reqs = []
-    with open(path.join(here, 'requirements.txt'), encoding='utf-8') as f:
-        for line in f:
-            reqs.append(line.strip())
-    print(reqs)
+def read_requirements():
+    """parses requirements from requirements.txt"""
+    reqs_path = os.path.join(here, 'requirements.txt')
+    with open(reqs_path, encoding='utf8') as f:
+        reqs = [line.strip() for line in f if not line.strip().startswith('#')]
+
+    names = []
+    links = []
+    for req in reqs:
+        if '://' in req:
+            links.append(req)
+        else:
+            names.append(req)
+    return {'install_requires': names, 'dependency_links': links}
+
+
+def custom_command():
+    check_call("python -m nltk.downloader universal_tagset punkt wordnet".split())
+
+
+class CustomInstallCommand(install):
+    def run(self):
+        install.run(self)
+        custom_command()
+
+
+class CustomDevelopCommand(develop):
+    def run(self):
+        develop.run(self)
+        custom_command()
+
+
+class CustomEggInfoCommand(egg_info):
+    def run(self):
+        egg_info.run(self)
+        custom_command()
 
 
 setup(
@@ -29,7 +63,7 @@ setup(
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # https://packaging.python.org/en/latest/single_source_version.html
-    version='0.9.dev1',
+    version='0.9.2',
 
     description='NegBio: a tool for negation and uncertainty detection',
     long_description=readme(),
@@ -68,5 +102,17 @@ setup(
     packages=find_packages(exclude=["tests.*", "tests", "backup", "docs"]),
     include_package_data=True,
 
-    install_requires=requirements()
+    cmdclass={
+        'install': CustomInstallCommand,
+        'develop': CustomDevelopCommand,
+        'egg_info': CustomEggInfoCommand
+    },
+
+    entry_points = {
+        'console_scripts': ['negbio_pipeline=negbio.negbio_pipeline:main',
+                            'main_chexpert=negbio.main_chexpert:main',
+                            'main_mm=negbio.main_mm:main'],
+    },
+
+    **read_requirements()
 )

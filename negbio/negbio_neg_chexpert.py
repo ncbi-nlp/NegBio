@@ -2,7 +2,7 @@
 Detect negation and uncertainty
 
 Usage:
-    negbio_cli neg_chexpert [options] --output=<directory> <file> ...
+    negbio_pipeline neg_chexpert [options] --output=<directory> <file> ...
 
 Options:
     --neg-patterns=FILE                         Negation rules [default: negbio/chexpert/patterns/negation.txt]

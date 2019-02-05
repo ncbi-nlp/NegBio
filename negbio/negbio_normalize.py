@@ -1,6 +1,6 @@
 """
 Usage:
-    negbio_cli normalize [options] --output=<directory> <file> ...
+    negbio_pipeline normalize [options] --output=<directory> <file> ...
 
 Options:
     --output=<directory>    Specify the output directory.

@@ -2,7 +2,7 @@
 Parse sentences
 
 Usage:
-    negbio_cli parse [options] --output=<directory> <file> ...
+    negbio_pipeline parse [options] --output=<directory> <file> ...
 
 Options:
     --model=<directory>     Bllip parser model directory.

@@ -1,6 +1,6 @@
 """
 Usage:
-    negbio_cli [--verbose] <command> [<args>...]
+    negbio_pipeline [--verbose] <command> [<args>...]
 
 Options:
     --verbose   Print more information about progress.
@@ -23,7 +23,8 @@ import logging
 import os
 from negbio.cli_utils import parse_args
 
-if __name__ == '__main__':
+
+def main():
     args = parse_args(__doc__, version='negbio version 2', options_first=True)
     logging.debug('CWD: %s', os.getcwd())
 
@@ -51,6 +52,10 @@ if __name__ == '__main__':
     elif args['<command>'] == 'cleanup':
         exit(call(['python', 'negbio/negbio_clean.py'] + argv))
     elif args['<command>'] in ['help', None]:
-        exit(call(['python', 'negbio/negbio_cli.py', '--help']))
+        exit(call(['python', 'negbio/negbio_pipeline.py', '--help']))
     else:
         exit("%r is not a negbio.py command. See 'negbio help'." % args['<command>'])
+
+
+if __name__ == '__main__':
+    main()

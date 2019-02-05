@@ -27,37 +27,20 @@ Get started
 Install NegBio
 ~~~~~~~~~~~~~~
 
-1. Download the source code from GitHub
+1. Installing from pip
 
-   .. code-block:: bash
+    .. code-block:: bash
+
+        $ pip install negbio
+
+2. Installing from source
+
+    .. code-block:: bash
 
       $ git clone https://github.com/ncbi-nlp/NegBio.git
-
-2. Change to the directory of ``NegBio``
-3. Install required packages.
-
-   If you use ``pip``,
-
-   .. code-block:: bash
-
-      $ pip install -r requirements.txt
-
-   If you use `Conda <https://conda.io>`_
-
-
-   .. code-block:: bash
-
-      $ conda env create -f environment2.7.yml
-
-
-4. Install NLTK data
-
-   .. code-block:: bash
-
-      $ python -m nltk.downloader universal_tagset punkt wordnet
-
-
-5. Add the code directory to ``PYTHONPATH``: ``export PYTHONPATH=.:$PYTHONPATH``
+      $ cd /path/to/negbio
+      $ python setup.py --user
+      $ export PATH=~/.local/bin:$PATH
 
 
 Prepare the dataset
@@ -83,11 +66,11 @@ If you want to use the `CheXpert <https://github.com/stanfordmlgroup/chexpert-la
 
 .. code-block:: bash
 
-   $ python negbio/main_chexpert.py text --output=examples examples/00000086.txt examples/00019248.txt
+   $ main_chexpert text --output=examples examples/00000086.txt examples/00019248.txt
 
 .. code-block:: bash
 
-   $ python negbio/main_chexpert.py bioc --output=examples examples/1.xml
+   $ main_chexpert bioc --output=examples examples/1.xml
 
 
 Using MetaMap
@@ -98,12 +81,12 @@ path, such as **META_MAP_HOME/bin/metamap16**
 
 .. code-block:: bash
 
-   $ python negbio/main_mm.py text --metamap=<METAMAP_BINARY> --output=examples examples/00000086.txt \
+   $ main_mm text --metamap=<METAMAP_BINARY> --output=examples examples/00000086.txt \
         examples/00019248.txt
 
 .. code-block:: bash
 
-   $ python negbio/main_mm.py bioc --metamap=<METAMAP_BINARY> --output=examples examples/1.xml
+   $ main_mm bioc --metamap=<METAMAP_BINARY> --output=examples examples/1.xml
 
 
 Documentation

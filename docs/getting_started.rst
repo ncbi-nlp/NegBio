@@ -19,40 +19,22 @@ If you want to use MetaMap, it can be downloaded from `https://metamap.nlm.nih.g
 Installation instructions can be found at `https://metamap.nlm.nih.gov/Installation.shtml <https://metamap.nlm.nih.gov/Installation.shtml>`_.
 Please make sure that both ``skrmedpostctl`` and ``wsdserverctl`` are started.
 
+Installing from pip
+~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: bash
+
+    $ pip install negbio
+
 Installing from source
 ~~~~~~~~~~~~~~~~~~~~~~
 
-1. Download the source code from GitHub
+.. code-block:: bash
 
-   .. code-block:: bash
-
-      $ git clone https://github.com/ncbi-nlp/NegBio.git
-
-2. Change to the directory of ``NegBio``
-3. Install required packages.
-
-   If you use ``pip``,
-
-   .. code-block:: bash
-
-      $ pip install -r requirements.txt
-
-   If you use `Conda <https://conda.io>`_
-
-
-   .. code-block:: bash
-
-      $ conda env create -f environment2.7.yml
-
-
-4. Install NLTK data
-
-   .. code-block:: bash
-
-      $ python -m nltk.downloader universal_tagset punkt wordnet
-
-
-5. Add the code directory to ``PYTHONPATH``: ``export PYTHONPATH=.:$PYTHONPATH``
+  $ git clone https://github.com/ncbi-nlp/NegBio.git
+  $ cd /path/to/negbio
+  $ python setup.py --user
+  $ export PATH=~/.local/bin:$PATH
 
 
 Using NegBio
@@ -76,12 +58,11 @@ If you want to use the CheXpert method, run one of the following lines
 
 .. code-block:: bash
 
-   $ python negbio/main_chexpert.py text --output=examples/test.neg.xml \
-        examples/00000086.txt examples/00019248.txt
+   $ main_chexpert text --output=examples/test.neg.xml examples/00000086.txt examples/00019248.txt
 
 .. code-block:: bash
 
-   $ python negbio/main_chexpert.py bioc --output=examples/test.neg.xml examples/1.xml
+   $ main_chexpert bioc --output=examples/test.neg.xml examples/1.xml
 
 The script will
 
@@ -94,7 +75,7 @@ More options (e.g., setting the CUI list or rules) can be obtained by running
 
 .. code-block:: bash
 
-   $ python negbio/main_chexpert.py --help
+   $ main_chexpert --help
 
 Using MetaMap
 _____________
@@ -105,18 +86,13 @@ path, such as **META_MAP_HOME/bin/metamap16**
 .. code-block:: bash
 
    $ export METAMAP_BIN=META_MAP_HOME/bin/metamap16
-   $ python negbio/main_mm.py text \
-        --metamap=$METAMAP_BIN \
-        --output=examples/test.neg.xml \
+   $ main_mm text --metamap=$METAMAP_BIN --output=examples/test.neg.xml \
         examples/00000086.txt examples/00019248.txt
 
 .. code-block:: bash
 
    $ export METAMAP_BIN=META_MAP_HOME/bin/metamap16
-   $ python negbio/main_mm.py bioc \
-        --metamap=$METAMAP_BIN \
-        --output=examples/test.neg.xml \
-        examples/1.xml
+   $ main_mm bioc --metamap=$METAMAP_BIN --output=examples/test.neg.xml examples/1.xml
 
 The script will
 
@@ -129,7 +105,7 @@ More options (e.g., setting the CUI list or rules) can be obtained by running
 
 .. code-block:: bash
 
-   $ python negbio/main_mm.py --help
+   $ main_mm --help
 
 
 Next Steps

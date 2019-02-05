@@ -38,13 +38,13 @@ You can skip this step if the reports are already in the `BioC <http://bioc.sour
 
    $ export BIOC_DIR=/path/to/bioc
    $ export TEXT_DIR=/path/to/text
-   $ python negbio/negbio_cli.py text2bioc --output=$BIOC_DIR/test.xml $TEXT_DIR/*.txt
+   $ negbio_pipeline text2bioc --output=$BIOC_DIR/test.xml $TEXT_DIR/*.txt
 
 Another most commonly used command is:
 
 .. code-block:: bash
 
-   $ find $TEXT_DIR -type f | python negbio/negbio_cli.py text2bioc --output=$BIOC_DIR
+   $ find $TEXT_DIR -type f | negbio_pipeline text2bioc --output=$BIOC_DIR
 
 2. Normalize reports
 --------------------
@@ -53,7 +53,7 @@ This step removes the noisy text such as ``[**Patterns**]`` in the MIMIC-III rep
 
 .. code-block:: bash
 
-   $ python negbio/negbio_cli.py normalize --output=$OUTPUT_DIR $INPUT_DIR/*.xml
+   $ negbio_pipeline normalize --output=$OUTPUT_DIR $INPUT_DIR/*.xml
 
 3. Split each report into sections
 -----------------------------------
@@ -64,7 +64,7 @@ You can specify customized section titles using the option ``--pattern=<file>``.
 
 .. code-block:: bash
 
-   $ python negbio/negbio_cli.py section_split --output=$OUTPUT_DIR $INPUT_DIR/*.xml
+   $ negbio_pipeline section_split --output=$OUTPUT_DIR $INPUT_DIR/*.xml
 
 
 4. Splits each report into sentences
@@ -75,7 +75,7 @@ This step splits the report into sentences using the NLTK splitter
 
 .. code-block:: bash
 
-   $ python negbio/negbio_cli.py ssplit --output=$OUTPUT_DIR $INPUT_DIR/*.xml
+   $ negbio_pipeline ssplit --output=$OUTPUT_DIR $INPUT_DIR/*.xml
 
 
 5. Named entity recognition
@@ -95,7 +95,7 @@ Therefore, it is better to specify the UMLS concepts of interest via ``--cuis=<f
 .. code-block:: bash
 
    $ export METAMAP_BIN=META_MAP_HOME/bin/metamap16
-   $ python negbio/negbio_cli.py dner_mm --metamap=$METAMAP_BIN --output=$OUTPUT_DIR $INPUT_DIR/*.xml
+   $ negbio_pipeline dner_mm --metamap=$METAMAP_BIN --output=$OUTPUT_DIR $INPUT_DIR/*.xml
 
 NegBio also integrates the CheXpert vocabularies to recognize the presence of 14 observations.
 All vocabularies can be found at ``negbio\chexpert\phrases``.
@@ -104,7 +104,7 @@ So far, NegBio does not support adding more types in the folder, but you can add
 
 .. code-block:: bash
 
-   $ python negbio/negbio_cli.py dner_chexpert --output=$OUTPUT_DIR $INPUT_DIR/*.xml
+   $ negbio_pipeline dner_chexpert --output=$OUTPUT_DIR $INPUT_DIR/*.xml
 
 
 In general, MetaMap is more comprehensive while CheXpert is more accurate on 14 types of findings.
@@ -118,7 +118,7 @@ This step parses sentence using the `Bllip parser <https://github.com/BLLIP/blli
 
 .. code-block:: bash
 
-   $ python negbio/negbio_cli.py parse --output=$OUTPUT_DIR $INPUT_DIR/*.xml
+   $ negbio_pipeline parse --output=$OUTPUT_DIR $INPUT_DIR/*.xml
 
 
 7. Convert the parse tree to UD
@@ -128,7 +128,7 @@ This step converts the parse tree to universal dependencies using `Stanford conv
 
 .. code-block:: bash
 
-   $ python negbio/negbio_cli.py ptb2ud --output=$OUTPUT_DIR $INPUT_DIR/*.xml
+   $ negbio_pipeline ptb2ud --output=$OUTPUT_DIR $INPUT_DIR/*.xml
 
 
 8. Detect negative and uncertain findings
@@ -144,7 +144,7 @@ A detailed grammar specification (using PLY, Python Lex-Yacc) can be found in ``
 
 .. code-block:: bash
 
-   $ python negbio/negbio_cli.py neg --output=$OUTPUT_DIR $INPUT_DIR/*.xml
+   $ negbio_pipeline neg --output=$OUTPUT_DIR $INPUT_DIR/*.xml
 
 NegBio also integrates the CheXpert algorithms.
 Different from the original NegBio, CheXpert utilizes a 3-phase pipeline consisting of pre-negation uncertainty,
@@ -157,7 +157,7 @@ Generally, the CheXpert contains more rules and is more accurate than the origin
 
 .. code-block:: bash
 
-   $ python negbio/negbio_cli.py neg_chexpert --output=$OUTPUT_DIR $INPUT_DIR/*.xml
+   $ negbio_pipeline neg_chexpert --output=$OUTPUT_DIR $INPUT_DIR/*.xml
 
 Similarly, you are free to create patterns via ``--neg-patterns=<file>``, ``--pre-uncertainty-patterns=<file>``, and
 ``--post-uncertainty-patterns=<file>``.
@@ -169,5 +169,5 @@ This step removes intermediate information (sentence annotations) from the BioC 
 
 .. code-block:: bash
 
-   $ python negbio/negbio_cli.py cleanup --output=$OUTPUT_DIR $INPUT_DIR/*.xml
+   $ negbio_pipeline cleanup --output=$OUTPUT_DIR $INPUT_DIR/*.xml
 
