@@ -3,6 +3,7 @@
 .pytest_cache/
 backup
 examples-local
+.DS_store
 
 ### Python template
 # Byte-compiled / optimized / DLL files

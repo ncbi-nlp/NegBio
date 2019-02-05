@@ -1,27 +1,9 @@
-"""
-Detect UMLS concept
-
-Usage:
-    dner_mm [--cuis=FILE] --metamap=BINARY --out=DIRECTORY SOURCE ...
-
-Options:
-    --metamap=BINARY    The MetaMap binary
-    --cuis=FILE         CUI list [default: None]
-"""
-from __future__ import print_function
-
+import collections
 import itertools
 import logging
 import re
-import sys
 
 import bioc
-import docopt
-
-import pymetamap
-from negbio.pipeline import scan
-import re
-import collections
 
 
 def remove_newline(s):
@@ -120,10 +102,8 @@ def run_metamap(document, mm, cuis=None):
             sents.append(remove_newline(sentence_map[k][1].text))
 
         concepts, error = mm.extract_concepts(sents, ids)
-        print('Done')
         if error is None:
             for concept in concepts:
-                # print(concept)
                 concept_index = adapt_concept_index(concept.index)
                 try:
                     if cuis is not None and concept.cui not in cuis:
@@ -148,32 +128,3 @@ def run_metamap(document, mm, cuis=None):
     except:
         logging.exception("Cannot process %s", document.id)
     return document
-
-
-def read_cuis(pathname):
-    cuis = set()
-    with open(pathname) as fp:
-        for line in fp:
-            line = line.strip()
-            if line:
-                cuis.add(line)
-    return cuis
-
-
-def main(argv):
-    argv = docopt.docopt(__doc__, argv=argv)
-    print(argv)
-    mm = pymetamap.MetaMap.get_instance(argv['--metamap'])
-
-    if argv['--cuis'] == 'None':
-        cuis = None
-    else:
-        cuis = read_cuis(argv['--cuis'])
-
-    scan.scan_collection(source=argv['SOURCE'], directory=argv['--out'], suffix='.mm.xml',
-                         fn=run_metamap_col, non_sequences=[mm, cuis])
-
-
-if __name__ == '__main__':
-    logging.basicConfig(level=logging.DEBUG, format='%(message)s')
-    main(sys.argv[1:])

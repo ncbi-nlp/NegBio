@@ -1,26 +1,6 @@
-"""
-Split text into sentences
-
-Usage:
-    ssplit [options] --out=DIRECTORY SOURCE ...
-
-Options:
-    --newline_is_sentence_break     Whether to treat newlines as sentence breaks. True means that a newline is always a
-                                    sentence break. False means to ignore newlines for the purpose of sentence
-                                    splitting. This is appropriate for continuous text, when just the non-whitespace
-                                    characters should be used to determine sentence breaks. [default=False]
-"""
-
-from __future__ import print_function
-
 import logging
-import sys
 
 import bioc
-import docopt
-import nltk
-
-from negbio.pipeline import scan
 
 
 class NltkSSplitter(object):
@@ -30,7 +10,7 @@ class NltkSSplitter(object):
         self.newline = kwargs.pop('newline', False)
 
     def split(self, text, **kwargs):
-
+        import nltk
         if not text:
             return
 
@@ -65,36 +45,22 @@ class NltkSSplitter(object):
         return 'NLTK SSplitter'
 
 
-def ssplit(document, splitter):
-    """
-    Split text into sentences with offsets.
+class NegBioSSplitter(NltkSSplitter):
+    def split_doc(self, document):
+        """
+        Split text into sentences with offsets.
 
-    Args:
-        splitter(Splitter): Sentence splitter
-        document(BioCDocument): one document
+        Args:v
+            document(BioCDocument): one document
 
-    Returns:
-        BioCDocument
-    """
-    for passage in document.passages:
-        for text, offset in splitter.split(passage.text):
-            sentence = bioc.BioCSentence()
-            sentence.offset = offset + passage.offset
-            sentence.text = text
-            passage.add_sentence(sentence)
-        # passage.text = None
-    return document
-
-
-def main(argv):
-    argv = docopt.docopt(__doc__, argv=argv)
-    print(argv)
-    splitter = NltkSSplitter(newline=argv['--newline_is_sentence_break'])
-
-    scan.scan_document(source=argv['SOURCE'], directory=argv['--out'], suffix='.ss.xml',
-                       fn=ssplit, non_sequences=[splitter])
-
-
-if __name__ == '__main__':
-    logging.basicConfig(level=logging.INFO)
-    main(sys.argv[1:])
+        Returns:
+            BioCDocument
+        """
+        for passage in document.passages:
+            for text, offset in self.split(passage.text):
+                sentence = bioc.BioCSentence()
+                sentence.offset = offset + passage.offset
+                sentence.text = text
+                passage.add_sentence(sentence)
+            # passage.text = None
+        return document

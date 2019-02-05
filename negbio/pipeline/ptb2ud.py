@@ -1,24 +1,10 @@
-"""
-Convert from parse tree to universal dependencies
-
-Usage:
-    ptb2ud --out=DIRECTORY SOURCE ...
-"""
-
-from __future__ import print_function
-
 import logging
-import os
-import sys
 
 import StanfordDependencies
 import bioc
-import docopt
 from nltk.corpus import wordnet
 from nltk.stem.wordnet import WordNetLemmatizer
 from nltk.tag.mapping import tagset_mapping
-
-from negbio.pipeline import scan
 
 
 class Lemmatizer(object):
@@ -96,29 +82,37 @@ class Ptb2DepConverter(object):
         """
         dependency_graph = self.__sd.convert_tree(parse_tree,
                                                   representation=self.representation,
-                                                  universal=self.universal)
+                                                  universal=self.universal,
+                                                  add_lemmas=True)
         return dependency_graph
 
 
-def convert(document, ptb2dep, lemmatizer):
-    for passage in document.passages:
-        for sentence in passage.sentences:
-            try:
-                dependency_graph = ptb2dep.convert(sentence.infons['parse tree'])
-                anns, rels = convert_dg(dependency_graph, sentence.text, sentence.offset)
-                sentence.annotations = anns
-                sentence.relations = rels
-            except:
-                logging.exception("Cannot process sentence %d in %s",
-                                  sentence.offset, document.id)
+class NegBioPtb2DepConverter(Ptb2DepConverter):
+    def __init__(self, representation='CCprocessed', universal=False):
+        """
+        Args:
+            lemmatizer (Lemmatizer)
+        """
+        super(NegBioPtb2DepConverter, self).__init__(representation, universal)
 
-            for ann in sentence.annotations:
-                text = ann.text
-                pos = ann.infons['tag']
-                pos = lemmatizer.map_tag(pos)
-                lemma = lemmatizer.lemmatize(word=text, pos=pos)
-                ann.infons['lemma'] = lemma.lower()
-    return document
+    def convert_doc(self, document):
+        for passage in document.passages:
+            for sentence in passage.sentences:
+                try:
+                    dependency_graph = self.convert(sentence.infons['parse tree'])
+                    anns, rels = convert_dg(dependency_graph, sentence.text, sentence.offset)
+                    sentence.annotations = anns
+                    sentence.relations = rels
+                except:
+                    logging.exception("Cannot process sentence %d in %s", sentence.offset, document.id)
+
+                # for ann in sentence.annotations:
+                #     text = ann.text
+                #     pos = ann.infons['tag']
+                #     pos = self.lemmatizer.map_tag(pos)
+                #     lemma = self.lemmatizer.lemmatize(word=text, pos=pos)
+                #     ann.infons['lemma'] = lemma.lower()
+        return document
 
 
 def adapt_value(value):
@@ -145,7 +139,6 @@ def convert_dg(dependency_graph, text, offset, ann_index=0, rel_index=0):
     """
     Convert dependency graph to annotations and relations
     """
-    logger = logging.getLogger(__name__)
     annotations = []
     relations = []
     annotation_id_map = {}
@@ -159,14 +152,15 @@ def convert_dg(dependency_graph, text, offset, ann_index=0, rel_index=0):
             node_form = adapt_value(node.form)
             index = text.find(node_form, start)
             if index == -1:
-                logger.debug('Cannot convert parse tree to dependency graph at %d\n%d\n%s',
-                             start, offset, str(dependency_graph))
+                logging.debug('Cannot convert parse tree to dependency graph at %d\n%d\n%s',
+                              start, offset, str(dependency_graph))
                 return
 
         ann = bioc.BioCAnnotation()
         ann.id = 'T{}'.format(ann_index)
         ann.text = node_form
         ann.infons['tag'] = node.pos
+        ann.infons['lemma'] = node.lemma.lower()
 
         start = index
 
@@ -192,18 +186,3 @@ def convert_dg(dependency_graph, text, offset, ann_index=0, rel_index=0):
         rel_index += 1
 
     return annotations, relations
-
-
-def main(argv):
-    argv = docopt.docopt(__doc__, argv=argv)
-    print(argv)
-
-    ptb2dep = Ptb2DepConverter(universal=True)
-    lemmatizer = Lemmatizer()
-    scan.scan_document(source=argv['SOURCE'], directory=argv['--out'], suffix='.ud.xml',
-                       fn=convert, non_sequences=[ptb2dep, lemmatizer])
-
-
-if __name__ == '__main__':
-    logging.basicConfig(level=logging.INFO)
-    sys.exit(main(sys.argv[1:]))

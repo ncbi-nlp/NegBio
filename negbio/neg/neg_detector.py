@@ -30,14 +30,11 @@ class Detector(object):
         Yields:
             (str, MatcherObj, (begin, end)): negation or uncertainty, matcher, matched annotation
         """
-        logger = logging.getLogger(__name__)
-
         try:
-            # logger.debug('ann len: %s', len(sentence.annotations))
             g = semgraph.load(sentence)
             propagator.propagate(g)
         except:
-            logger.exception('Cannot parse dependency graph [offset={}]'.format(sentence.offset))
+            logging.exception('Cannot parse dependency graph [offset={}]'.format(sentence.offset))
             raise
         else:
             if self.sentence_rule and is_neg_graph1(g):
@@ -97,7 +94,7 @@ class Detector(object):
 
 
 def find_nodes(graph, begin, end):
-    for node in graph.nodes_iter():
+    for node in graph.nodes():
         if utils.intersect((begin, end), (graph.node[node]['start'], graph.node[node]['end'])):
             yield node
 
@@ -107,7 +104,7 @@ def is_neg_graph1(graph):
     # resolution of XXX
     if 'T0' in graph.node and graph.node['T0']['lemma'] in ['no', 'resolution', 'resolved']:
         # no verb
-        has_verb = utils.contains(lambda x: graph.node[x]['tag'][0] == 'V', graph.nodes_iter())
+        has_verb = utils.contains(lambda x: graph.node[x]['tag'][0] == 'V', graph.nodes())
         if not has_verb:
             return True
     return False
