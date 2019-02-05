@@ -15,8 +15,9 @@ from negbio.cli_utils import parse_args
 from negbio.pipeline.parse import NegBioParser
 from negbio.pipeline.scan import scan_document
 
+
 if __name__ == '__main__':
     argv = parse_args(__doc__)
     parser = NegBioParser(model_dir=argv['--model'])
     scan_document(source=argv['<file>'], directory=argv['--output'], suffix=argv['--suffix'],
-                  fn=NegBioParser.parse_doc, non_sequences=[parser])
+                  fn=parser.parse_doc, non_sequences=[])

@@ -30,31 +30,31 @@ def main():
 
     argv = [args['<command>']] + args['<args>']
     if args['<command>'] == 'text2bioc':
-        exit(call(['python', 'negbio/negbio_text2bioc.py'] + argv))
+        exit(call(['python', '-m', 'negbio.negbio_text2bioc'] + argv))
     elif args['<command>'] == 'normalize':
-        exit(call(['python', 'negbio/negbio_normalize.py'] + argv))
+        exit(call(['python', '-m', 'negbio.negbio_normalize'] + argv))
     elif args['<command>'] == 'section_split':
-        exit(call(['python', 'negbio/negbio_section_split.py'] + argv))
+        exit(call(['python', '-m', 'negbio.negbio_section_split'] + argv))
     elif args['<command>'] == 'ssplit':
-        exit(call(['python', 'negbio/negbio_ssplit.py'] + argv))
+        exit(call(['python', '-m', 'negbio.negbio_ssplit'] + argv))
     elif args['<command>'] == 'parse':
-        exit(call(['python', 'negbio/negbio_parse.py'] + argv))
+        exit(call(['python', '-m', 'negbio.negbio_parse'] + argv))
     elif args['<command>'] == 'ptb2ud':
-        exit(call(['python', 'negbio/negbio_ptb2ud.py'] + argv))
+        exit(call(['python', '-m', 'negbio.negbio_ptb2ud'] + argv))
     elif args['<command>'] == 'dner_mm':
-        exit(call(['python', 'negbio/negbio_dner_matamap.py'] + argv))
+        exit(call(['python', '-m', 'negbio.negbio_dner_matamap'] + argv))
     elif args['<command>'] == 'dner_chexpert':
-        exit(call(['python', 'negbio/negbio_dner_chexpert.py'] + argv))
+        exit(call(['python', '-m', 'negbio.negbio_dner_chexpert'] + argv))
     elif args['<command>'] == 'neg':
-        exit(call(['python', 'negbio/negbio_neg.py'] + argv))
+        exit(call(['python', '-m', 'negbio.negbio_neg'] + argv))
     elif args['<command>'] == 'neg_chexpert':
-        exit(call(['python', 'negbio/negbio_neg_chexpert.py'] + argv))
+        exit(call(['python', '-m', 'negbio.negbio_neg_chexpert'] + argv))
     elif args['<command>'] == 'cleanup':
-        exit(call(['python', 'negbio/negbio_clean.py'] + argv))
+        exit(call(['python', '-m', 'negbio.negbio_clean'] + argv))
     elif args['<command>'] in ['help', None]:
-        exit(call(['python', 'negbio/negbio_pipeline.py', '--help']))
+        exit(call(['python', '-m', 'negbio.negbio_pipeline', '--help']))
     else:
-        exit("%r is not a negbio.py command. See 'negbio help'." % args['<command>'])
+        exit("%r is not a negbio command. See 'negbio help'." % args['<command>'])
 
 
 if __name__ == '__main__':

@@ -41,20 +41,20 @@ def custom_command():
 
 class CustomInstallCommand(install):
     def run(self):
-        install.run(self)
         custom_command()
+        install.run(self)
 
 
 class CustomDevelopCommand(develop):
     def run(self):
-        develop.run(self)
         custom_command()
+        develop.run(self)
 
 
 class CustomEggInfoCommand(egg_info):
     def run(self):
-        egg_info.run(self)
         custom_command()
+        egg_info.run(self)
 
 
 setup(
