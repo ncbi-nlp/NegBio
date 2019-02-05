@@ -40,7 +40,7 @@ from negbio.chexpert.stages.aggregate import NegBioAggregator
 from negbio.chexpert.stages.classify import ModifiedDetector, CATEGORIES
 from negbio.chexpert.stages.extract import NegBioExtractor
 from negbio.chexpert.stages.load import NegBioLoader
-from negbio.cli_utils import parse_args
+from negbio.cli_utils import parse_args, get_absolute_path
 from negbio.pipeline import text2bioc, negdetect
 from negbio.pipeline.parse import NegBioParser
 from negbio.pipeline.ptb2ud import NegBioPtb2DepConverter
@@ -85,6 +85,22 @@ def main():
     ptb2dep = NegBioPtb2DepConverter(universal=True)
     ssplitter = NegBioSSplitter(newline=argv['--newline_is_sentence_break'])
     parser = NegBioParser(model_dir=argv['--bllip-model'])
+
+    argv = get_absolute_path(argv,
+                             '--mention_phrases_dir',
+                             'negbio/chexpert/phrases/mention')
+    argv = get_absolute_path(argv,
+                             '--unmention_phrases_dir',
+                             'negbio/chexpert/phrases/unmention')
+    argv = get_absolute_path(argv,
+                             '--pre-negation-uncertainty-patterns',
+                             'negbio/chexpert/patterns/pre_negation_uncertainty.txt')
+    argv = get_absolute_path(argv,
+                             '--post-negation-uncertainty-patterns',
+                             'negbio/chexpert/patterns/post_negation_uncertainty.txt')
+    argv = get_absolute_path(argv,
+                             '--neg-patterns',
+                             'negbio/chexpert/patterns/negation.txt')
 
     # chexpert
     loader = NegBioLoader()

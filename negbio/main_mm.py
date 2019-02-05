@@ -27,7 +27,7 @@ import docopt
 
 import pymetamap
 
-from negbio.cli_utils import parse_args
+from negbio.cli_utils import parse_args, get_absolute_path
 from negbio.pipeline import negdetect, text2bioc, dner_mm
 from negbio.negbio_dner_matamap import read_cuis
 from negbio.pipeline.parse import NegBioParser
@@ -70,6 +70,13 @@ def main():
     ptb2dep = NegBioPtb2DepConverter(universal=True)
     splitter = NegBioSSplitter(newline=argv['--newline_is_sentence_break'])
     parser = NegBioParser(model_dir=argv['--bllip-model'])
+
+    argv = get_absolute_path(argv,
+                             '--neg-patterns',
+                             'negbio/patterns/neg_patterns.txt')
+    argv = get_absolute_path(argv,
+                             '--uncertainty-patterns',
+                             'negbio/patterns/uncertainty_patterns.txt')
 
     mm = pymetamap.MetaMap.get_instance(argv['--metamap'])
     neg_detector = negdetect.Detector(argv['--neg-patterns'], argv['--uncertainty-patterns'])
