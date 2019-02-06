@@ -19,22 +19,22 @@ If you want to use MetaMap, it can be downloaded from `https://metamap.nlm.nih.g
 Installation instructions can be found at `https://metamap.nlm.nih.gov/Installation.shtml <https://metamap.nlm.nih.gov/Installation.shtml>`_.
 Please make sure that both ``skrmedpostctl`` and ``wsdserverctl`` are started.
 
+Installing from source (recommended)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: bash
+
+     $ git clone https://github.com/ncbi-nlp/NegBio.git
+     $ cd /path/to/negbio
+     $ python setup.py install --user
+     $ export PATH=~/.local/bin:$PATH
+
 Installing from pip
 ~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: bash
 
     $ pip install negbio
-
-Installing from source
-~~~~~~~~~~~~~~~~~~~~~~
-
-.. code-block:: bash
-
-  $ git clone https://github.com/ncbi-nlp/NegBio.git
-  $ cd /path/to/negbio
-  $ python setup.py --user
-  $ export PATH=~/.local/bin:$PATH
 
 
 Using NegBio

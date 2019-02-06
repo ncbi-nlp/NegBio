@@ -27,20 +27,22 @@ Get started
 Install NegBio
 ~~~~~~~~~~~~~~
 
-1. Installing from pip
+1. Installing from source (recommended)
+
+    .. code-block:: bash
+
+         $ git clone https://github.com/ncbi-nlp/NegBio.git
+         $ cd /path/to/negbio
+         $ python setup.py install --user
+         $ export PATH=~/.local/bin:$PATH
+
+2. Installing from pip
 
     .. code-block:: bash
 
         $ pip install negbio
 
-2. Installing from source
 
-    .. code-block:: bash
-
-      $ git clone https://github.com/ncbi-nlp/NegBio.git
-      $ cd /path/to/negbio
-      $ python setup.py --user
-      $ export PATH=~/.local/bin:$PATH
 
 
 Prepare the dataset
