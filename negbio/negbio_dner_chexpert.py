@@ -14,7 +14,7 @@ Options:
 from pathlib2 import Path
 
 from negbio.chexpert.stages.extract import NegBioExtractor
-from negbio.cli_utils import parse_args
+from negbio.cli_utils import parse_args, get_absolute_path
 from negbio.pipeline.scan import scan_collection
 
 
@@ -29,6 +29,14 @@ def run_extractor(collection, extractor):
 
 if __name__ == '__main__':
     argv = parse_args(__doc__)
+
+    argv = get_absolute_path(argv,
+                             '--mention_phrases_dir',
+                             'negbio/chexpert/phrases/mention')
+    argv = get_absolute_path(argv,
+                             '--unmention_phrases_dir',
+                             'negbio/chexpert/phrases/unmention')
+
     extractor = NegBioExtractor(Path(argv['--mention_phrases_dir']),
                                 Path(argv['--unmention_phrases_dir']),
                                 verbose=argv['--verbose'])

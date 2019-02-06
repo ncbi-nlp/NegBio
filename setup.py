@@ -41,20 +41,20 @@ def custom_command():
 
 class CustomInstallCommand(install):
     def run(self):
-        install.run(self)
         custom_command()
+        install.run(self)
 
 
 class CustomDevelopCommand(develop):
     def run(self):
-        develop.run(self)
         custom_command()
+        develop.run(self)
 
 
 class CustomEggInfoCommand(egg_info):
     def run(self):
-        egg_info.run(self)
         custom_command()
+        egg_info.run(self)
 
 
 setup(
@@ -63,7 +63,7 @@ setup(
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # https://packaging.python.org/en/latest/single_source_version.html
-    version='0.9.2',
+    version='0.9.3',
 
     description='NegBio: a tool for negation and uncertainty detection',
     long_description=readme(),

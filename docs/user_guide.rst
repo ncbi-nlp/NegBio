@@ -98,7 +98,7 @@ Therefore, it is better to specify the UMLS concepts of interest via ``--cuis=<f
    $ negbio_pipeline dner_mm --metamap=$METAMAP_BIN --output=$OUTPUT_DIR $INPUT_DIR/*.xml
 
 NegBio also integrates the CheXpert vocabularies to recognize the presence of 14 observations.
-All vocabularies can be found at ``negbio\chexpert\phrases``.
+All vocabularies can be found at ``negbio/chexpert/phrases``.
 Each file in the folder represents one type of named entities with various text expressions.
 So far, NegBio does not support adding more types in the folder, but you can add more text expressions of the type.
 
@@ -135,7 +135,7 @@ This step converts the parse tree to universal dependencies using `Stanford conv
 -----------------------------------------
 
 This step detects negative and uncertain findings using patterns.
-By default, the program uses the negation and uncertainty patterns in the ``patterns`` folder.
+By default, the program uses the negation and uncertainty patterns in the ``negbio/patterns`` folder.
 However, you are free to create your own patterns via ``--neg-patterns=<file>`` and ``--uncertainty-patterns=<file>``.
 The pattern is a `semgrex-type <https://nlp.stanford.edu/nlp/javadoc/javanlp/edu/stanford/nlp/semgraph/semgrex/SemgrexPattern.html>`_
 pattern for matching node in the dependency graph.
