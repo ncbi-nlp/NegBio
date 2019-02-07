@@ -43,7 +43,7 @@ from negbio.chexpert.stages.load import NegBioLoader
 from negbio.cli_utils import parse_args, get_absolute_path
 from negbio.pipeline import text2bioc, negdetect
 from negbio.pipeline.parse import NegBioParser
-from negbio.pipeline.ptb2ud import NegBioPtb2DepConverter
+from negbio.pipeline.ptb2ud import NegBioPtb2DepConverter, Lemmatizer
 from negbio.pipeline.ssplit import NegBioSSplitter
 
 
@@ -82,7 +82,8 @@ def main():
     argv = parse_args(__doc__, version='version 2')
     print(argv)
 
-    ptb2dep = NegBioPtb2DepConverter(universal=True)
+    lemmatizer = Lemmatizer()
+    ptb2dep = NegBioPtb2DepConverter(lemmatizer, universal=True)
     ssplitter = NegBioSSplitter(newline=argv['--newline_is_sentence_break'])
     parser = NegBioParser(model_dir=argv['--bllip-model'])
 

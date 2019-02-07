@@ -67,7 +67,8 @@ def main():
     argv = parse_args(__doc__, version='version 2')
     print(argv)
 
-    ptb2dep = NegBioPtb2DepConverter(universal=True)
+    lemmatizer = Lemmatizer()
+    ptb2dep = NegBioPtb2DepConverter(lemmatizer, universal=True)
     splitter = NegBioSSplitter(newline=argv['--newline_is_sentence_break'])
     parser = NegBioParser(model_dir=argv['--bllip-model'])
 
