@@ -12,12 +12,14 @@ def clean_sentences(document, sort_anns=False):
     try:
         for passage in document.passages:
             del passage.sentences[:]
-            if sort_anns:
-                id = 0
-                for ann in sorted(passage.annotations, key=lambda ann: ann.get_total_location().offset):
+
+        if sort_anns:
+            key_func = lambda ann: ann.get_total_location().offset
+            id = 0
+            for passage in document.passages:
+                for ann in sorted(passage.annotations, key=key_func):
                     ann.id = str(id)
                     id += 1
     except:
         logging.exception("Cannot process %s", document.id)
     return document
-
