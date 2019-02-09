@@ -54,7 +54,7 @@ class Ptb2DepConverter(object):
     CCprocessed = 'CCprocessed',
     collapsedTree = 'collapsedTree'
 
-    def __init__(self, representation='CCprocessed', universal=False):
+    def __init__(self, lemmatizer, representation='CCprocessed', universal=False):
         """
         Args:
             representation(str): Currently supported representations are
@@ -66,9 +66,14 @@ class Ptb2DepConverter(object):
             __backend = 'jpype'
         except ImportError:
             __backend = 'subprocess'
+        self.lemmatizer = lemmatizer
         self.__sd = StanfordDependencies.get_instance(backend=__backend)
         self.representation = representation
         self.universal = universal
+        if __backend == 'jpype':
+            self.add_lemmas = True
+        else:
+            self.add_lemmas = False
 
     def convert(self, parse_tree):
         """
@@ -83,35 +88,37 @@ class Ptb2DepConverter(object):
         dependency_graph = self.__sd.convert_tree(parse_tree,
                                                   representation=self.representation,
                                                   universal=self.universal,
-                                                  add_lemmas=True)
+                                                  add_lemmas=self.add_lemmas)
         return dependency_graph
 
 
 class NegBioPtb2DepConverter(Ptb2DepConverter):
-    def __init__(self, representation='CCprocessed', universal=False):
+    def __init__(self, lemmatizer, representation='CCprocessed', universal=False):
         """
         Args:
             lemmatizer (Lemmatizer)
         """
-        super(NegBioPtb2DepConverter, self).__init__(representation, universal)
+        super(NegBioPtb2DepConverter, self).__init__(lemmatizer, representation, universal)
 
     def convert_doc(self, document):
         for passage in document.passages:
             for sentence in passage.sentences:
                 try:
                     dependency_graph = self.convert(sentence.infons['parse tree'])
-                    anns, rels = convert_dg(dependency_graph, sentence.text, sentence.offset)
+                    anns, rels = convert_dg(dependency_graph, sentence.text, sentence.offset,
+                                            self.add_lemmas)
                     sentence.annotations = anns
                     sentence.relations = rels
                 except:
                     logging.exception("Cannot process sentence %d in %s", sentence.offset, document.id)
 
-                # for ann in sentence.annotations:
-                #     text = ann.text
-                #     pos = ann.infons['tag']
-                #     pos = self.lemmatizer.map_tag(pos)
-                #     lemma = self.lemmatizer.lemmatize(word=text, pos=pos)
-                #     ann.infons['lemma'] = lemma.lower()
+                if not self.add_lemmas:
+                    for ann in sentence.annotations:
+                        text = ann.text
+                        pos = ann.infons['tag']
+                        pos = self.lemmatizer.map_tag(pos)
+                        lemma = self.lemmatizer.lemmatize(word=text, pos=pos)
+                        ann.infons['lemma'] = lemma.lower()
         return document
 
 
@@ -135,7 +142,7 @@ def adapt_value(value):
     return value
 
 
-def convert_dg(dependency_graph, text, offset, ann_index=0, rel_index=0):
+def convert_dg(dependency_graph, text, offset, ann_index=0, rel_index=0, has_lemmas=True):
     """
     Convert dependency graph to annotations and relations
     """
@@ -160,7 +167,8 @@ def convert_dg(dependency_graph, text, offset, ann_index=0, rel_index=0):
         ann.id = 'T{}'.format(ann_index)
         ann.text = node_form
         ann.infons['tag'] = node.pos
-        ann.infons['lemma'] = node.lemma.lower()
+        if has_lemmas:
+            ann.infons['lemma'] = node.lemma.lower()
 
         start = index
 
