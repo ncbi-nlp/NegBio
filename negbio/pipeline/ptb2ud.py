@@ -108,7 +108,8 @@ class NegBioPtb2DepConverter(Ptb2DepConverter):
                     dependency_graph = self.convert(
                         sentence.infons['parse tree'])
                     anns, rels = convert_dg(dependency_graph, sentence.text,
-                                            sentence.offset, self.add_lemmas)
+                                            sentence.offset,
+                                            has_lemmas=self.add_lemmas)
                     sentence.annotations = anns
                     sentence.relations = rels
                 except:
