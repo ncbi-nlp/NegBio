@@ -98,19 +98,22 @@ class NegBioPtb2DepConverter(Ptb2DepConverter):
         Args:
             lemmatizer (Lemmatizer)
         """
-        super(NegBioPtb2DepConverter, self).__init__(lemmatizer, representation, universal)
+        super(NegBioPtb2DepConverter, self).__init__(
+            lemmatizer, representation, universal)
 
     def convert_doc(self, document):
         for passage in document.passages:
             for sentence in passage.sentences:
                 try:
-                    dependency_graph = self.convert(sentence.infons['parse tree'])
-                    anns, rels = convert_dg(dependency_graph, sentence.text, sentence.offset,
-                                            self.add_lemmas)
+                    dependency_graph = self.convert(
+                        sentence.infons['parse tree'])
+                    anns, rels = convert_dg(dependency_graph, sentence.text,
+                                            sentence.offset, self.add_lemmas)
                     sentence.annotations = anns
                     sentence.relations = rels
                 except:
-                    logging.exception("Cannot process sentence %d in %s", sentence.offset, document.id)
+                    logging.exception(
+                        "Cannot process sentence %d in %s", sentence.offset, document.id)
 
                 if not self.add_lemmas:
                     for ann in sentence.annotations:
@@ -188,8 +191,10 @@ def convert_dg(dependency_graph, text, offset, ann_index=0, rel_index=0, has_lem
         relation.infons['dependency'] = node.deprel
         if node.extra:
             relation.infons['extra'] = node.extra
-        relation.add_node(bioc.BioCNode('T{}'.format(annotation_id_map[node.index]), 'dependant'))
-        relation.add_node(bioc.BioCNode('T{}'.format(annotation_id_map[node.head]), 'governor'))
+        relation.add_node(bioc.BioCNode('T{}'.format(
+            annotation_id_map[node.index]), 'dependant'))
+        relation.add_node(bioc.BioCNode('T{}'.format(
+            annotation_id_map[node.head]), 'governor'))
         relations.append(relation)
         rel_index += 1
 
