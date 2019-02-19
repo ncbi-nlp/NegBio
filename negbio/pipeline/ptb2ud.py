@@ -107,12 +107,8 @@ class NegBioPtb2DepConverter(Ptb2DepConverter):
                 # check for empty infons, don't process if empty
                 # this sometimes happens with poorly tokenized sentences
                 if not sentence.infons:
-                    logging.warning(
-                        "No parse information for sentence %d in %s", sentence.offset, document.id)
                     continue
                 elif not sentence.infons['parse tree']:
-                    logging.warning(
-                        "No parse tree for sentence %d in %s", sentence.offset, document.id)
                     continue
 
                 try:
