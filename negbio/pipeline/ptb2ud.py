@@ -112,6 +112,8 @@ class NegBioPtb2DepConverter(Ptb2DepConverter):
                                             has_lemmas=self.add_lemmas)
                     sentence.annotations = anns
                     sentence.relations = rels
+                except KeyboardInterrupt:
+                    raise
                 except:
                     logging.exception(
                         "Cannot process sentence %d in %s", sentence.offset, document.id)
