@@ -51,7 +51,7 @@ class Ptb2DepConverter(object):
 
     basic = 'basic'
     collapsed = 'collapsed'
-    CCprocessed = 'CCprocessed',
+    CCprocessed = 'CCprocessed'
     collapsedTree = 'collapsedTree'
 
     def __init__(self, lemmatizer, representation='CCprocessed', universal=False):
