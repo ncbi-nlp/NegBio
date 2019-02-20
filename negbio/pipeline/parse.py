@@ -30,11 +30,12 @@ class Bllip(object):
         """
         if not s:
             raise ValueError('Cannot parse empty sentence: {}'.format(s))
-        try:
-            nbest = self.rrp.parse(str(s))
+
+        nbest = self.rrp.parse(str(s))
+        if nbest:
             return nbest[0].ptb_parse
-        except:
-            raise ValueError('Cannot parse sentence: %s' % s)
+
+        return None
 
 
 class NegBioParser(Bllip):
@@ -50,10 +51,12 @@ class NegBioParser(Bllip):
         """
         for passage in document.passages:
             for sentence in passage.sentences:
-                try:
-                    text = sentence.text
-                    tree = self.parse(text)
+                text = sentence.text
+                tree = self.parse(text)
+                if tree:
                     sentence.infons['parse tree'] = str(tree)
-                except:
-                    logging.exception('Cannot parse sentence: {}'.format(sentence.offset))
+                else:
+                    sentence.infons['parse tree'] = None
+                    logging.exception(
+                        'No parse tree for sentence: %s', sentence.offset)
         return document
