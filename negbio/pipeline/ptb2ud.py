@@ -174,7 +174,7 @@ def convert_dg(dependency_graph, text, offset, ann_index=0, rel_index=0, has_lem
             if index == -1:
                 logging.debug('Cannot convert parse tree to dependency graph at %d\n%d\n%s',
                               start, offset, str(dependency_graph))
-                return
+                return None, None
 
         ann = bioc.BioCAnnotation()
         ann.id = 'T{}'.format(ann_index)
