@@ -63,17 +63,13 @@ class Ptb2DepConverter(object):
         """
         try:
             import jpype
-            __backend = 'jpype'
+            self._backend = 'jpype'
         except ImportError:
-            __backend = 'subprocess'
+            self._backend = 'subprocess'
         self.lemmatizer = lemmatizer
-        self.__sd = StanfordDependencies.get_instance(backend=__backend)
+        self.__sd = StanfordDependencies.get_instance(backend=self._backend)
         self.representation = representation
         self.universal = universal
-        if __backend == 'jpype':
-            self.add_lemmas = True
-        else:
-            self.add_lemmas = False
 
     def convert(self, parse_tree):
         """
@@ -85,10 +81,15 @@ class Ptb2DepConverter(object):
         Examples:
             (ROOT (NP (JJ hello) (NN world) (. !)))
         """
-        dependency_graph = self.__sd.convert_tree(parse_tree,
-                                                  representation=self.representation,
-                                                  universal=self.universal,
-                                                  add_lemmas=self.add_lemmas)
+        if self._backend == 'jpype':
+            dependency_graph = self.__sd.convert_tree(parse_tree,
+                                                      representation=self.representation,
+                                                      universal=self.universal,
+                                                      add_lemmas=True)
+        else:
+            dependency_graph = self.__sd.convert_tree(parse_tree,
+                                                      representation=self.representation,
+                                                      universal=self.universal)
         return dependency_graph
 
 
@@ -116,7 +117,7 @@ class NegBioPtb2DepConverter(Ptb2DepConverter):
                         sentence.infons['parse tree'])
                     anns, rels = convert_dg(dependency_graph, sentence.text,
                                             sentence.offset,
-                                            has_lemmas=self.add_lemmas)
+                                            has_lemmas=self._backend == 'jpype')
                     sentence.annotations = anns
                     sentence.relations = rels
                 except KeyboardInterrupt:
@@ -125,7 +126,7 @@ class NegBioPtb2DepConverter(Ptb2DepConverter):
                     logging.exception(
                         "Cannot process sentence %d in %s", sentence.offset, document.id)
 
-                if not self.add_lemmas:
+                if self._backend != 'jpype':
                     for ann in sentence.annotations:
                         text = ann.text
                         pos = ann.infons['tag']
