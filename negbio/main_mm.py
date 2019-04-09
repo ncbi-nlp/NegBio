@@ -3,8 +3,8 @@ Detect negative and uncertain findings from SOURCE and output to DEST
 Example: python negbio/main_mm.py --metamap=/opt/public_mm/bin/metamap16 --output=examples/test.neg.xml examples/1.txt examples/2.txt
 
 Usage:
-    main_text text [options] --metamap=BINARY --output=DEST SOURCES ...
-    main_text bioc [options] --metamap=BINARY --output=DEST SOURCE ...
+    main_mm text [options] --metamap=BINARY --output=DEST SOURCES ...
+    main_mm bioc [options] --metamap=BINARY --output=DEST SOURCE ...
 
 Options:
     --neg-patterns=FILE             negation rules [default: negbio/patterns/neg_patterns.txt]
@@ -39,13 +39,15 @@ def pipeline(collection, metamap, splitter, parser, ptb2dep, neg_detector, cuis)
     """
 
     Args:
+        collection(BioCCollection):
+        metamap(MetaMap): MetaMap instance
         splitter (NegBioSSplitter):
         parser (NegBioParser)
         ptb2dep (NegBioPtb2DepConverter)
         neg_detector (Detector):
 
     Returns:
-
+        BioCCollection
     """
     for document in collection.documents:
         splitter.split_doc(document)
