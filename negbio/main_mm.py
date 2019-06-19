@@ -16,6 +16,7 @@ Options:
                                     sentence break. False means to ignore newlines for the purpose of sentence
                                     splitting. This is appropriate for continuous text, when just the non-whitespace
                                     characters should be used to determine sentence breaks.
+    --word_sense_disambiguation     Whether to use word sense disambiguation.
     --verbose                       Print more information about progress.
 """
 from __future__ import print_function
@@ -35,7 +36,7 @@ from negbio.pipeline.ssplit import NegBioSSplitter
 from negbio.pipeline.ptb2ud import NegBioPtb2DepConverter, Lemmatizer
 
 
-def pipeline(collection, metamap, splitter, parser, ptb2dep, neg_detector, cuis):
+def pipeline(collection, metamap, splitter, parser, ptb2dep, neg_detector, cuis, extra_args):
     """
 
     Args:
@@ -52,7 +53,7 @@ def pipeline(collection, metamap, splitter, parser, ptb2dep, neg_detector, cuis)
     for document in collection.documents:
         splitter.split_doc(document)
 
-    dner_mm.run_metamap_col(collection, metamap, cuis)
+    dner_mm.run_metamap_col(collection, metamap, cuis, extra_args)
 
     for document in collection.documents:
         document = parser.parse_doc(document)
@@ -97,7 +98,15 @@ def main():
     else:
         raise KeyError
 
-    pipeline(collection, mm, splitter, parser, ptb2dep, neg_detector, cuis)
+    extra_args = dict()
+    if argv['--word_sense_disambiguation']:
+        extra_args['word_sense_disambiguation'] = True
+
+    # Converting empty dict to None
+    if len(extra_args) == 0:
+        extra_args = None
+
+    pipeline(collection, mm, splitter, parser, ptb2dep, neg_detector, cuis, extra_args)
 
     with open(os.path.expanduser(argv['--output']), 'w') as fp:
         bioc.dump(collection, fp)

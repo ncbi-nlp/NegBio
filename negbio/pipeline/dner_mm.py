@@ -20,7 +20,7 @@ def adapt_concept_index(index):
     return index
 
 
-def run_metamap_col(collection, mm, cuis=None):
+def run_metamap_col(collection, mm, cuis=None, extra_args=None):
     """
     Get CUIs from metamap.
 
@@ -45,7 +45,11 @@ def run_metamap_col(collection, mm, cuis=None):
             ids.append(k)
             sents.append(remove_newline(sentence_map[k][1].text))
 
-        concepts, error = mm.extract_concepts(sents, ids)
+        if extra_args is None:
+            concepts, error = mm.extract_concepts(sents, ids)
+        else:
+            concepts, error = mm.extract_concepts(sents, ids, **extra_args)
+
         if error is None:
             for concept in concepts:
                 concept_index = adapt_concept_index(concept.index)
