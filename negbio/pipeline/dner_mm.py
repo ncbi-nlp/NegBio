@@ -20,14 +20,13 @@ def adapt_concept_index(index):
     return index
 
 
-def run_metamap_col(collection, mm, cuis=None, word_sense_disambiguation=False):
+def run_metamap_col(collection, mm, cuis=None, extra_args=None):
     """
     Get CUIs from metamap.
 
     Args:
         collection(BioCCollection):
         mm(MetaMap): MetaMap instance
-        word_sense_disambiguation(bool):
 
     Returns:
         BioCCollection
@@ -46,7 +45,11 @@ def run_metamap_col(collection, mm, cuis=None, word_sense_disambiguation=False):
             ids.append(k)
             sents.append(remove_newline(sentence_map[k][1].text))
 
-        concepts, error = mm.extract_concepts(sents, ids, word_sense_disambiguation=word_sense_disambiguation)
+        if extra_args is None:
+            concepts, error = mm.extract_concepts(sents, ids)
+        else:
+            concepts, error = mm.extract_concepts(sents, ids, **extra_args)
+
         if error is None:
             for concept in concepts:
                 concept_index = adapt_concept_index(concept.index)

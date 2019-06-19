@@ -36,7 +36,7 @@ from negbio.pipeline.ssplit import NegBioSSplitter
 from negbio.pipeline.ptb2ud import NegBioPtb2DepConverter, Lemmatizer
 
 
-def pipeline(collection, metamap, splitter, parser, ptb2dep, neg_detector, cuis, word_sense_disambiguation):
+def pipeline(collection, metamap, splitter, parser, ptb2dep, neg_detector, cuis, extra_args):
     """
 
     Args:
@@ -46,7 +46,6 @@ def pipeline(collection, metamap, splitter, parser, ptb2dep, neg_detector, cuis,
         parser (NegBioParser)
         ptb2dep (NegBioPtb2DepConverter)
         neg_detector (Detector):
-        word_sense_disambiguation (bool):
 
     Returns:
         BioCCollection
@@ -54,7 +53,7 @@ def pipeline(collection, metamap, splitter, parser, ptb2dep, neg_detector, cuis,
     for document in collection.documents:
         splitter.split_doc(document)
 
-    dner_mm.run_metamap_col(collection, metamap, cuis, word_sense_disambiguation)
+    dner_mm.run_metamap_col(collection, metamap, cuis, extra_args)
 
     for document in collection.documents:
         document = parser.parse_doc(document)
@@ -99,12 +98,15 @@ def main():
     else:
         raise KeyError
 
+    extra_args = dict()
     if argv['--word_sense_disambiguation']:
-        word_sense_disambiguation = True
-    else:
-        word_sense_disambiguation = False
+        extra_args['word_sense_disambiguation'] = True
 
-    pipeline(collection, mm, splitter, parser, ptb2dep, neg_detector, cuis, word_sense_disambiguation)
+    # Converting empty dict to None
+    if len(extra_args) == 0:
+        extra_args = None
+
+    pipeline(collection, mm, splitter, parser, ptb2dep, neg_detector, cuis, extra_args)
 
     with open(os.path.expanduser(argv['--output']), 'w') as fp:
         bioc.dump(collection, fp)
