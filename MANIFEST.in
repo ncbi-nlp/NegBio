@@ -1,0 +1,12 @@
+include README.rst
+include LICENSE.txt
+include CONTRIBUTING.md
+include requirements.txt
+include examples/*
+recursive-include negbio/patterns *
+recursive-include negbio/chexpert/patterns *
+recursive-include negbio/chexpert/phrases *
+
+exclude tests
+exclude backup
+exclude docs

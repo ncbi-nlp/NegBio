@@ -1,0 +1,199 @@
+Atelectasis:
+  include:
+  - atelecta
+  - collapse
+Cardiomegaly:
+  include:
+  - cardiomegaly
+  - the heart
+  - heart size
+  - cardiac enlargement
+  - cardiac size
+  - cardiac shadow
+  - cardiac contour
+  - cardiac silhouette
+  - enlarged heart
+Consolidation:
+  include:
+  - consolidat
+Edema:
+  include:
+  - edema
+  - heart failure
+  - chf
+  - vascular congestion
+  - pulmonary congestion
+  - indistinctness
+  - vascular prominence
+Emphysema:  # not included in chexpert
+  include:
+  - emphysema
+Enlarged Cardiomediastinum:  # not included in cxr14
+  include:
+  - ' mediastinum'
+  - cardiomediastinum
+  - contour
+  - mediastinal configuration
+  - mediastinal silhouette
+  - pericardial silhouette
+  - cardiac silhouette and vascularity
+Fibrosis:  # not included in chexpert
+  include:
+  - fibrosis
+Fracture:  # not included in cxr14
+  include:
+  - fracture
+Hernia:  # not included in chexpert
+  include:
+  - hernia
+Infiltration:  # In chexpert/Lung Opacity
+  include:
+  - infiltrate
+  - infiltration
+Pleural Effusion:
+  include:
+  - pleural fluid
+  - effusion
+  exclude:
+  - pericardial effusion
+Pleural Other:  # not included in cxr14
+  include:
+  - fibrothorax
+  - pleural scar
+  - pleural parenchymal scar
+  - pleuro-parenchymal scar
+  - pleuro-pericardial scar
+Pleural Thickening:  # In chexpert/Pleural Other
+  include:
+  - pleural thickening
+Pneumonia:
+  include:
+  - pneumonia
+  - infection
+  - infectious process
+  - infectious
+Pneumothorax:
+  include:
+  - pneumothorax
+  - pneumothoraces
+Lung Lesion:  # not included in cxr14
+  include:
+  - lump
+  - cavitary lesion
+  - carcinoma
+  - neoplasm
+  - tumor
+Lung Opacity:  # not included in cxr14
+  include:
+  - opaci
+  - decreased translucency
+  - increased density
+  - airspace disease
+  - air-space disease
+  - air space disease
+  - interstitial marking
+  - interstitial pattern
+  - interstitial lung
+  - reticular pattern
+  - reticular marking
+  - reticulation
+  - parenchymal scarring
+  - peribronchial thickening
+  - wall thickening
+  - scar
+  exclude:
+  - pleural scar
+Mass:
+  include:
+  - mass
+  exclude:
+  - massive
+  - massengale
+Nodule:
+  include:
+  - nodular density
+  - nodular densities
+  - nodular opacity
+  - nodular opacities
+  - nodular opacification
+  - nodule
+  exclude:
+  - calcified nodul
+Support Devices:  # not included in cxr14
+  include:
+  - pacer
+  - ' line '
+  - lines
+  - picc
+  - tube
+  - valve
+  - catheter
+  - pacemaker
+  - hardware
+  - arthroplast
+  - marker
+  - icd
+  - defib
+  - device
+  - 'drain '
+  - plate
+  - screw
+  - cannula
+  - apparatus
+  - coil
+  - support
+  - equipment
+  - mediport
+No Finding:  # not included in cxr14
+  include:
+  - blunt
+  - density
+  - elevation
+  - eventration
+  - scoliosis
+  - degenera
+  - calcifi
+  - hyperinflation
+  - bronchospasm
+  - asthma
+  - copd
+  - interstitial markings
+  - plaque
+  - osteophytosis
+  - aortic disease
+  - bronchiolitis
+  - airways disease
+  - thickening
+  - cephalization
+  - aspiration
+  - bullae
+  - hyperinflat
+  - contusion
+  - atherosclero
+  - osteopenia
+  - metastasis
+  - granuloma
+  - pneumomediastinum
+  - pneumoperitoneum
+  - osteodystrophy
+  - cuffing
+  - irregular lucency
+  - inflam
+  - fissure
+  - hypertension
+  - prominen
+  - kyphosis
+  - defib
+  - hyperexpansion
+  - bullet
+  - reticula
+  - thoracentesis
+  - bronchitis
+  - volume loss
+  - deformity
+  - hemorrhage
+  - hematoma
+  - radiopaque
+  - aerophagia
+  - arthropathy
+  - tracheostomy

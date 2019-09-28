@@ -21,21 +21,21 @@ def load(sentence):
         </annotation>
         ```
     """
-    logger = logging.getLogger(__name__)
-
     graph = nx.DiGraph()
     for ann in sentence.annotations:
-        loc = ann.get_total_location()
+        loc = ann.total_span
         graph.add_node(ann.id, tag=ann.infons['tag'], text=ann.text, lemma=ann.infons['lemma'].lower(),
                        start=loc.offset, end=loc.offset + loc.length)
     for rel in sentence.relations:
+        dependant = None
+        governor = None
         for node in rel.nodes:
             if node.role == 'dependant':
                 dependant = node.refid
             elif node.role == 'governor':
                 governor = node.refid
         if not dependant or not governor:
-            logger.debug('Cannot find dependant or governor at {}'.format(sentence))
+            logging.debug('Cannot find dependant or governor at {}'.format(sentence))
         graph.add_edge(governor, dependant, dependency=rel.infons['dependency'], id=rel.id)
     return graph
 

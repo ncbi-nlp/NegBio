@@ -2,14 +2,14 @@ from __future__ import print_function
 
 import logging
 
-from neg import utils, semgraph, propagator
-import ngrex
+from negbio.neg import utils, semgraph, propagator
+from negbio import ngrex
 
 NEGATION = 'negation'
 UNCERTAINTY = 'uncertainty'
 
 
-class Detector(object):
+class Detector:
 
     NEGATION = 'negation'
     UNCERTAINTY = 'uncertainty'
@@ -19,8 +19,11 @@ class Detector(object):
                  uncertainty_pattern_file,
                  sentence_rule=False):
         self.sentence_rule = sentence_rule
-        self.neg_patterns = ngrex.load(neg_pattern_file)
-        self.uncertain_patterns = ngrex.load(uncertainty_pattern_file)
+        npatterns = ngrex.load_yml(neg_pattern_file)
+        upatterns = ngrex.load_yml(uncertainty_pattern_file)
+        self.neg_patterns = [p['patternobj'] for p in npatterns]
+        self.uncertain_patterns = [p['patternobj'] for p in upatterns]
+        self.total_patterns = {p['patternobj']: p for p in npatterns + upatterns}
 
     def detect(self, sentence, locs):
         """
@@ -30,14 +33,11 @@ class Detector(object):
         Yields:
             (str, MatcherObj, (begin, end)): negation or uncertainty, matcher, matched annotation
         """
-        logger = logging.getLogger(__name__)
-
         try:
-            # logger.debug('ann len: %s', len(sentence.annotations))
             g = semgraph.load(sentence)
             propagator.propagate(g)
         except:
-            logger.exception('Cannot parse dependency graph [offset={}]'.format(sentence.offset))
+            logging.exception('Cannot parse dependency graph [offset={}]'.format(sentence.offset))
             raise
         else:
             if self.sentence_rule and is_neg_graph1(g):
@@ -127,8 +127,7 @@ def is_neg_graph2(graph, begin, end):
             break
 
         if state == 0:
-            if graph.node[node]['lemma'] in (
-                    'without', 'no', 'resolve', 'resolution', 'rosolution'):
+            if graph.node[node]['lemma'] in ('without', 'no', 'resolve', 'resolution'):
                 state = 1
         elif state == 1:
             if graph.node[node]['tag'].startswith('N'):

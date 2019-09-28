@@ -2,7 +2,7 @@ from __future__ import print_function
 
 import logging
 
-from neg import semgraph
+from negbio.neg import semgraph
 import collections
 
 
@@ -57,6 +57,7 @@ def propagate(G):
                         edges.append(Edge(c, child, edge_dep))
                     if edge_dep == 'case' and G.node[child]['lemma'] == 'without':
                         edges.append(Edge(c, child, edge_dep))
+
             # propagate area/amount >of XXX
             if d['dependency'] == 'nmod:of' and G.node[p]['lemma'] in ('area', 'amount'):
                 for grandpa in G.predecessors(p):
@@ -72,7 +73,7 @@ def propagate(G):
                     edge_dep = G[p][child]['dependency']
                     # propagate no <neg x >of XXX
                     if edge_dep == 'neg':
-                        edges.append((c, child, {'dependency': edge_dep}))
+                        edges.append(Edge(c, child, edge_dep))
                     # propagate without <case x >of XXX
                     if edge_dep == 'case' and G.node[child] == 'without':
                         edges.append(Edge(c, child, edge_dep))
@@ -87,6 +88,7 @@ def propagate(G):
         has_more_edges = False
         for e in edges:
             if not G.has_edge(e.gov, e.dep):
+                assert isinstance(e.data, str) or isinstance(e.data, unicode), type(e.data)
                 G.add_edge(e.gov, e.dep, dependency=e.data)
                 has_more_edges = True
 

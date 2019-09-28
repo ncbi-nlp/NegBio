@@ -1,0 +1,12 @@
+- id: 0
+  pattern: no evidence of ([^ ]+ ){0,3}\$X\$[\\w]*
+  comment: no evidence of X
+- id: 1
+  pattern: resolved \$X\$[\\w]*
+  comment: resolved X
+- id: 2
+  pattern: no evidence of .* \$X\$[\\w]*\.
+  comment: no evidence of X
+- id: 3
+  pattern: no ([^ ]+ ){0,3}\$X\$[\\w]*
+  comment: no X

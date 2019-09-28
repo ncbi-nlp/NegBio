@@ -1,0 +1,183 @@
+Atelectasis:
+  include:
+  - atelecta
+  - collapse
+Cardiomegaly:
+  include:
+  - cardiomegaly
+  - the heart
+  - heart size
+  - cardiac enlargement
+  - cardiac size
+  - cardiac shadow
+  - cardiac contour
+  - cardiac silhouette
+  - enlarged heart
+Consolidation:
+  include:
+  - consolidat
+Edema:
+  include:
+  - edema
+  - heart failure
+  - chf
+  - vascular congestion
+  - pulmonary congestion
+  - indistinctness
+  - vascular prominence
+Enlarged Cardiomediastinum:
+  include:
+  - ' mediastinum'
+  - cardiomediastinum
+  - contour
+  - mediastinal configuration
+  - mediastinal silhouette
+  - pericardial silhouette
+  - cardiac silhouette and vascularity
+Fracture:
+  include:
+  - fracture
+Lung Lesion:
+  include:
+  - mass
+  - nodular density
+  - nodular densities
+  - nodular opacity
+  - nodular opacities
+  - nodular opacification
+  - nodule
+  - lump
+  - cavitary lesion
+  - carcinoma
+  - neoplasm
+  - tumor
+  exclude:
+  - calcified nodul
+  - massive
+  - massengale
+Lung Opacity:
+  include:
+  - opaci
+  - decreased translucency
+  - increased density
+  - airspace disease
+  - air-space disease
+  - air space disease
+  - infiltrate
+  - infiltration
+  - interstitial marking
+  - interstitial pattern
+  - interstitial lung
+  - reticular pattern
+  - reticular marking
+  - reticulation
+  - parenchymal scarring
+  - peribronchial thickening
+  - wall thickening
+  - scar
+  exclude:
+  - pleural scar
+Pleural Effusion:
+  include:
+  - pleural fluid
+  - effusion
+  exclude:
+  - pericardial effusion
+Pleural Other:
+  include:
+  - pleural thickening
+  - fibrosis
+  - fibrothorax
+  - pleural scar
+  - pleural parenchymal scar
+  - pleuro-parenchymal scar
+  - pleuro-pericardial scar
+Pneumonia:
+  include:
+  - pneumonia
+  - infection
+  - infectious process
+  - infectious
+Pneumothorax:
+  include:
+  - pneumothorax
+  - pneumothoraces
+Support Devices:
+  include:
+  - pacer
+  - '\blines?\b'
+  - picc
+  - '\btubes?\b'
+  - valve
+  - catheter
+  - pacemaker
+  - hardware
+  - arthroplast
+  - marker
+  - '\bicd?\b'
+  - defib
+  - device
+  - '\bdrain?\b'
+  - plate
+  - screw
+  - cannula
+  - apparatus
+  - coil
+  - support
+  - equipment
+  - mediport
+No Finding:
+  include:
+  - emphysema
+  - blunt
+  - density
+  - elevation
+  - eventration
+  - scoliosis
+  - degenera
+  - calcifi
+  - hyperinflation
+  - bronchospasm
+  - asthma
+  - hernia
+  - copd
+  - interstitial markings
+  - plaque
+  - osteophytosis
+  - aortic disease
+  - bronchiolitis
+  - airways disease
+  - thickening
+  - cephalization
+  - aspiration
+  - bullae
+  - hyperinflat
+  - contusion
+  - atherosclero
+  - osteopenia
+  - metastasis
+  - granuloma
+  - pneumomediastinum
+  - pneumoperitoneum
+  - osteodystrophy
+  - cuffing
+  - irregular lucency
+  - inflam
+  - fissure
+  - hypertension
+  - prominen
+  - kyphosis
+  - defib
+  - hyperexpansion
+  - bullet
+  - reticula
+  - thoracentesis
+  - bronchitis
+  - volume loss
+  - deformity
+  - hemorrhage
+  - hematoma
+  - radiopaque
+  - aerophagia
+  - arthropathy
+  - tracheostomy

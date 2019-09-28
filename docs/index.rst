@@ -12,6 +12,7 @@ NegBio documentation
 
    getting_started
    user_guide
+   developer_guide
    license
    contributing
    acknowledgments

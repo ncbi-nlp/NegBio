@@ -1,5 +1,5 @@
-import re
 import logging
+import re
 
 
 def pattern_repl(matchobj):
