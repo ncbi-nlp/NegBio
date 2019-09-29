@@ -55,8 +55,8 @@ or
 
 .. code-block:: bash
 
-   export OUTPUT=~/data/MIMICCXR/mimic-cxr-20190913/mimic_cxr_999_2
-   export OUTPUT_LABELS=$OUTPUT/mimic_cxr_999_negbio_labels.csv
+   export OUTPUT=mimic_cxr
+   export OUTPUT_LABELS=$OUTPUT/mimic_cxr_negbio_labels.csv
    export INPUT_FILES=mimic_cxr_000.csv
 
 
