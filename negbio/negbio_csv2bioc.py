@@ -28,6 +28,8 @@ def get_one_document(text):
 
 
 def csv2collections(dest_top, *sources):
+    if not dest_top.exists():
+        dest_top.mkdir(parents=True, exist_ok=True)
     total = collections.defaultdict(bioc.BioCCollection)
     for src in sources:
         all_df = pd.read_csv(src, header=None, names=['id', 'report'], )

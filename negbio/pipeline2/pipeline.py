@@ -54,7 +54,7 @@ class NegBioPipeline:
         overwrite = kwargs.pop('overwrite', False)
 
         if not directory.exists():
-            directory.mkdir(parents=True)
+            directory.mkdir(parents=True, exist_ok=True)
 
         for pathname in tqdm.tqdm(source, total=len(source), disable=not verbose, unit='col'):
             pathname = Path(pathname)

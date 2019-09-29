@@ -16,18 +16,14 @@ Modified by: Yifan Peng
 
 import collections
 import logging
-import os
 from pathlib import Path
 from typing import List
 
 import bioc
-import tabulate
+import numpy as np
+import pandas as pd
 import tqdm
 import yaml
-from sklearn.metrics import precision_recall_fscore_support
-
-import pandas as pd
-import numpy as np
 
 
 # Numeric constants

@@ -17,35 +17,68 @@
 NegBio is a high-performance NLP tool for negation and uncertainty detection in clinical texts (e.g. radiology reports).
 
 
-Update
-======
+Note
+====
 
-We are updating the NegBio's pipeline. To use the order version, please see `v0.9.4 <https://github.com/ncbi-nlp/NegBio/tree/v0.9.4>`_.
+This is a NegBio branch to construct the labels from the MIMIC-III-CXR reports. To use the order version, please see `v0.9.4 <https://github.com/ncbi-nlp/NegBio/tree/v0.9.4>`_.
 
 
-Get started
-===========
+Run NegBio
+==========
 
-Download NegBio
-~~~~~~~~~~~~~~~
+1. Sectioned report CSVs. See the `https://github.com/yfpeng/mimic-cxr <https://github.com/yfpeng/mimic-cxr>`_ for details.
+
+2. Download NegBio
 
 .. code-block:: bash
 
-     $ git clone https://github.com/ncbi-nlp/NegBio.git
-     $ cd /path/to/negbio
+   git clone --single-branch --branch MIMIC-CXR https://github.com/ncbi-nlp/NegBio.git
+   cd path/to/NegBio
 
 
-Prepare the dataset
-~~~~~~~~~~~~~~~~~~~
+3. Prepare virtual environment
 
-The inputs can be in either plain text or `BioC <http://bioc.sourceforge.net/>`_ format.
-If the reports are in plain text, each report needs to be in a single file.
-Some examples can be found in the ``examples`` folder.
+.. code-block:: bash
 
-Run the script
-~~~~~~~~~~~~~~
+   conda create --name negbio python=3.6
+   source activate negbio
 
-See `User guide <https://negbio.readthedocs.io/en/latest/user_guide.html>`_.
+
+or
+
+.. code-block:: bash
+
+   python3 -m venv negbio
+   source negbio/bin/activate
+
+
+4. Install required packages
+
+.. code-block:: bash
+
+   pip install --upgrade pip setuptools
+   pip install -r requirements3.txt
+
+
+5. Setup enviroments
+
+.. code-block:: bash
+
+   export OUTPUT=~/data/MIMICCXR/mimic-cxr-20190913/mimic_cxr_999_2
+   export OUTPUT_LABELS=$OUTPUT/mimic_cxr_999_negbio_labels.csv
+   export INPUT_FILES=mimic_cxr_000.csv
+
+
+6. Run the script
+
+.. code-block:: bash
+
+   bash run_negbio_on_files.sh
+
+
+The output folder will contains final results and intermediated files such as sentences (in the ``ssplit`` folder), parse trees (in the ``parse`` folder), and universal dependendy graphs (in the ``ud`` folder). For each findings, you can which rule was used to extract the findings, and which rule was used to detect if it is negative or uncertain.
+
+More details of running ``NegBio`` step-by-step, such as how to set the number of CPUs for parallel processing, can be found at https://github.com/ncbi-nlp/NegBio
 
 
 Documentation
