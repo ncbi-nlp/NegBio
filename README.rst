@@ -21,50 +21,50 @@ Run NegBio
 
 2. Download NegBio
 
-.. code-block:: bash
+   .. code-block:: bash
 
-   git clone --single-branch --branch MIMIC-CXR https://github.com/ncbi-nlp/NegBio.git
-   cd path/to/NegBio
+      git clone --single-branch --branch MIMIC-CXR https://github.com/ncbi-nlp/NegBio.git
+      cd path/to/NegBio
 
 
 3. Prepare virtual environment
 
-.. code-block:: bash
+   .. code-block:: bash
 
-   conda create --name negbio python=3.6
-   source activate negbio
+      conda create --name negbio python=3.6
+      source activate negbio
 
 
-or
+   or
 
-.. code-block:: bash
+   .. code-block:: bash
 
-   python3 -m venv negbio
-   source negbio/bin/activate
+      python3 -m venv negbio
+      source negbio/bin/activate
 
 
 4. Install required packages
 
-.. code-block:: bash
+   .. code-block:: bash
 
-   pip install --upgrade pip setuptools
-   pip install -r requirements3.txt
+      pip install --upgrade pip setuptools
+      pip install -r requirements3.txt
 
 
 5. Setup enviroments
 
-.. code-block:: bash
+   .. code-block:: bash
 
-   export OUTPUT_DIR=mimic_cxr
-   export OUTPUT_LABELS=$OUTPUT_DIR/mimic_cxr_negbio_labels.csv
-   export INPUT_FILES=mimic_cxr_000.csv
+      export OUTPUT_DIR=mimic_cxr
+      export OUTPUT_LABELS=$OUTPUT_DIR/mimic_cxr_negbio_labels.csv
+      export INPUT_FILES=mimic_cxr_000.csv
 
 
 6. Run the script
 
-.. code-block:: bash
+   .. code-block:: bash
 
-   bash run_negbio_on_files.sh
+      bash run_negbio_on_files.sh
 
 
 The output folder will contains final results and intermediated files such as sentences (in the ``ssplit`` folder), parse trees (in the ``parse`` folder), and universal dependendy graphs (in the ``ud`` folder). For each findings, you can which rule was used to extract the findings, and which rule was used to detect if it is negative or uncertain.
@@ -77,7 +77,7 @@ Citing NegBio
 If you're running the NegBio pipeline, please cite:
 
 *  Peng Y, Wang X, Lu L, Bagheri M, Summers RM, Lu Z. `NegBio: a high-performance tool for negation and uncertainty
-   detection in radiology reports <https://arxiv.org/abs/1712.05898>`_. *AMIA 2018 Informatics Summit*. 2018.
+   detection in radiology reports <https://arxiv.org/abs/1712.05898>`_. *AMIA 2018 Informatics Summit*. 2018, 188-196.
 *  Wang X, Peng Y, Lu L, Bagheri M, Lu Z, Summers R. `ChestX-ray8: Hospital-scale Chest X-ray database and benchmarks
    on weakly-supervised classification and localization of common thorax diseases <https://arxiv.org/abs/1705.02315>`_.
    *IEEE Conference on Computer Vision and Pattern Recognition (CVPR)*. 2017, 2097-2106.
