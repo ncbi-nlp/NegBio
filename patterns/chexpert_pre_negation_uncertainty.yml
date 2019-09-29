@@ -1,0 +1,28 @@
+- id: 0
+  pattern: '{} < {} ({lemma:/exclude/} >{} {lemma:/cannot/})'
+  comment: cannot exclude some XXX
+- id: 1
+  pattern: '{} < {} ({lemma:/exclude/} > {dependency:/neg/} {})'
+  comment: XXX is not excluded
+- id: 2
+  pattern: '{} > {} {lemma:/new/} & > {dependency:/neg/} {lemma:/no/}'
+  comment: no new XXX
+- id: 3
+  pattern: '{} < {} ({lemma:/new/} > {} {lemma:/no/})'
+  comment: no new XXX
+- id: 4
+  pattern: '{} < {dependency:/compound/} ({} > {} {lemma:/new/} & > {} {lemma:/no/})'
+  comment: no new XXX
+- id: 5
+  pattern: '{} < {} ({lemma:/area/} > {} {lemma:/no/} > {} {lemma:/new/})'
+  comment: no new area of XXX
+- id: 6
+  pattern: '{} > {} ({lemma:/area/} > {} {lemma:/no/} > {} {lemma:/new/})'
+  comment: no new area of XXX
+- id: 7
+  pattern: '{} <{dependency:/nmod:out/} ({lemma:/rule/} > {} {lemma:/cannot/})'
+  comment: cannot rule out XXX
+- id: 8
+  pattern: '{} < {dependency:/nmod:out/} ({lemma:/rule/} < {} ({lemma:/evidence/}
+    > {} {lemma:/no/}))'
+  comment: no evidence to rule out XXX

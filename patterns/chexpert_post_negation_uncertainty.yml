@@ -1,0 +1,219 @@
+- id: 0
+  pattern: '{lemma:/cardiomediastinal|pericardial|mediastinal|mediastinum|cardiomediastinum|contour|configuration|silhouette|size|heart|shadow/}
+    > {dependency:/amod/} {lemma:/stable|unchanged/}'
+  comment: Stable/unchanged silhouette/cardiomediastinal
+- id: 1
+  pattern: '{lemma:/cardiomediastinal|pericardial|mediastinal|mediastinum|cardiomediastinum|contour|configuration|silhouette|size|heart|shadow/}
+    > {} ({lemma:/change/} > {dependency:/neg/} {})'
+  comment: Stable/unchanged silhouette/cardiomediastinal
+- id: 2
+  pattern: '{lemma:/cardiomediastinal|pericardial|mediastinal|mediastinum|cardiomediastinum|contour|configuration|silhouette|size|heart|shadow/}
+    < {dependency:/nsubj/} {lemma:/stable|unchanged/}'
+  comment: Silhouette/cardiomediastinal is stable|unchanged|not changed
+- id: 3
+  pattern: '{lemma:/cardiomediastinal|pericardial|mediastinal|mediastinum|cardiomediastinum|contour|configuration|silhouette|size|heart|shadow/}
+    < {} ({lemma:/change/} > {dependency:/neg/} {})'
+  comment: Silhouette/cardiomediastinal is stable|unchanged|not changed
+- id: 4
+  pattern: '{lemma:/cardiomediastinal|pericardial|mediastinal|mediastinum|cardiomediastinum|contour|configuration|silhouette|size|heart|shadow/}
+    < {} ({lemma:/similar/} > {dependency:/nmod:to/} {lemma:/prior/})'
+  comment: Silhouette/cardiomediastinal similar to prior
+- id: 5
+  pattern: '{lemma:/cardiomediastinal|pericardial|mediastinal|mediastinum|cardiomediastinum|contour|configuration|silhouette|size|heart|shadow/}
+    < {} ({lemma:/similar/} > {dependency:/nmod:to/} ({} >{} {lemma:/prior/}))'
+  comment: Silhouette/cardiomediastinal similar to prior
+- id: 6
+  pattern: '{lemma:/cardiomediastinal|pericardial|mediastinal|mediastinum|cardiomediastinum|contour|configuration|silhouette|size|heart|shadow/}
+    > {} ({lemma:/similar/} > {dependency:/nmod:to/} {lemma:/prior/})'
+  comment: Silhouette/cardiomediastinal similar to prior
+- id: 7
+  pattern: '{lemma:/cardiomediastinal|pericardial|mediastinal|mediastinum|cardiomediastinum|contour|configuration|silhouette|size|heart|shadow/}
+    > {} ({lemma:/similar/} > {dependency:/nmod:to/} ({} >{} {lemma:/prior/}))'
+  comment: Silhouette/cardiomediastinal similar to prior
+- id: 8
+  pattern: '{lemma:/cardiomediastinal|pericardial|mediastinal|mediastinum|cardiomediastinum|contour|configuration|silhouette|size|heart|shadow/}
+    < {dependency:/nmod:of/} ({lemma:/appearance/} > {} {lemma:/stable/})'
+  comment: Stable apparence of silhouette/cardiomediastinal
+- id: 9
+  pattern: '{} < {} ({lemma:/excluded/} > {dependency:/neg/} {})'
+  comment: Stable apparence of silhouette/cardiomediastinal
+- id: 10
+  pattern: '{} < {dependency:/nmod:for/} {lemma:/suspicious/}'
+  comment: Stable apparence of silhouette/cardiomediastinal
+- id: 11
+  pattern: '{} < {dependency:/dobj/} ({lemma:/represent/} > {dependency:/advmod/}
+    {lemma:/possibly/})'
+  comment: Stable apparence of silhouette/cardiomediastinal
+- id: 12
+  pattern: '{} > {dependency:/cc/} {lemma:/and.or/}'
+  comment: Stable apparence of silhouette/cardiomediastinal
+- id: 13
+  pattern: '{} < {dependency:/conj:and.or/} {}'
+  comment: Stable apparence of silhouette/cardiomediastinal
+- id: 14
+  pattern: '{} > {} {lemma:/new/} & > {dependency:/neg/} {lemma:/no/}'
+  comment: Stable apparence of silhouette/cardiomediastinal
+- id: 15
+  pattern: '{} < {dependency:/dep/} ({} > {dependency:/acl:relcl/} ({lemma:/represent/}
+    < {dependency:/aux/} {lemma:/may/}))'
+  comment: Stable apparence of silhouette/cardiomediastinal
+- id: 16
+  pattern: '{} < {dependency:/nmod:for/} {lemma:/worrisome/}'
+  comment: Stable apparence of silhouette/cardiomediastinal
+- id: 17
+  pattern: '{} < {dependency:/conj:versus/} {}'
+  comment: XXX versus YYY
+- id: 18
+  pattern: '{} > {dependency:/conj:versus/} {}'
+  comment: XXX versus YYY
+- id: 19
+  pattern: ({lemma:/angle/} > {dependency:/nsubj/} {lemma:/costophrenic/}) > {dependency:/nmod:of/}
+    {lemma:/blunt.*/}
+  comment: '{} < {dependency:/nsubjpass/} ({lemma:/change/} > {dependency:/neg/} {})'
+- id: 20
+  pattern: '{} < {lemma:/nsubj/} ({} > {} ({lemma:/likely/} > {} {lemma:/less/}))'
+  comment: '{} < {dependency:/nsubjpass/} ({lemma:/change/} > {dependency:/neg/} {})'
+- id: 21
+  pattern: '{} < {dependency:/nmod:out/} {lemma:/cannot/}'
+  comment: '{} < {dependency:/nsubjpass/} ({lemma:/change/} > {dependency:/neg/} {})'
+- id: 22
+  pattern: '{} >{} {lemma:/possible|possibly|presumably|probable|questionable|suspect|suspected|suspicious/}'
+  comment: outgoing edge
+- id: 23
+  pattern: '{} >{} {lemma:/question/}'
+  comment: outgoing edge
+- id: 24
+  pattern: '{} > {} {lemma:/may|might|would|could/}'
+  comment: May/might/would/could be XXX
+- id: 25
+  pattern: '{} <{dependency:/nmod:of/} {lemma:/question|suggestion/}'
+  comment: incoming edge
+- id: 26
+  pattern: '{} <{dependency:/dobj/} {lemma:/suspect|favor|question|consider/}'
+  comment: incoming edge
+- id: 27
+  pattern: '{} <{dependency:/nmod:for/} {lemma:/concern|suspicion/}'
+  comment: incoming edge
+- id: 28
+  pattern: '{} <{dependency:/nsubjpass/} {lemma:/suspect/}'
+  comment: incoming edge
+- id: 29
+  pattern: '{} <{} {lemma:/possible/}'
+  comment: incoming edge
+- id: 30
+  pattern: '{} <{dependency:/dobj/} {lemma:/suspect/}'
+  comment: suspected XXX
+- id: 31
+  pattern: '{} >{dependency:/advmod/} {lemma:/suspect/}'
+  comment: suspected XXX
+- id: 32
+  pattern: '{} <{dependency:/dep/} {lemma:/maybe/}'
+  comment: maybe due to XXX
+- id: 33
+  pattern: '{} <{dependency:/dobj/} ({lemma:/reflect|represent|indicate|include/}
+    >{} {lemma:/may|could|would|might|possibly|can/})'
+  comment: may/could represent/reflect/indicate/include XXX
+- id: 34
+  pattern: '{} < {} ({lemma:/presence/} <{dependency:/dobj/} ({lemma:/reflect|represent|indicate|include/}
+    >{} {lemma:/may|could|would|might|possibly|can/}))'
+  comment: may/could represent/reflect/indicate/include the presence of XXX
+- id: 35
+  pattern: '{} <{dependency:/nmod:to/} {lemma:/secondary/}'
+  comment: maybe secondary to XXX
+- id: 36
+  pattern: '{} <{dependency:/nmod:to/} ({lemma:/due/} >{} {lemma:/can|could|may|would|possibly/})'
+  comment: may be due to XXX
+- id: 37
+  pattern: '{} <{dependency:/nmod:to/} ({lemma:/relate/} >{} {lemma:/can|could|may|would|possibly/})'
+  comment: could related to XXX
+- id: 38
+  pattern: '{} <{dependency:/nmod:with/} ({lemma:/compatible/} >{} {lemma:/be|could|may|would/})'
+  comment: may be compatible with XXX
+- id: 39
+  pattern: '{} <{dependency:/dobj/} ({lemma:/left/} <{} {lemma:/question/})'
+  comment: question left XXX
+- id: 40
+  pattern: '{} >{} {lemma:/left/} <{} {lemma:/question/}'
+  comment: question left XXX
+- id: 41
+  pattern: '{} <{dependency:/dobj/} ({lemma:/include/} >{} ({lemma:/diagnosis/} >{}
+    {lemma:/differential/}))'
+  comment: differential diagnosis includes
+- id: 42
+  pattern: '{} <{} {lemma:/be/} >{} {lemma:/may|could|would/}'
+  comment: may be XXX
+- id: 43
+  pattern: '{} <{dependency:/nsubj/} {lemma:/suspect/,tag:/VBN/}'
+  comment: XXX suspected
+- id: 44
+  pattern: '{} < {dependency:/nmod:of/} ({lemma:/symptom/} < {dependency:/nmod:for/}
+    {lemma:/correlation/})'
+  comment: Correlation for symptoms of XXX
+- id: 45
+  pattern: '{lemma:/heart/} < {dependency:/compound/} ({lemma:/size/} > {} {lemma:/borderline/})'
+  comment: borderline heart size
+- id: 46
+  pattern: '{} < {} ({lemma:/present/} > {dependency:/aux/} {lemma:/could|might|may|possibly|can/})'
+  comment: XXX could/might/may/possibly be present
+- id: 47
+  pattern: '{} < {} ({lemma:/evaluate/} > {dependency:/advmod/} {lemma:/poorly/})'
+  comment: XXX is poorly evaluated
+- id: 48
+  pattern: '{} < {} ({lemma:/evaluate/} > {dependency:/advmod/} {lemma:/incompletely/})'
+  comment: XXX is incompletely evaluated
+- id: 49
+  pattern: '{} < {} ({lemma:/evaluate|visualize/} >{dependency:/neg/} {})'
+  comment: XXX is not well visualized/evaluated
+- id: 50
+  pattern: '{} > {} ({lemma:/evaluate|visualize/} > {dependency:/neg/} {})'
+  comment: XXX is not well visualized/evaluated
+- id: 51
+  pattern: '{} < {} {lemma:/obscure/}'
+  comment: obscuring the XXX | XXX is obscured | obscured XXX
+- id: 52
+  pattern: '{} < {dependency:/nsubj/} ({lemma:/appear/} > {} {lemma:/could|may|might|can/})'
+  comment: XXX could appear
+- id: 53
+  pattern: '{} < {dependency:/nmod:with/} ({lemma:/consistent/} > {} {lemma:/may|might|can|could/})'
+  comment: may be consistent/compatible with XXX
+- id: 54
+  pattern: '{} < {dependency:/nmod:for/} ({lemma:/correlate/} > {dependency:/advmod/}
+    {lemma:/clinically/})'
+  comment: correlate clinically for XXX
+- id: 55
+  pattern: '{} < {dependency:/nmod:of/} ({lemma:/evidence|sign|signs|symptoms|symptom/}
+    < {dependency:/nmod:for/} ({lemma:/correlate/} > {dependency:/advmod/} {lemma:/clinically/}))'
+  comment: correlate clinically for evidence of XXX
+- id: 56
+  pattern: '{} < {} (({lemma:/see/} > {dependency:/neg/} {}) > {} {lemma:/clearly/})'
+  comment: XXX are not clearly seen
+- id: 57
+  pattern: '{} > {} (({lemma:/see/} > {dependency:/neg/} {}) > {} {lemma:/clearly/})'
+  comment: XXX are not clearly seen
+- id: 58
+  pattern: '{} < {} ({lemma:/reflect/} > {} {lemma:/possibly/})'
+  comment: possibly reflecting a XXX
+- id: 59
+  pattern: '{} < {} ({lemma:/appreciate/} > {dependency:/neg/} {})'
+  comment: XXX was not appreciated
+- id: 60
+  pattern: '{} < {} (({lemma:/have/} > {} {lemma:/may|might|could/}) > {} {lemma:/appearance/})'
+  comment: XXX may|might|could (also) have this appearance
+- id: 61
+  pattern: '{lemma:/congestion/} > {} {lemma:/vascular/}'
+  comment: vascular prominence
+- id: 62
+  pattern: '{lemma:/congestion/} > {} {lemma:/pulmonary/}'
+  comment: vascular prominence
+- id: 63
+  pattern: '{lemma:/indistinctness/}'
+  comment: vascular prominence
+- id: 64
+  pattern: '{lemma:/prominence/} > {} {lemma:/vascular/}'
+  comment: vascular prominence
+- id: 65
+  pattern: '{} > {dependency:/conj:or/} {}'
+  comment: XXX or YYY
+- id: 66
+  pattern: '{} < {dependency:/conj:or/} {}'
+  comment: XXX or YYY
