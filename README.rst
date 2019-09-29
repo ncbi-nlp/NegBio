@@ -4,15 +4,6 @@
 
 -----------------------
 
-.. image:: https://github.com/yfpeng/negbio2/workflows/negbio2/badge.svg
-   :alt: Build status
-   :target: https://github.com/yfpeng/negbio2
-
-.. image:: https://img.shields.io/readthedocs/negbio.svg
-   :target: http://negbio.readthedocs.io
-   :alt: RTD version
-
-
 
 NegBio is a high-performance NLP tool for negation and uncertainty detection in clinical texts (e.g. radiology reports).
 
@@ -26,7 +17,7 @@ This is a NegBio branch to construct the labels from the MIMIC-III-CXR reports. 
 Run NegBio
 ==========
 
-1. Sectioned report CSVs. See the `https://github.com/yfpeng/mimic-cxr <https://github.com/yfpeng/mimic-cxr>`_ for details.
+1. Sectioned report CSVs. See the https://github.com/MIT-LCP/mimic-cxr for details.
 
 2. Download NegBio
 
