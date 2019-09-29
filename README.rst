@@ -69,16 +69,7 @@ or
 
 The output folder will contains final results and intermediated files such as sentences (in the ``ssplit`` folder), parse trees (in the ``parse`` folder), and universal dependendy graphs (in the ``ud`` folder). For each findings, you can which rule was used to extract the findings, and which rule was used to detect if it is negative or uncertain.
 
-More details of running ``NegBio`` step-by-step, such as how to set the number of CPUs for parallel processing, can be found at https://github.com/ncbi-nlp/NegBio
-
-
-Documentation
-=============
-
-negbio `documentation <http://negbio.readthedocs.io/en/latest/>`_ is available on Read The Docs.
-
-See `Getting Started <http://negbio.readthedocs.io/en/latest/getting_started.html>`_ for installation and basic
-information. To contribute to negbio, read our `contribution guide </CONTRIBUTING.md>`_.
+More details of running ``NegBio`` step-by-step, such as how to set the number of CPUs for parallel processing, can be found in codes.
 
 Citing NegBio
 =============
