@@ -1,0 +1,943 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes'?>
+<collection>
+  <source>ChestXray-NIHCC</source>
+  <date>2017-05-31</date>
+  <key></key>
+  <document>
+    <id>00019248</id>
+    <passage>
+      <offset>0</offset>
+      <text>findings:
+chest: four images:
+right picc with tip within the upper svc.
+probable enlargement of the main pulmonary artery.
+mild cardiomegaly.
+no evidence of focal infiltrate, effusion or pneumothorax.
+dictating </text>
+      <sentence>
+        <infon key="parse tree">(S1 (S (NP (NP (NNS findings)) (: :) (NP (NN chest)) (: :) (NP (CD four) (NNS images)) (: :) (NP (NP (JJ right) (NN picc)) (PP (IN with) (NP (NN tip))) (PP (IN within) (NP (DT the) (JJ upper) (NN svc)))) (. .))))</infon>
+        <offset>0</offset>
+        <text>findings:
+chest: four images:
+right picc with tip within the upper svc.</text>
+        <annotation id="T0">
+          <infon key="tag">NNS</infon>
+          <infon key="lemma">finding</infon>
+          <infon key="ROOT">True</infon>
+          <location length="8" offset="0"/>
+          <text>findings</text>
+        </annotation>
+        <annotation id="T1">
+          <infon key="tag">:</infon>
+          <infon key="lemma">:</infon>
+          <location length="1" offset="8"/>
+          <text>:</text>
+        </annotation>
+        <annotation id="T2">
+          <infon key="tag">NN</infon>
+          <infon key="lemma">chest</infon>
+          <location length="5" offset="10"/>
+          <text>chest</text>
+        </annotation>
+        <annotation id="T3">
+          <infon key="tag">:</infon>
+          <infon key="lemma">:</infon>
+          <location length="1" offset="15"/>
+          <text>:</text>
+        </annotation>
+        <annotation id="T4">
+          <infon key="tag">CD</infon>
+          <infon key="lemma">four</infon>
+          <location length="4" offset="17"/>
+          <text>four</text>
+        </annotation>
+        <annotation id="T5">
+          <infon key="tag">NNS</infon>
+          <infon key="lemma">image</infon>
+          <location length="6" offset="22"/>
+          <text>images</text>
+        </annotation>
+        <annotation id="T6">
+          <infon key="tag">:</infon>
+          <infon key="lemma">:</infon>
+          <location length="1" offset="28"/>
+          <text>:</text>
+        </annotation>
+        <annotation id="T7">
+          <infon key="tag">JJ</infon>
+          <infon key="lemma">right</infon>
+          <location length="5" offset="30"/>
+          <text>right</text>
+        </annotation>
+        <annotation id="T8">
+          <infon key="tag">NN</infon>
+          <infon key="lemma">picc</infon>
+          <location length="4" offset="36"/>
+          <text>picc</text>
+        </annotation>
+        <annotation id="T9">
+          <infon key="tag">IN</infon>
+          <infon key="lemma">with</infon>
+          <location length="4" offset="41"/>
+          <text>with</text>
+        </annotation>
+        <annotation id="T10">
+          <infon key="tag">NN</infon>
+          <infon key="lemma">tip</infon>
+          <location length="3" offset="46"/>
+          <text>tip</text>
+        </annotation>
+        <annotation id="T11">
+          <infon key="tag">IN</infon>
+          <infon key="lemma">within</infon>
+          <location length="6" offset="50"/>
+          <text>within</text>
+        </annotation>
+        <annotation id="T12">
+          <infon key="tag">DT</infon>
+          <infon key="lemma">the</infon>
+          <location length="3" offset="57"/>
+          <text>the</text>
+        </annotation>
+        <annotation id="T13">
+          <infon key="tag">JJ</infon>
+          <infon key="lemma">upper</infon>
+          <location length="5" offset="61"/>
+          <text>upper</text>
+        </annotation>
+        <annotation id="T14">
+          <infon key="tag">NN</infon>
+          <infon key="lemma">svc</infon>
+          <location length="3" offset="67"/>
+          <text>svc</text>
+        </annotation>
+        <annotation id="T15">
+          <infon key="tag">.</infon>
+          <infon key="lemma">.</infon>
+          <location length="1" offset="70"/>
+          <text>.</text>
+        </annotation>
+        <relation id="R0">
+          <infon key="dependency">punct</infon>
+          <node refid="T1" role="dependant"/>
+          <node refid="T0" role="governor"/>
+        </relation>
+        <relation id="R1">
+          <infon key="dependency">dep</infon>
+          <node refid="T2" role="dependant"/>
+          <node refid="T0" role="governor"/>
+        </relation>
+        <relation id="R2">
+          <infon key="dependency">punct</infon>
+          <node refid="T3" role="dependant"/>
+          <node refid="T0" role="governor"/>
+        </relation>
+        <relation id="R3">
+          <infon key="dependency">nummod</infon>
+          <node refid="T4" role="dependant"/>
+          <node refid="T5" role="governor"/>
+        </relation>
+        <relation id="R4">
+          <infon key="dependency">dep</infon>
+          <node refid="T5" role="dependant"/>
+          <node refid="T0" role="governor"/>
+        </relation>
+        <relation id="R5">
+          <infon key="dependency">punct</infon>
+          <node refid="T6" role="dependant"/>
+          <node refid="T0" role="governor"/>
+        </relation>
+        <relation id="R6">
+          <infon key="dependency">amod</infon>
+          <node refid="T7" role="dependant"/>
+          <node refid="T8" role="governor"/>
+        </relation>
+        <relation id="R7">
+          <infon key="dependency">dep</infon>
+          <node refid="T8" role="dependant"/>
+          <node refid="T0" role="governor"/>
+        </relation>
+        <relation id="R8">
+          <infon key="dependency">case</infon>
+          <node refid="T9" role="dependant"/>
+          <node refid="T10" role="governor"/>
+        </relation>
+        <relation id="R9">
+          <infon key="dependency">nmod:with</infon>
+          <node refid="T10" role="dependant"/>
+          <node refid="T8" role="governor"/>
+        </relation>
+        <relation id="R10">
+          <infon key="dependency">case</infon>
+          <node refid="T11" role="dependant"/>
+          <node refid="T14" role="governor"/>
+        </relation>
+        <relation id="R11">
+          <infon key="dependency">det</infon>
+          <node refid="T12" role="dependant"/>
+          <node refid="T14" role="governor"/>
+        </relation>
+        <relation id="R12">
+          <infon key="dependency">amod</infon>
+          <node refid="T13" role="dependant"/>
+          <node refid="T14" role="governor"/>
+        </relation>
+        <relation id="R13">
+          <infon key="dependency">nmod:within</infon>
+          <node refid="T14" role="dependant"/>
+          <node refid="T8" role="governor"/>
+        </relation>
+        <relation id="R14">
+          <infon key="dependency">punct</infon>
+          <node refid="T15" role="dependant"/>
+          <node refid="T0" role="governor"/>
+        </relation>
+      </sentence>
+      <sentence>
+        <infon key="parse tree">(S1 (S (S (NP (NP (JJ probable) (NN enlargement)) (PP (IN of) (NP (DT the) (JJ main) (JJ pulmonary) (NN artery))))) (. .)))</infon>
+        <offset>72</offset>
+        <text>probable enlargement of the main pulmonary artery.</text>
+        <annotation id="T0">
+          <infon key="tag">JJ</infon>
+          <infon key="lemma">probable</infon>
+          <location length="8" offset="72"/>
+          <text>probable</text>
+        </annotation>
+        <annotation id="T1">
+          <infon key="tag">NN</infon>
+          <infon key="lemma">enlargement</infon>
+          <infon key="ROOT">True</infon>
+          <location length="11" offset="81"/>
+          <text>enlargement</text>
+        </annotation>
+        <annotation id="T2">
+          <infon key="tag">IN</infon>
+          <infon key="lemma">of</infon>
+          <location length="2" offset="93"/>
+          <text>of</text>
+        </annotation>
+        <annotation id="T3">
+          <infon key="tag">DT</infon>
+          <infon key="lemma">the</infon>
+          <location length="3" offset="96"/>
+          <text>the</text>
+        </annotation>
+        <annotation id="T4">
+          <infon key="tag">JJ</infon>
+          <infon key="lemma">main</infon>
+          <location length="4" offset="100"/>
+          <text>main</text>
+        </annotation>
+        <annotation id="T5">
+          <infon key="tag">JJ</infon>
+          <infon key="lemma">pulmonary</infon>
+          <location length="9" offset="105"/>
+          <text>pulmonary</text>
+        </annotation>
+        <annotation id="T6">
+          <infon key="tag">NN</infon>
+          <infon key="lemma">artery</infon>
+          <location length="6" offset="115"/>
+          <text>artery</text>
+        </annotation>
+        <annotation id="T7">
+          <infon key="tag">.</infon>
+          <infon key="lemma">.</infon>
+          <location length="1" offset="121"/>
+          <text>.</text>
+        </annotation>
+        <relation id="R0">
+          <infon key="dependency">amod</infon>
+          <node refid="T0" role="dependant"/>
+          <node refid="T1" role="governor"/>
+        </relation>
+        <relation id="R1">
+          <infon key="dependency">case</infon>
+          <node refid="T2" role="dependant"/>
+          <node refid="T6" role="governor"/>
+        </relation>
+        <relation id="R2">
+          <infon key="dependency">det</infon>
+          <node refid="T3" role="dependant"/>
+          <node refid="T6" role="governor"/>
+        </relation>
+        <relation id="R3">
+          <infon key="dependency">amod</infon>
+          <node refid="T4" role="dependant"/>
+          <node refid="T6" role="governor"/>
+        </relation>
+        <relation id="R4">
+          <infon key="dependency">amod</infon>
+          <node refid="T5" role="dependant"/>
+          <node refid="T6" role="governor"/>
+        </relation>
+        <relation id="R5">
+          <infon key="dependency">nmod:of</infon>
+          <node refid="T6" role="dependant"/>
+          <node refid="T1" role="governor"/>
+        </relation>
+        <relation id="R6">
+          <infon key="dependency">punct</infon>
+          <node refid="T7" role="dependant"/>
+          <node refid="T1" role="governor"/>
+        </relation>
+      </sentence>
+      <sentence>
+        <infon key="parse tree">(S1 (S (S (VP (JJ mild) (ADVP (RB cardiomegaly)))) (. .)))</infon>
+        <offset>123</offset>
+        <text>mild cardiomegaly.</text>
+        <annotation id="T0">
+          <infon key="tag">JJ</infon>
+          <infon key="lemma">mild</infon>
+          <infon key="ROOT">True</infon>
+          <location length="4" offset="123"/>
+          <text>mild</text>
+        </annotation>
+        <annotation id="T1">
+          <infon key="tag">RB</infon>
+          <infon key="lemma">cardiomegaly</infon>
+          <location length="12" offset="128"/>
+          <text>cardiomegaly</text>
+        </annotation>
+        <annotation id="T2">
+          <infon key="tag">.</infon>
+          <infon key="lemma">.</infon>
+          <location length="1" offset="140"/>
+          <text>.</text>
+        </annotation>
+        <relation id="R0">
+          <infon key="dependency">advmod</infon>
+          <node refid="T1" role="dependant"/>
+          <node refid="T0" role="governor"/>
+        </relation>
+        <relation id="R1">
+          <infon key="dependency">punct</infon>
+          <node refid="T2" role="dependant"/>
+          <node refid="T0" role="governor"/>
+        </relation>
+      </sentence>
+      <sentence>
+        <infon key="parse tree">(S1 (S (S (NP (NP (DT no) (NN evidence)) (PP (IN of) (NP (NP (JJ focal) (NN infiltrate)) (, ,) (NP (NN effusion)) (CC or) (NP (NN pneumothorax)))))) (. .)))</infon>
+        <offset>142</offset>
+        <text>no evidence of focal infiltrate, effusion or pneumothorax.</text>
+        <annotation id="T0">
+          <infon key="tag">DT</infon>
+          <infon key="lemma">no</infon>
+          <location length="2" offset="142"/>
+          <text>no</text>
+        </annotation>
+        <annotation id="T1">
+          <infon key="tag">NN</infon>
+          <infon key="lemma">evidence</infon>
+          <infon key="ROOT">True</infon>
+          <location length="8" offset="145"/>
+          <text>evidence</text>
+        </annotation>
+        <annotation id="T2">
+          <infon key="tag">IN</infon>
+          <infon key="lemma">of</infon>
+          <location length="2" offset="154"/>
+          <text>of</text>
+        </annotation>
+        <annotation id="T3">
+          <infon key="tag">JJ</infon>
+          <infon key="lemma">focal</infon>
+          <location length="5" offset="157"/>
+          <text>focal</text>
+        </annotation>
+        <annotation id="T4">
+          <infon key="tag">NN</infon>
+          <infon key="lemma">infiltrate</infon>
+          <location length="10" offset="163"/>
+          <text>infiltrate</text>
+        </annotation>
+        <annotation id="T5">
+          <infon key="tag">,</infon>
+          <infon key="lemma">,</infon>
+          <location length="1" offset="173"/>
+          <text>,</text>
+        </annotation>
+        <annotation id="T6">
+          <infon key="tag">NN</infon>
+          <infon key="lemma">effusion</infon>
+          <location length="8" offset="175"/>
+          <text>effusion</text>
+        </annotation>
+        <annotation id="T7">
+          <infon key="tag">CC</infon>
+          <infon key="lemma">or</infon>
+          <location length="2" offset="184"/>
+          <text>or</text>
+        </annotation>
+        <annotation id="T8">
+          <infon key="tag">NN</infon>
+          <infon key="lemma">pneumothorax</infon>
+          <location length="12" offset="187"/>
+          <text>pneumothorax</text>
+        </annotation>
+        <annotation id="T9">
+          <infon key="tag">.</infon>
+          <infon key="lemma">.</infon>
+          <location length="1" offset="199"/>
+          <text>.</text>
+        </annotation>
+        <relation id="R0">
+          <infon key="dependency">neg</infon>
+          <node refid="T0" role="dependant"/>
+          <node refid="T1" role="governor"/>
+        </relation>
+        <relation id="R1">
+          <infon key="dependency">case</infon>
+          <node refid="T2" role="dependant"/>
+          <node refid="T4" role="governor"/>
+        </relation>
+        <relation id="R2">
+          <infon key="dependency">amod</infon>
+          <node refid="T3" role="dependant"/>
+          <node refid="T4" role="governor"/>
+        </relation>
+        <relation id="R3">
+          <infon key="dependency">nmod:of</infon>
+          <node refid="T4" role="dependant"/>
+          <node refid="T1" role="governor"/>
+        </relation>
+        <relation id="R4">
+          <infon key="dependency">punct</infon>
+          <node refid="T5" role="dependant"/>
+          <node refid="T4" role="governor"/>
+        </relation>
+        <relation id="R5">
+          <infon key="dependency">nmod:of</infon>
+          <node refid="T6" role="dependant"/>
+          <node refid="T1" role="governor"/>
+        </relation>
+        <relation id="R6">
+          <infon key="dependency">conj:or</infon>
+          <node refid="T6" role="dependant"/>
+          <node refid="T4" role="governor"/>
+        </relation>
+        <relation id="R7">
+          <infon key="dependency">cc</infon>
+          <node refid="T7" role="dependant"/>
+          <node refid="T4" role="governor"/>
+        </relation>
+        <relation id="R8">
+          <infon key="dependency">nmod:of</infon>
+          <node refid="T8" role="dependant"/>
+          <node refid="T1" role="governor"/>
+        </relation>
+        <relation id="R9">
+          <infon key="dependency">conj:or</infon>
+          <node refid="T8" role="dependant"/>
+          <node refid="T4" role="governor"/>
+        </relation>
+        <relation id="R10">
+          <infon key="dependency">punct</infon>
+          <node refid="T9" role="dependant"/>
+          <node refid="T1" role="governor"/>
+        </relation>
+      </sentence>
+      <sentence>
+        <infon key="parse tree">(S1 (S (NP (VBG dictating))))</infon>
+        <offset>201</offset>
+        <text>dictating</text>
+        <annotation id="T0">
+          <infon key="tag">VBG</infon>
+          <infon key="lemma">dictate</infon>
+          <infon key="ROOT">True</infon>
+          <location length="9" offset="201"/>
+          <text>dictating</text>
+        </annotation>
+      </sentence>
+      <annotation id="24">
+        <infon key="term">Cardiomegaly</infon>
+        <infon key="CUI">C0018800</infon>
+        <infon key="annotator">MetaMap</infon>
+        <infon key="semtype">fndg</infon>
+        <location length="18" offset="123"/>
+        <text>Mild cardiomegaly.</text>
+      </annotation>
+      <annotation id="27">
+        <infon key="term">Infiltration</infon>
+        <infon key="CUI">C0332448</infon>
+        <infon key="annotator">MetaMap</infon>
+        <infon key="semtype">ftcn</infon>
+        <location length="10" offset="163"/>
+        <text>infiltrate</text>
+      </annotation>
+      <annotation id="30">
+        <infon key="term">effusion</infon>
+        <infon key="CUI">C0013687</infon>
+        <infon key="annotator">MetaMap</infon>
+        <infon key="semtype">patf</infon>
+        <location length="8" offset="175"/>
+        <text>effusion</text>
+      </annotation>
+      <annotation id="32">
+        <infon key="term">Pneumothorax</infon>
+        <infon key="CUI">C0032326</infon>
+        <infon key="annotator">MetaMap</infon>
+        <infon key="semtype">dsyn</infon>
+        <location length="13" offset="187"/>
+        <text>pneumothorax.</text>
+      </annotation>
+    </passage>
+  </document>
+  <document>
+    <id>00000086</id>
+    <passage>
+      <offset>0</offset>
+      <text>findings: pa and lat cxr at 7:34 p.m.. heart and mediastinum are
+stable. lungs are unchanged. air- filled cystic changes. no
+pneumothorax. osseous structures unchanged scoliosis
+impression: stable chest.
+dictating </text>
+      <sentence>
+        <infon key="parse tree">(S1 (S (S (NP (NP (NNS findings)) (: :) (NP (NP (NP (NN pa)) (CC and) (NP (NN lat)) (NP (NN cxr))) (PP (IN at) (NP (CD 7:34) (NN p.m.)))) (. .) (NP (NP (NN heart)) (CC and) (NP (NN mediastinum)))) (VP (VBP are) (ADJP (JJ stable)))) (. .)))</infon>
+        <offset>0</offset>
+        <text>findings: pa and lat cxr at 7:34 p.m.. heart and mediastinum are
+stable.</text>
+        <annotation id="T0">
+          <infon key="tag">NNS</infon>
+          <infon key="lemma">finding</infon>
+          <location length="8" offset="0"/>
+          <text>findings</text>
+        </annotation>
+        <annotation id="T1">
+          <infon key="tag">:</infon>
+          <infon key="lemma">:</infon>
+          <location length="1" offset="8"/>
+          <text>:</text>
+        </annotation>
+        <annotation id="T2">
+          <infon key="tag">NN</infon>
+          <infon key="lemma">pa</infon>
+          <location length="2" offset="10"/>
+          <text>pa</text>
+        </annotation>
+        <annotation id="T3">
+          <infon key="tag">CC</infon>
+          <infon key="lemma">and</infon>
+          <location length="3" offset="13"/>
+          <text>and</text>
+        </annotation>
+        <annotation id="T4">
+          <infon key="tag">NN</infon>
+          <infon key="lemma">lat</infon>
+          <location length="3" offset="17"/>
+          <text>lat</text>
+        </annotation>
+        <annotation id="T5">
+          <infon key="tag">NN</infon>
+          <infon key="lemma">cxr</infon>
+          <location length="3" offset="21"/>
+          <text>cxr</text>
+        </annotation>
+        <annotation id="T6">
+          <infon key="tag">IN</infon>
+          <infon key="lemma">at</infon>
+          <location length="2" offset="25"/>
+          <text>at</text>
+        </annotation>
+        <annotation id="T7">
+          <infon key="tag">CD</infon>
+          <infon key="lemma">7:34</infon>
+          <location length="4" offset="28"/>
+          <text>7:34</text>
+        </annotation>
+        <annotation id="T8">
+          <infon key="tag">NN</infon>
+          <infon key="lemma">p.m.</infon>
+          <location length="4" offset="33"/>
+          <text>p.m.</text>
+        </annotation>
+        <annotation id="T9">
+          <infon key="tag">.</infon>
+          <infon key="lemma">.</infon>
+          <location length="1" offset="37"/>
+          <text>.</text>
+        </annotation>
+        <annotation id="T10">
+          <infon key="tag">NN</infon>
+          <infon key="lemma">heart</infon>
+          <location length="5" offset="39"/>
+          <text>heart</text>
+        </annotation>
+        <annotation id="T11">
+          <infon key="tag">CC</infon>
+          <infon key="lemma">and</infon>
+          <location length="3" offset="45"/>
+          <text>and</text>
+        </annotation>
+        <annotation id="T12">
+          <infon key="tag">NN</infon>
+          <infon key="lemma">mediastinum</infon>
+          <location length="11" offset="49"/>
+          <text>mediastinum</text>
+        </annotation>
+        <annotation id="T13">
+          <infon key="tag">VBP</infon>
+          <infon key="lemma">be</infon>
+          <location length="3" offset="61"/>
+          <text>are</text>
+        </annotation>
+        <annotation id="T14">
+          <infon key="tag">JJ</infon>
+          <infon key="lemma">stable</infon>
+          <infon key="ROOT">True</infon>
+          <location length="6" offset="65"/>
+          <text>stable</text>
+        </annotation>
+        <annotation id="T15">
+          <infon key="tag">.</infon>
+          <infon key="lemma">.</infon>
+          <location length="1" offset="71"/>
+          <text>.</text>
+        </annotation>
+        <relation id="R0">
+          <infon key="dependency">nsubj</infon>
+          <node refid="T0" role="dependant"/>
+          <node refid="T14" role="governor"/>
+        </relation>
+        <relation id="R1">
+          <infon key="dependency">punct</infon>
+          <node refid="T1" role="dependant"/>
+          <node refid="T0" role="governor"/>
+        </relation>
+        <relation id="R2">
+          <infon key="dependency">dep</infon>
+          <node refid="T2" role="dependant"/>
+          <node refid="T0" role="governor"/>
+        </relation>
+        <relation id="R3">
+          <infon key="dependency">cc</infon>
+          <node refid="T3" role="dependant"/>
+          <node refid="T2" role="governor"/>
+        </relation>
+        <relation id="R4">
+          <infon key="dependency">dep</infon>
+          <node refid="T4" role="dependant"/>
+          <node refid="T0" role="governor"/>
+        </relation>
+        <relation id="R5">
+          <infon key="dependency">conj:and</infon>
+          <node refid="T4" role="dependant"/>
+          <node refid="T2" role="governor"/>
+        </relation>
+        <relation id="R6">
+          <infon key="dependency">dep</infon>
+          <node refid="T5" role="dependant"/>
+          <node refid="T2" role="governor"/>
+        </relation>
+        <relation id="R7">
+          <infon key="dependency">case</infon>
+          <node refid="T6" role="dependant"/>
+          <node refid="T8" role="governor"/>
+        </relation>
+        <relation id="R8">
+          <infon key="dependency">nummod</infon>
+          <node refid="T7" role="dependant"/>
+          <node refid="T8" role="governor"/>
+        </relation>
+        <relation id="R9">
+          <infon key="dependency">nmod:at</infon>
+          <node refid="T8" role="dependant"/>
+          <node refid="T2" role="governor"/>
+        </relation>
+        <relation id="R10">
+          <infon key="dependency">punct</infon>
+          <node refid="T9" role="dependant"/>
+          <node refid="T0" role="governor"/>
+        </relation>
+        <relation id="R11">
+          <infon key="dependency">dep</infon>
+          <node refid="T10" role="dependant"/>
+          <node refid="T0" role="governor"/>
+        </relation>
+        <relation id="R12">
+          <infon key="dependency">cc</infon>
+          <node refid="T11" role="dependant"/>
+          <node refid="T10" role="governor"/>
+        </relation>
+        <relation id="R13">
+          <infon key="dependency">dep</infon>
+          <node refid="T12" role="dependant"/>
+          <node refid="T0" role="governor"/>
+        </relation>
+        <relation id="R14">
+          <infon key="dependency">conj:and</infon>
+          <node refid="T12" role="dependant"/>
+          <node refid="T10" role="governor"/>
+        </relation>
+        <relation id="R15">
+          <infon key="dependency">cop</infon>
+          <node refid="T13" role="dependant"/>
+          <node refid="T14" role="governor"/>
+        </relation>
+        <relation id="R16">
+          <infon key="dependency">punct</infon>
+          <node refid="T15" role="dependant"/>
+          <node refid="T14" role="governor"/>
+        </relation>
+      </sentence>
+      <sentence>
+        <infon key="parse tree">(S1 (S (S (NP (NNS lungs)) (VP (VBP are) (ADJP (JJ unchanged)))) (. .)))</infon>
+        <offset>73</offset>
+        <text>lungs are unchanged.</text>
+        <annotation id="T0">
+          <infon key="tag">NNS</infon>
+          <infon key="lemma">lung</infon>
+          <location length="5" offset="73"/>
+          <text>lungs</text>
+        </annotation>
+        <annotation id="T1">
+          <infon key="tag">VBP</infon>
+          <infon key="lemma">be</infon>
+          <location length="3" offset="79"/>
+          <text>are</text>
+        </annotation>
+        <annotation id="T2">
+          <infon key="tag">JJ</infon>
+          <infon key="lemma">unchanged</infon>
+          <infon key="ROOT">True</infon>
+          <location length="9" offset="83"/>
+          <text>unchanged</text>
+        </annotation>
+        <annotation id="T3">
+          <infon key="tag">.</infon>
+          <infon key="lemma">.</infon>
+          <location length="1" offset="92"/>
+          <text>.</text>
+        </annotation>
+        <relation id="R0">
+          <infon key="dependency">nsubj</infon>
+          <node refid="T0" role="dependant"/>
+          <node refid="T2" role="governor"/>
+        </relation>
+        <relation id="R1">
+          <infon key="dependency">cop</infon>
+          <node refid="T1" role="dependant"/>
+          <node refid="T2" role="governor"/>
+        </relation>
+        <relation id="R2">
+          <infon key="dependency">punct</infon>
+          <node refid="T3" role="dependant"/>
+          <node refid="T2" role="governor"/>
+        </relation>
+      </sentence>
+      <sentence>
+        <infon key="parse tree">(S1 (S (S (NP (NN air-)) (VP (VBD filled) (NP (JJ cystic) (NNS changes)))) (. .)))</infon>
+        <offset>94</offset>
+        <text>air- filled cystic changes.</text>
+        <annotation id="T0">
+          <infon key="tag">NN</infon>
+          <infon key="lemma">air-_nn</infon>
+          <location length="4" offset="94"/>
+          <text>air-</text>
+        </annotation>
+        <annotation id="T1">
+          <infon key="tag">VBD</infon>
+          <infon key="lemma">fill</infon>
+          <infon key="ROOT">True</infon>
+          <location length="6" offset="99"/>
+          <text>filled</text>
+        </annotation>
+        <annotation id="T2">
+          <infon key="tag">JJ</infon>
+          <infon key="lemma">cystic</infon>
+          <location length="6" offset="106"/>
+          <text>cystic</text>
+        </annotation>
+        <annotation id="T3">
+          <infon key="tag">NNS</infon>
+          <infon key="lemma">change</infon>
+          <location length="7" offset="113"/>
+          <text>changes</text>
+        </annotation>
+        <annotation id="T4">
+          <infon key="tag">.</infon>
+          <infon key="lemma">.</infon>
+          <location length="1" offset="120"/>
+          <text>.</text>
+        </annotation>
+        <relation id="R0">
+          <infon key="dependency">nsubj</infon>
+          <node refid="T0" role="dependant"/>
+          <node refid="T1" role="governor"/>
+        </relation>
+        <relation id="R1">
+          <infon key="dependency">amod</infon>
+          <node refid="T2" role="dependant"/>
+          <node refid="T3" role="governor"/>
+        </relation>
+        <relation id="R2">
+          <infon key="dependency">dobj</infon>
+          <node refid="T3" role="dependant"/>
+          <node refid="T1" role="governor"/>
+        </relation>
+        <relation id="R3">
+          <infon key="dependency">punct</infon>
+          <node refid="T4" role="dependant"/>
+          <node refid="T1" role="governor"/>
+        </relation>
+      </sentence>
+      <sentence>
+        <infon key="parse tree">(S1 (S (S (NP (DT no) (NN pneumothorax))) (. .)))</infon>
+        <offset>122</offset>
+        <text>no
+pneumothorax.</text>
+        <annotation id="T0">
+          <infon key="tag">DT</infon>
+          <infon key="lemma">no</infon>
+          <location length="2" offset="122"/>
+          <text>no</text>
+        </annotation>
+        <annotation id="T1">
+          <infon key="tag">NN</infon>
+          <infon key="lemma">pneumothorax</infon>
+          <infon key="ROOT">True</infon>
+          <location length="12" offset="125"/>
+          <text>pneumothorax</text>
+        </annotation>
+        <annotation id="T2">
+          <infon key="tag">.</infon>
+          <infon key="lemma">.</infon>
+          <location length="1" offset="137"/>
+          <text>.</text>
+        </annotation>
+        <relation id="R0">
+          <infon key="dependency">neg</infon>
+          <node refid="T0" role="dependant"/>
+          <node refid="T1" role="governor"/>
+        </relation>
+        <relation id="R1">
+          <infon key="dependency">punct</infon>
+          <node refid="T2" role="dependant"/>
+          <node refid="T1" role="governor"/>
+        </relation>
+      </sentence>
+      <sentence>
+        <infon key="parse tree">(S1 (S (S (NP (NP (JJ osseous) (NNS structures)) (VP (JJ unchanged) (NP (NN scoliosis) (NN impression)))) (: :) (NP (JJ stable) (NN chest))) (. .)))</infon>
+        <offset>139</offset>
+        <text>osseous structures unchanged scoliosis
+impression: stable chest.</text>
+        <annotation id="T0">
+          <infon key="tag">JJ</infon>
+          <infon key="lemma">osseous</infon>
+          <location length="7" offset="139"/>
+          <text>osseous</text>
+        </annotation>
+        <annotation id="T1">
+          <infon key="tag">NNS</infon>
+          <infon key="lemma">structure</infon>
+          <location length="10" offset="147"/>
+          <text>structures</text>
+        </annotation>
+        <annotation id="T2">
+          <infon key="tag">JJ</infon>
+          <infon key="lemma">unchanged</infon>
+          <location length="9" offset="158"/>
+          <text>unchanged</text>
+        </annotation>
+        <annotation id="T3">
+          <infon key="tag">NN</infon>
+          <infon key="lemma">scoliosis</infon>
+          <location length="9" offset="168"/>
+          <text>scoliosis</text>
+        </annotation>
+        <annotation id="T4">
+          <infon key="tag">NN</infon>
+          <infon key="lemma">impression</infon>
+          <location length="10" offset="178"/>
+          <text>impression</text>
+        </annotation>
+        <annotation id="T5">
+          <infon key="tag">:</infon>
+          <infon key="lemma">:</infon>
+          <location length="1" offset="188"/>
+          <text>:</text>
+        </annotation>
+        <annotation id="T6">
+          <infon key="tag">JJ</infon>
+          <infon key="lemma">stable</infon>
+          <location length="6" offset="190"/>
+          <text>stable</text>
+        </annotation>
+        <annotation id="T7">
+          <infon key="tag">NN</infon>
+          <infon key="lemma">chest</infon>
+          <infon key="ROOT">True</infon>
+          <location length="5" offset="197"/>
+          <text>chest</text>
+        </annotation>
+        <annotation id="T8">
+          <infon key="tag">.</infon>
+          <infon key="lemma">.</infon>
+          <location length="1" offset="202"/>
+          <text>.</text>
+        </annotation>
+        <relation id="R0">
+          <infon key="dependency">amod</infon>
+          <node refid="T0" role="dependant"/>
+          <node refid="T1" role="governor"/>
+        </relation>
+        <relation id="R1">
+          <infon key="dependency">dep</infon>
+          <node refid="T1" role="dependant"/>
+          <node refid="T7" role="governor"/>
+        </relation>
+        <relation id="R2">
+          <infon key="dependency">dep</infon>
+          <node refid="T2" role="dependant"/>
+          <node refid="T1" role="governor"/>
+        </relation>
+        <relation id="R3">
+          <infon key="dependency">compound</infon>
+          <node refid="T3" role="dependant"/>
+          <node refid="T4" role="governor"/>
+        </relation>
+        <relation id="R4">
+          <infon key="dependency">dobj</infon>
+          <node refid="T4" role="dependant"/>
+          <node refid="T2" role="governor"/>
+        </relation>
+        <relation id="R5">
+          <infon key="dependency">punct</infon>
+          <node refid="T5" role="dependant"/>
+          <node refid="T7" role="governor"/>
+        </relation>
+        <relation id="R6">
+          <infon key="dependency">amod</infon>
+          <node refid="T6" role="dependant"/>
+          <node refid="T7" role="governor"/>
+        </relation>
+        <relation id="R7">
+          <infon key="dependency">punct</infon>
+          <node refid="T8" role="dependant"/>
+          <node refid="T7" role="governor"/>
+        </relation>
+      </sentence>
+      <sentence>
+        <infon key="parse tree">(S1 (S (NP (VBG dictating))))</infon>
+        <offset>204</offset>
+        <text>dictating</text>
+        <annotation id="T0">
+          <infon key="tag">VBG</infon>
+          <infon key="lemma">dictate</infon>
+          <infon key="ROOT">True</infon>
+          <location length="9" offset="204"/>
+          <text>dictating</text>
+        </annotation>
+      </sentence>
+      <annotation id="24">
+        <infon key="neg">True</infon>
+        <infon key="term">Pneumothorax</infon>
+        <infon key="CUI">C0032326</infon>
+        <infon key="annotator">MetaMap</infon>
+        <infon key="semtype">dsyn</infon>
+        <location length="12" offset="125"/>
+        <text>pneumothorax</text>
+      </annotation>
+    </passage>
+  </document>
+</collection>

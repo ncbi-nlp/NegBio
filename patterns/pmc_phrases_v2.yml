@@ -1,0 +1,211 @@
+Atelectasis:
+  include:
+  - atelecta
+  - collapse
+  - volume loss
+Cardiomegaly:
+  include:
+  - cardiomegaly
+  - the heart
+  - heart size
+  - cardiac enlargement
+  - cardiac size
+  - cardiac shadow
+  - cardiac contour
+  - cardiac silhouette
+  - enlarged heart
+Consolidation:
+  include:
+  - consolidat
+Edema:
+  include:
+  - edema
+  - heart failure
+  - chf
+  - vascular congestion
+  - pulmonary congestion
+  - indistinctness
+  - vascular prominence
+Emphysema:
+  include:
+  - emphysema
+Enlarged Cardiomediastinum:
+  include:
+  - ' mediastinum'
+  - cardiomediastinum
+  - contour
+  - mediastinal configuration
+  - mediastinal silhouette
+  - pericardial silhouette
+  - cardiac silhouette and vascularity
+Fibrosis:
+  include:
+  - fibrosis
+Fracture:
+  include:
+  - fracture
+Hernia:
+  include:
+  - hernia
+Infiltration:
+  include:
+  - infiltrate
+  - infiltration
+Pleural Effusion:
+  include:
+  - pleural fluid
+  - effusion
+  - blunt
+  - thoracentesis
+  exclude:
+  - pericardial effusion
+Pleural Other:
+  include:
+  - fibrothorax
+  - pleural scar
+  - pleural parenchymal scar
+  - pleuro-parenchymal scar
+  - pleuro-pericardial scar
+Pleural Thickening:
+  include:
+  - pleural thickening
+Pneumonia:
+  include:
+  - pneumonia
+  - infection
+  - infectious process
+  - infectious
+Pneumothorax:
+  include:
+  - pneumothorax
+  - pneumothoraces
+Lung Lesion:
+  include:
+  - lump
+  - cavitary lesion
+  - carcinoma
+  - neoplasm
+  - tumor
+Lung Opacity:
+  include:
+  - opaci
+  - decreased translucency
+  - increased density
+  - airspace disease
+  - air-space disease
+  - air space disease
+  - interstitial marking
+  - interstitial pattern
+  - interstitial lung
+  - reticular pattern
+  - reticular marking
+  - reticulation
+  - parenchymal scarring
+  - peribronchial thickening
+  - wall thickening
+  - scar
+  - hemorrhage
+  exclude:
+  - pleural scar
+Mass:
+  include:
+  - mass
+  - metastasis
+  exclude:
+  - massive
+Nodule:
+  include:
+  - nodular density
+  - nodular densities
+  - nodular opacity
+  - nodular opacities
+  - nodular opacification
+  - nodule
+  exclude:
+  - calcified nodul
+Support Devices:
+  include:
+  - pacer
+  - ' line '
+  - lines
+  - picc
+  - tube
+  - valve
+  - catheter
+  - pacemaker
+  - hardware
+  - arthroplast
+  - marker
+  - icd
+  - defib
+  - device
+  - 'drain '
+  - plate
+  - screw
+  - cannula
+  - apparatus
+  - coil
+  - support
+  - equipment
+  - mediport
+  - tracheostomy
+Pneumoperitoneum:
+  include:
+  - pneumoperitoneum
+Pneumomediastinum:
+  include:
+  - pneumomediastinum
+No Finding:
+  include:
+  - density
+  - elevation
+  - eventration
+  - scoliosis
+  - degenera
+  - calcifi
+  - hyperinflation
+  - bronchospasm
+  - asthma
+  - copd
+  - interstitial markings
+  - plaque
+  - osteophytosis
+  - aortic disease
+  - bronchiolitis
+  - airways disease
+  - thickening
+  - cephalization
+  - aspiration
+  - bullae
+  - hyperinflat
+  - contusion
+  - atherosclero
+  - osteopenia
+  - granuloma
+  - osteodystrophy
+  - cuffing
+  - irregular lucency
+  - inflam
+  - fissure
+  - hypertension
+  - prominen
+  - kyphosis
+  - defib
+  - hyperexpansion
+  - bullet
+  - reticula
+  - bronchitis
+  - deformity
+  - hematoma
+  - radiopaque
+  - aerophagia
+  - arthropathy
+Abscess:
+  include:
+  - abscess
+Sarcoidosis:
+  include:
+  - sarcoidosis
+Aneurysm:
+  include:
+  - aneurysm

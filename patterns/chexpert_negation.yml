@@ -1,0 +1,256 @@
+- id: 0
+  pattern: ({} > {} {lemma:/definite/}) > {dependency:/neg/} {}
+  comment: No definite XXX
+- id: 1
+  pattern: ({} > {} {lemma:/obvious/}) > {dependency:/neg/} {}
+  comment: No obvious XXX
+- id: 2
+  pattern: '{} > {dependency:/amod|nsubj/} {lemma:/normal|unremarkable/}'
+  comment: No obvious XXX
+- id: 3
+  pattern: '{} < {dependency:/amod|nsubj/} {lemma:/normal|unremarkable/}'
+  comment: No obvious XXX
+- id: 4
+  pattern: ({} > {} {}) < {dependency:/nsubj|dobj/} {lemma:/unremarkable|normal/}
+  comment: No obvious XXX
+- id: 5
+  pattern: '{} < {} ({} > {dependency:/amod/} {lemma:/normal|unremarkable/})'
+  comment: No obvious XXX
+- id: 6
+  pattern: '{} < {} ({} < {dependency:/nsubj/} {lemma:/normal|unremarkable/})'
+  comment: No obvious XXX
+- id: 7
+  pattern: '{} < {dependency:/conj:no/} {}'
+  comment: No obvious XXX
+- id: 8
+  pattern: '{} < {} ({} < {dependency:/conj:or/} ({} > {} {lemma:/no/}))'
+  comment: No obvious XXX
+- id: 9
+  pattern: '{} < {dependency:/nsubj/} ({lemma:/limit.*/} > {} {lemma:/upper/} & >
+    {dependency:/nmod:of/} {lemma:/normal/} & > {dependency:/case/} {lemma:/at|within/})'
+  comment: No obvious XXX
+- id: 10
+  pattern: '{} < {} ({dependency:/exclude/} < {} ({} > {} {lemma:/no/}))'
+  comment: No obvious XXX
+- id: 11
+  pattern: ({lemma:/silhouette/} > {} {}) < {dependency:/dobj|nsubj/} {lemma:/obscure/}
+  comment: No obvious XXX
+- id: 12
+  pattern: ({} > {dependency:/amod/} {lemma:/normal|unremarkable/}) < {dependency:/dobj|nsubj/}
+    {lemma:/demonstrate.*|show|present|display/}
+  comment: No obvious XXX
+- id: 13
+  pattern: '{} < {dependency:/nmod:of/} ( {lemma:/appearance/} > {dependency:/amod/}
+    {lemma:/normal/} & < {dependency:/dobj/} {lemma:/demonstrate.*|show|present|display/})'
+  comment: No obvious XXX
+- id: 14
+  pattern: '{} < {dependency:/amod/} ({} < {dependency:/dep|nsubj/} {lemma:/normal|unremarkable/})'
+  comment: No obvious XXX
+- id: 15
+  pattern: '{} < {dependency:/amod/} ({} > {dependency:/neg/} {lemma:/no/})'
+  comment: No obvious XXX
+- id: 16
+  pattern: '{} < {dependency:/amod/}({lemma:/finding.*/} < {dependency:/dobj/} ({lemma:/acute/}
+    > {dependency:/nsubj/} {lemma:/no/}))'
+  comment: No obvious XXX
+- id: 17
+  pattern: '{} < {dependency:/amod/} ({lemma:/structure.*/} < {dependency:/dep|nsubj/}
+    ({lemma:/appear/} > {dependency:/xcomp/} {lemma:/normal|unremarkable/}))'
+  comment: No obvious XXX
+- id: 18
+  pattern: '{} < {dependency:/compound/} ({} > {dependency:/neg/} {})'
+  comment: No obvious XXX
+- id: 19
+  pattern: '{} < {dependency:/nsubj/} {lemma:/absent/}'
+  comment: No obvious XXX
+- id: 20
+  pattern: '{} < {dependency:/amod/} ({} < {dependency:/nmod:of/} ({lemma:/evidence/}
+    > {dependency:/case/} {lemma:/without/}))'
+  comment: No obvious XXX
+- id: 21
+  pattern: '{} < {dependency:/amod/} ({} < {dependency:/nmod:of/} ({lemma:/evidence/}
+    > {dependency:/neg/} {}))'
+  comment: No obvious XXX
+- id: 22
+  pattern: '{} < {} ({} < {} ({lemma:/show|demonstrate|present/} > {dependency:/nmod:within/}
+    ({lemma:/limit.*/} > {} {lemma:/normal/})))'
+  comment: XXX within normal limits
+- id: 23
+  pattern: ({} > {} {}) > {dependency:/nmod:within/} {lemma:/limit.*/}
+  comment: XXX within normal limits
+- id: 24
+  pattern: '{} < {dependency:/nsubj/} ({lemma:/limit.*/} > {} {lemma:/upper/} & >
+    {dependency:/nmod:of/} {lemma:/normal/} & > {dependency:/case/} {lemma:/at|within/})'
+  comment: XXX within normal limits
+- id: 25
+  pattern: '{} < {} ({} < {dependency:/nsubj/} ({lemma:/limit.*/} > {} {lemma:/upper/}
+    & > {dependency:/nmod:of/} {lemma:/normal/} & > {dependency:/case/} {lemma:/at|within/}))'
+  comment: XXX within normal limits
+- id: 26
+  pattern: '{} < {} ({} < {dependency:/nsubj/} ({lemma:/limit.*/} > {dependency:/amod/}
+    {lemma:/normal/} & > {dependency:/case/} {lemma:/at|within/}))'
+  comment: XXX within normal limits
+- id: 27
+  pattern: ({lemma:/vascularity/} > {dependency:/amod/} {lemma:/pulmonary/}) > {dependency:/amod/}
+    {lemma:/normal/}
+  comment: XXX within normal limits
+- id: 28
+  pattern: '{} < {dependency:/dobj|nsubj/} ({} > {dependency:/nmod:within/} ({lemma:/limit.*/}
+    > {} {lemma:/normal/}))'
+  comment: XXX within normal limits
+- id: 29
+  pattern: '{} > {dependency:/nmod:within/} ({lemma:/limit.*/} > {dependency:/amod/}
+    {lemma:/normal/})'
+  comment: XXX within normal limits
+- id: 30
+  pattern: '{} > {} ({lemma:/limit/} > {} {lemma:/normal/})'
+  comment: XXX within normal limits
+- id: 31
+  pattern: '{} < {} ({lemma:/appear|remain/} > {} {lemma:/normal|unremarkable/})'
+  comment: XXX is/appears/are/appear/remain/remains (now, otherwise) normal/unremarkable
+- id: 32
+  pattern: '{} > {} ({lemma:/remain|appear/} > {} ({lemma:/limit/} > {} {lemma:/normal/}))'
+  comment: XXX is/appears/are/appear/remain/remains (now, otherwise) within normal
+    limits
+- id: 33
+  pattern: '{} <{dependency:/conj:negcc/} {}'
+  comment: rather than XXX
+- id: 34
+  pattern: '{} <{dependency:/nmod:without/} {}'
+  comment: rather than XXX
+- id: 35
+  pattern: '{} <{dependency:/nmod:without|nmod:of/} {lemma:/clear|clearing/}=key'
+  comment: rather than XXX
+- id: 36
+  pattern: '{} <{dependency:/nmod:out/} {lemma:/rule/}=key'
+  comment: rather than XXX
+- id: 37
+  pattern: '{} <{dependency:/nmod:of/} {lemma:/history|free|disappearance|resolution|drainage|resolution|removal/}'
+  comment: removal of XXX
+- id: 38
+  pattern: '{} <{dependency:/nmod:for/} {lemma:/negative/}'
+  comment: removal of XXX
+- id: 39
+  pattern: '{} <{} {lemma:/exclude/}'
+  comment: exclude XXX
+- id: 40
+  pattern: '{} <{dependency:/advmod|dep|conj:or/} {lemma:/no/}'
+  comment: exclude XXX
+- id: 41
+  pattern: '{} <{dependency:/nsubj/} ({lemma:/resolve/}=key >{dependency:/aux/} {})'
+  comment: XXX has resolved
+- id: 42
+  pattern: '{} <{dependency:/nsubj/} ({lemma:/be/} >{} {lemma:/no/})'
+  comment: there is no XXX
+- id: 43
+  pattern: '{} <{dependency:/nmod:of|nmod:for/} ({lemma:/evidence|finding/} <{dependency:/nmod:without/}
+    {})'
+  comment: without evidence|finding of|for XXX
+- id: 44
+  pattern: '{} < {dependency:/nmod:of/} ({lemma:/development/} > {} {lemma:/without/})'
+  comment: without development of XXX
+- id: 45
+  pattern: '{} < {dependency:/nmod:of/} ({lemma:/development/} > {} {lemma:/no/})'
+  comment: No development of XXX
+- id: 46
+  pattern: '{} <{dependency:/nmod:of|nmod:for/} ({lemma:/evidence/} >{dependency:/neg/}
+    {})'
+  comment: no evidence of|for XXX
+- id: 47
+  pattern: '{} <{dependency:/nmod:of|nmod:for/} ({lemma:/evidence|finding/} >{} {lemma:/without/})'
+  comment: without evidence|finding of|for XXX
+- id: 48
+  pattern: '{} <{dependency:/nmod:of/} ({lemma:/focus/} >{dependency:/neg/} {})'
+  comment: no focus of XXX
+- id: 49
+  pattern: '{} <{dependency:/nmod:of/} ({lemma:/focus/} >{} {lemma:/no/})'
+  comment: no focus of XXX
+- id: 50
+  pattern: '{} <{dependency:/nmod:to/} ({lemma:/moderate/} >{dependency:/neg/} {})'
+  comment: no moderate to XXX
+- id: 51
+  pattern: '{} <{} ({lemma:/developing/} <{} ({lemma:/evidence/} <{dependency:/nmod:without/}
+    {}))'
+  comment: no evidence of developing XXX
+- id: 52
+  pattern: '{} <{} ({lemma:/developing/} <{} ({lemma:/evidence/} >{} {lemma:/no/}))'
+  comment: no evidence of developing XXX
+- id: 53
+  pattern: '{} <{dependency:/dobj/} ({} >{dependency:/nsubj/} {lemma:/no/})'
+  comment: no focal XXX
+- id: 54
+  pattern: '{} <{dependency:/dobj|nsubjpass/} ({lemma:/demonstrate|visualize/} >{}
+    {lemma:/previously/})'
+  comment: XXX is previously demonstrated/visualized
+- id: 55
+  pattern: '{} < {} ({lemma:/suggest|explain|diagnose/} < {} ({tag:/V.*/} > {} ({tag:/N.*/}
+    > {} {lemma:/no/})))'
+  comment: there is no NN to suggest/explain XXX
+- id: 56
+  pattern: '{} < {} ({lemma:/suggest|explain|diagnose/} < {} ({tag:/N.*/} > {} {lemma:/no/}))'
+  comment: no NN to suggest/explain XXX
+- id: 57
+  pattern: '{} < {dependency:/nmod:of/} ({lemma:/area/} > {dependency:/compound/}
+    {lemma:/no/})'
+  comment: no area of XXX
+- id: 58
+  pattern: '{} < {dependency:/nsubjpass/} ({lemma:/enlarge/} > {dependency:/neg/}
+    {})'
+  comment: XXX is not enlarged
+- id: 59
+  pattern: '{} < {dependency:/nmod:of/} ({lemma:/development/} > {dependency:/case/}
+    {lemma:/without/})'
+  comment: without development of XXX
+- id: 60
+  pattern: '{} < {} {lemma:/remove/}'
+  comment: XXX removed
+- id: 61
+  pattern: '{} > {} {lemma:/remove/}'
+  comment: XXX removed
+- id: 62
+  pattern: '{} < {dependency:/nsubjpass/} ({lemma:/see/} > {} ({} > {dependency:/neg/}
+    {lemma:/no/}))'
+  comment: XXX is no longer seen
+- id: 63
+  pattern: '{} < {dependency:/nsubjpass/} ({lemma:/see/} > {} {lemma:/no/})'
+  comment: XXX is no longer seen
+- id: 64
+  pattern: '{} < {} ({lemma:/see/} > {} ({} > {} ({lemma:/evidence/} > {} {lemma:/without/})))'
+  comment: without evidence seen for XXX
+- id: 65
+  pattern: '{} < {} ({lemma:/see/} > {} ({lemma:/evidence/} > {} {lemma:/without/}))'
+  comment: without evidence seen for XXX
+- id: 66
+  pattern: '{} < {} ({lemma:/appearance/} > {} {lemma:/normal|unremarkable/})'
+  comment: normal/unremarkable appearance of XXX
+- id: 67
+  pattern: '{} > {} {lemma:/normal|unremarkable/}'
+  comment: make more general
+- id: 68
+  pattern: '{} < {} {lemma:/normal|unremarkable/}'
+  comment: make more general
+- id: 69
+  pattern: '{} < {} {lemma:/clear/}'
+  comment: cleared XXX
+- id: 70
+  pattern: '{} > {} {lemma:/clear/}'
+  comment: cleared XXX
+- id: 71
+  pattern: '{} < {} ({lemma:/associate.*/} > {} ({lemma:/obvious/} > {dependency:/neg/}
+    {}))'
+  comment: no obvious associated XXX
+- id: 72
+  pattern: '{} > {dependency:/neg/} {} & > {} {lemma:/obvious/} & > {} {lemma:/associate.*/}'
+  comment: no obvious associated XXX
+- id: 73
+  pattern: '{} > {} ({lemma:/resolution/} > {} {lemma:/interval/})'
+  comment: XXX with interval resolution
+- id: 74
+  pattern: '{} >{dependency:/neg/} {}'
+  comment: no XXX / general negative case
+- id: 75
+  pattern: '{} >{} {lemma:/no/}'
+  comment: no XXX / general negative case
+- id: 76
+  pattern: '{} >{dependency:/case/} {lemma:/without/}'
+  comment: no XXX / general negative case

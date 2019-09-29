@@ -1,6 +1,5 @@
 import itertools
 import re
-import collections
 
 L = '<'
 R = '>'

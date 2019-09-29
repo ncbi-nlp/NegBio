@@ -23,7 +23,7 @@ def load(sentence):
     """
     graph = nx.DiGraph()
     for ann in sentence.annotations:
-        loc = ann.get_total_location()
+        loc = ann.total_span
         graph.add_node(ann.id, tag=ann.infons['tag'], text=ann.text, lemma=ann.infons['lemma'].lower(),
                        start=loc.offset, end=loc.offset + loc.length)
     for rel in sentence.relations:

@@ -1,0 +1,24 @@
+- id: 0
+  pattern: unchanged ([^ ]+ ){0,3}\$X\$
+  comment: unchanged XXX
+- id: 1
+  pattern: borderline size of the (cardiac )?silhouette
+  comment: overfitting to MIMIC-III CXR
+- id: 2
+  pattern: doubt ([^ ]+ ){0,3}\$X\$
+  comment: doubt XXX
+- id: 3
+  pattern: \$X\$[\w]* cannot be ((entirely|certainly|fully) )?(excluded|evaluated|detected|identified|assessed|confirmed)
+  comment: XXX cannot be excluded
+- id: 4
+  pattern: less likely ([^ ]+ ){0,3}\$X\$
+  comment: less likely X
+- id: 5
+  pattern: possible ([^ ]+ ){0,3}\$X\$
+  comment: possible X
+#- id: 6
+#  pattern: small ([^ ]+ ){0,3}\$X\$
+#  comment: small X
+- id: 6
+  pattern: \$X\$[\w]* if any
+  comment: XXX if any

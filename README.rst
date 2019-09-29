@@ -4,13 +4,9 @@
 
 -----------------------
 
-.. image:: https://img.shields.io/travis/yfpeng/NegBio/master.svg
-   :target: https://travis-ci.org/yfpeng/NegBio
+.. image:: https://github.com/yfpeng/negbio2/workflows/negbio2/badge.svg
    :alt: Build status
-
-.. image:: https://img.shields.io/pypi/v/negbio.svg
-   :target: https://pypi.python.org/pypi/negbio
-   :alt: PyPI version
+   :target: https://github.com/yfpeng/negbio2
 
 .. image:: https://img.shields.io/readthedocs/negbio.svg
    :target: http://negbio.readthedocs.io
@@ -21,28 +17,22 @@
 NegBio is a high-performance NLP tool for negation and uncertainty detection in clinical texts (e.g. radiology reports).
 
 
+Update
+======
+
+We are updating the NegBio's pipeline. To use the order version, please see `v0.9.4 <https://github.com/ncbi-nlp/NegBio/tree/v0.9.4>`_.
+
+
 Get started
 ===========
 
-Install NegBio
-~~~~~~~~~~~~~~
+Download NegBio
+~~~~~~~~~~~~~~~
 
-1. Installing from source (recommended)
+.. code-block:: bash
 
-    .. code-block:: bash
-
-         $ git clone https://github.com/ncbi-nlp/NegBio.git
-         $ cd /path/to/negbio
-         $ python setup.py install --user
-         $ export PATH=~/.local/bin:$PATH
-
-2. Installing from pip
-
-    .. code-block:: bash
-
-        $ pip install negbio
-
-
+     $ git clone https://github.com/ncbi-nlp/NegBio.git
+     $ cd /path/to/negbio
 
 
 Prepare the dataset
@@ -55,40 +45,7 @@ Some examples can be found in the ``examples`` folder.
 Run the script
 ~~~~~~~~~~~~~~
 
-There are two ways to run the pipeline.
-
-**NOTE**: If you want to process a lot of reports (e.g., > 1000), it is recommended to run the pipeline step-by-step.
 See `User guide <https://negbio.readthedocs.io/en/latest/user_guide.html>`_.
-
-
-Using the CheXpert algorithm
-____________________________
-
-If you want to use the `CheXpert <https://github.com/stanfordmlgroup/chexpert-labeler>`_ method, run one of the following lines
-
-.. code-block:: bash
-
-   $ main_chexpert text --output=examples examples/00000086.txt examples/00019248.txt
-
-.. code-block:: bash
-
-   $ main_chexpert bioc --output=examples examples/1.xml
-
-
-Using MetaMap
-_____________
-
-If you want to use MetaMap, run the following command by replacing ``<METAMAP_BINARY>`` with the actual **ABSOLUTE**
-path, such as **META_MAP_HOME/bin/metamap16**
-
-.. code-block:: bash
-
-   $ main_mm text --metamap=<METAMAP_BINARY> --output=examples examples/00000086.txt \
-        examples/00019248.txt
-
-.. code-block:: bash
-
-   $ main_mm bioc --metamap=<METAMAP_BINARY> --output=examples examples/1.xml
 
 
 Documentation

@@ -1,0 +1,76 @@
+- id: 0
+  pattern: '{} >{} {lemma:/possible|possibly|presumably|probable|questionable|suspect|suspected|suspicious/}'
+  comment: outgoing edge
+- id: 1
+  pattern: '{} >{} {lemma:/question/}'
+  comment: outgoing edge
+- id: 2
+  pattern: '{} <{dependency:/nmod:of/} {lemma:/question|suggestion/}'
+  comment: incoming edge
+- id: 3
+  pattern: '{} <{dependency:/dobj/} {lemma:/suspect|favor|suggest|suggesting|question|consider/}'
+  comment: incoming edge
+- id: 4
+  pattern: '{} <{dependency:/nmod:for/} {lemma:/concern|suspicion/}'
+  comment: incoming edge
+- id: 5
+  pattern: '{} <{dependency:/nsubjpass/} {lemma:/suspect/}'
+  comment: incoming edge
+- id: 6
+  pattern: '{} <{} {lemma:/possible/}'
+  comment: incoming edge
+- id: 7
+  pattern: '{} <{dependency:/dobj/} {lemma:/suspect/}'
+  comment: suspected XXX
+- id: 8
+  pattern: '{} >{dependency:/advmod/} {lemma:/suspect/}'
+  comment: suspected XXX
+- id: 9
+  pattern: '{} <{dependency:/dep/} {lemma:/maybe/}'
+  comment: maybe due to XXX
+- id: 10
+  pattern: '{} <{} ({lemma:/reflect|represent|indicate|include/} >{} {lemma:/may|could|would/})'
+  comment: may/could represent/reflect/indicate/include XXX
+- id: 11
+  pattern: '{} <{dependency:/nmod:to/} {lemma:/secondary/}'
+  comment: maybe secondary to XXX
+- id: 12
+  pattern: '{} <{dependency:/nmod:to/} ({lemma:/due/} >{} {lemma:/can|could|may|would|possibly/})'
+  comment: may be due to XXX
+- id: 13
+  pattern: '{} <{dependency:/nmod:to/} ({lemma:/relate/} >{} {lemma:/can|could|may|would|possibly/})'
+  comment: could related to XXX
+- id: 14
+  pattern: '{} <{dependency:/nmod:with/} ({lemma:/compatible/} >{} {lemma:/be|could|may|would/})'
+  comment: may be compatible with XXX
+- id: 15
+  pattern: '{} <{dependency:/dobj/} ({lemma:/left/} <{} {lemma:/question/})'
+  comment: question left XXX
+- id: 16
+  pattern: '{} >{} {lemma:/left/} <{} {lemma:/question/}'
+  comment: question left XXX
+- id: 17
+  pattern: '{} <{dependency:/dobj/} ({lemma:/exclude|evaluate|detect|identify/} >{} {lemma:/cannot/})'
+  comment: cannot exclude XXX
+- id: 18
+  pattern: '{} <{dependency:/nmod:out/} ({lemma:/rule/} >{} {lemma:/cannot/})'
+  comment: cannot rule out XXX
+- id: 19
+  pattern: '{} <{dependency:/nsubjpass/} ({lemma:/exclude/} >{dependency:/neg/} {})'
+  comment: XXX is not excluded
+- id: 20
+  pattern: '{} <{dependency:/nsubjpass/} ({lemma:/exclude|favor/} >{} {lemma:/cannot/})'
+  comment: XXX is not excluded|favored
+- id: 21
+  pattern: '{} <{dependency:/dobj/} ({lemma:/include/} >{} ({lemma:/diagnosis/} >{}
+    {lemma:/differential/}))'
+  comment: differential diagnosis includes
+- id: 22
+  pattern: '{} <{} {lemma:/be/} >{} {lemma:/may|could|would/}'
+  comment: may be XXX
+- id: 23
+  pattern: '{} <{dependency:/nsubj/} {lemma:/suspect/,tag:/VBN/}'
+  comment: XXX suspected
+- id: 24
+  pattern: '{} <{dependency:/nmod:of/} ({lemma:/finding/} >{} {lemma:/equivocal/})'
+  comment: Equivocal finding of xxx
