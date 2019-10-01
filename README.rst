@@ -33,21 +33,21 @@ Run NegBio
 
       conda create --name negbio python=3.6
       source activate negbio
+      pip install --upgrade pip setuptools
 
 
    or
 
    .. code-block:: bash
 
-      python3 -m venv negbio
-      source negbio/bin/activate
+      virtualenv --python=/usr/bin/python3.6 negbio_env
+      source negbio_env/bin/activate
 
 
 4. Install required packages
 
    .. code-block:: bash
 
-      pip install --upgrade pip setuptools
       pip install -r requirements3.txt
 
 
