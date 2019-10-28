@@ -91,14 +91,14 @@ def aggregate(doc):
             else:
                 label = POSITIVE
 
+            # Don't add any labels for No Finding
+            if category == "No Finding":
+                continue
+                
             # If at least one non-support category has a uncertain or
             # positive label, there was a finding
             if category != 'Support Devices' and label in [UNCERTAIN, POSITIVE]:
                 no_finding = False
-
-            # Don't add any labels for No Finding
-            if category == "No Finding":
-                continue
 
             # add exception for 'chf' and 'heart failure'
             if ((label in [UNCERTAIN, POSITIVE]) and
