@@ -14,6 +14,9 @@ class Bllip(object):
             logging.debug("downloading GENIA+PubMed model if necessary ...")
             model_dir = ModelFetcher.download_and_install_model(
                 'GENIA+PubMed', os.path.join(tempfile.gettempdir(), 'models'))
+        elif 'pathlib' in str(type(model_dir)):
+            # avoid python 2/3 compatibility issues with os/pathlib2
+            model_dir = str(model_dir)
         self.model_dir = os.path.expanduser(model_dir)
 
         logging.debug('loading model %s ...' % self.model_dir)
