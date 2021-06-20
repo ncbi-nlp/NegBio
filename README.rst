@@ -1,5 +1,5 @@
-.. image:: https://github.com/yfpeng/negbio/blob/master/images/negbio.png?raw=true
-   :target: https://github.com/yfpeng/negbio/blob/master/images/negbio.png?raw=true
+.. image:: https://raw.githubusercontent.com/ncbi-nlp/NegBio/master/images/negbio.png?raw=true
+   :target: https://raw.githubusercontent.com/ncbi-nlp/NegBio/master/images/negbio.png?raw=true
    :alt: NegBio
 
 -----------------------
