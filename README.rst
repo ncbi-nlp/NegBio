@@ -15,10 +15,6 @@
 .. image:: https://img.shields.io/readthedocs/negbio.svg
    :target: http://negbio.readthedocs.io
    :alt: RTD version
-   
-.. image:: https://hits.dwyl.com/ncbi-nlp/NegBio.svg
-   :target: https://hits.dwyl.com/ncbi-nlp/NegBio
-   :alt: HitCount
 
 
 NegBio is a high-performance NLP tool for negation and uncertainty detection in clinical texts (e.g. radiology reports).
